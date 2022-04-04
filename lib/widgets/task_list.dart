@@ -16,7 +16,8 @@ class TasksList extends StatelessWidget {
             context.read<TaskData>().updateTask(index);
           },
           gestureCallback: () {
-            print('yes');
+            print('yes $index');
+            context.read<TaskData>().deleteTask(index);
           },
         );
       }, // Callback
