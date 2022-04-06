@@ -23,6 +23,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
+      // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)),
+      // darkTheme: ThemeData.dark(),
       home: TasksScreen(),
     );
   }

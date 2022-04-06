@@ -12,7 +12,7 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      // backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
@@ -24,16 +24,13 @@ class TasksScreen extends StatelessWidget {
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen((newTaskTitle) {
-                  // setState(() {
-                  //   tasks.add(Task(name: newTaskTitle));
-                  //   Navigator.pop(context);
                   // });
                 }),
               ),
             ),
           );
         },
-        backgroundColor: Colors.lightBlueAccent,
+        // backgroundColor: Colors.lightBlueAccent,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,10 +42,10 @@ class TasksScreen extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundColor: Colors.white,
+                  // backgroundColor: Colors.white,
                   child: Icon(
                     Icons.list,
-                    color: Colors.lightBlueAccent,
+                    // color: Colors.lightBlueAccent,
                     size: 30,
                   ),
                 ),
@@ -58,7 +55,7 @@ class TasksScreen extends StatelessWidget {
                 Text(
                   'Todoey',
                   style: TextStyle(
-                    color: Colors.white,
+                    // color: Colors.white,
                     fontSize: 50,
                     fontWeight: FontWeight.w700,
                   ),
@@ -66,7 +63,7 @@ class TasksScreen extends StatelessWidget {
                 Text(
                   '${context.watch<TaskData>().taskCount} Tasks',
                   style: TextStyle(
-                    color: Colors.white,
+                    // color: Colors.white,
                     fontSize: 18,
                   ),
                 ),
@@ -77,7 +74,7 @@ class TasksScreen extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.green,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
