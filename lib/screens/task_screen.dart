@@ -88,7 +88,7 @@ class TasksScreen extends StatelessWidget {
           Expanded(
             child: Container(
               // alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/pattern.jpg'),
