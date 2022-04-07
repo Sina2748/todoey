@@ -31,14 +31,14 @@ class TasksScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       'لیست انجام کارها',
                       style: GoogleFonts.lemonada(
                         textStyle: TextStyle(
                           color: Theme.of(context).colorScheme.surface,
-                          fontSize: 30,
+                          fontSize: 25,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -61,6 +61,7 @@ class TasksScreen extends StatelessWidget {
             ),
           )),
       backgroundColor: Theme.of(context).colorScheme.primary,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
         foregroundColor: Theme.of(context).colorScheme.surface,
         backgroundColor: Theme.of(context).colorScheme.onSecondary,

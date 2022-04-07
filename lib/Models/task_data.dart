@@ -7,7 +7,8 @@ class TaskData extends ChangeNotifier {
   final List<Task> _tasks = [
     Task(name: 'با زدن دکمه + به کارهات اضافه کن'),
     Task(name: 'با زدن ▢ کارها تغییر حالت می دن'),
-    Task(name: 'با نگه‌داشتن روی هر کدوم از کارها اون کار رو حذف کن'),
+    Task(name: 'با دو بار زدن روی هر کار اون رو حذف کن'),
+    Task(name: 'با نگه‌داشتن روی هر کدوم از کارها اون کار رو جا‌بجا کن'),
   ];
 
   UnmodifiableListView<Task> get tasks {
@@ -21,11 +22,13 @@ class TaskData extends ChangeNotifier {
   void addTask(String newTaskTitle) {
     final task = Task(name: newTaskTitle);
     _tasks.add(task);
+
     notifyListeners();
   }
 
   updateTask(int index) {
     tasks[index].toggleDone();
+
     notifyListeners();
   }
 
