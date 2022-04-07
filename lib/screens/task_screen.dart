@@ -15,32 +15,10 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      floatingActionButton: FloatingActionButton(
-        foregroundColor: Theme.of(context).colorScheme.surface,
-        backgroundColor: Theme.of(context).colorScheme.onSecondary,
-        child: Icon(Icons.add),
-        onPressed: () {
-          showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            builder: (context) => SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen((newTaskTitle) {
-                  // });
-                }),
-              ),
-            ),
-          );
-        },
-        // backgroundColor: Colors.lightBlueAccent,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
+      appBar: AppBar(
+          toolbarHeight: 130,
+          flexibleSpace: Container(
+            height: 400,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topRight,
@@ -81,11 +59,36 @@ class TasksScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ),
+          )),
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      floatingActionButton: FloatingActionButton(
+        foregroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: Theme.of(context).colorScheme.onSecondary,
+        child: Icon(Icons.add),
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: AddTaskScreen((newTaskTitle) {
+                  // });
+                }),
+              ),
+            ),
+          );
+        },
+        // backgroundColor: Colors.lightBlueAccent,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
           Expanded(
             child: Container(
               // alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/pattern.jpg'),

@@ -25,13 +25,13 @@ class TaskTile extends StatelessWidget {
         onChanged: checkboxCallback,
       ),
       title: GestureDetector(
-        onLongPress: gestureCallback,
+        onDoubleTap: gestureCallback,
         child: Text(
           taskTitle!,
           textAlign: TextAlign.center,
           style: GoogleFonts.harmattan(
             textStyle: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 decoration: isChecked! ? TextDecoration.lineThrough : null),
           ),
         ),

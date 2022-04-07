@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'task.dart';
 
 class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
+  final List<Task> _tasks = [
     Task(name: 'با زدن دکمه + به کارهات اضافه کن'),
     Task(name: 'با زدن ▢ کارها تغییر حالت می دن'),
     Task(name: 'با نگه‌داشتن روی هر کدوم از کارها اون کار رو حذف کن'),
@@ -32,5 +32,12 @@ class TaskData extends ChangeNotifier {
   deleteTask(int index) {
     _tasks.removeAt(index);
     notifyListeners();
+  }
+
+  reorderTaskList(int oldIndex, int newIndex) {
+    (oldIndex < newIndex);
+
+    final Task item = _tasks.removeAt(oldIndex);
+    _tasks.insert(newIndex, item);
   }
 }
