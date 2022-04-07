@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'add_task_screen.dart';
 import 'package:todoey/widgets/task_list.dart';
@@ -5,6 +7,7 @@ import 'package:todoey/Models/task.dart';
 import 'add_task_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/Models/task_data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
@@ -12,8 +15,10 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       floatingActionButton: FloatingActionButton(
+        foregroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: Theme.of(context).colorScheme.onSecondary,
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
@@ -33,51 +38,64 @@ class TasksScreen extends StatelessWidget {
         // backgroundColor: Colors.lightBlueAccent,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.greenAccent, Colors.teal],
+              ),
+            ),
             padding: EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                CircleAvatar(
-                  radius: 30,
-                  // backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.list,
-                    // color: Colors.lightBlueAccent,
-                    size: 30,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Todoey',
-                  style: TextStyle(
-                    // color: Colors.white,
-                    fontSize: 50,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Text(
-                  '${context.watch<TaskData>().taskCount} Tasks',
-                  style: TextStyle(
-                    // color: Colors.white,
-                    fontSize: 18,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'لیست انجام کارها',
+                      style: GoogleFonts.lemonada(
+                        textStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.surface,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      child: Icon(
+                        Icons.list,
+                        color: Theme.of(context).colorScheme.primary,
+                        size: 30,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
           Expanded(
             child: Container(
+              // alignment: Alignment.bottomLeft,
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.green,
+                image: DecorationImage(
+                  image: AssetImage('assets/images/pattern.jpg'),
+                  fit: BoxFit.cover,
+                ),
+
+                // color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(0),
+                  topRight: Radius.circular(0),
                 ),
               ),
               child: TasksList(),

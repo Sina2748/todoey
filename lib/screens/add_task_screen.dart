@@ -11,7 +11,7 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String? newTask;
     return Container(
-      color: Color(0xff757575),
+      color: Theme.of(context).colorScheme.background,
       child: Container(
         padding: EdgeInsets.only(
           left: 40,
@@ -19,7 +19,7 @@ class AddTaskScreen extends StatelessWidget {
           top: 20,
         ),
         decoration: BoxDecoration(
-          color: Colors.white,
+          // color: Theme.of(context).colorScheme.onSecondary,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -33,7 +33,7 @@ class AddTaskScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30,
-                color: Colors.lightBlueAccent,
+                color: Theme.of(context).colorScheme.onSecondary,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -45,7 +45,7 @@ class AddTaskScreen extends StatelessWidget {
               autofocus: true,
             ),
             FlatButton(
-              color: Colors.lightBlueAccent,
+              color: Theme.of(context).colorScheme.secondary,
               onPressed: () {
                 // addNewTaskcallback(newTask);
                 context.read<TaskData>().addTask(newTask!);
@@ -55,7 +55,7 @@ class AddTaskScreen extends StatelessWidget {
                 'add',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onSecondary,
                 ),
               ),
             ),

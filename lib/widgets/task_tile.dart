@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/Models/task_data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TaskTile extends StatelessWidget {
   final bool? isChecked;
@@ -18,19 +19,23 @@ class TaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: GestureDetector(
-          onLongPress: gestureCallback,
-          child: Text(
-            taskTitle!,
-            style: TextStyle(
+      trailing: Checkbox(
+        activeColor: Theme.of(context).colorScheme.primary,
+        value: isChecked,
+        onChanged: checkboxCallback,
+      ),
+      title: GestureDetector(
+        onLongPress: gestureCallback,
+        child: Text(
+          taskTitle!,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.harmattan(
+            textStyle: TextStyle(
                 fontSize: 20,
                 decoration: isChecked! ? TextDecoration.lineThrough : null),
           ),
         ),
-        trailing: Checkbox(
-          activeColor: Colors.lightBlueAccent,
-          value: isChecked,
-          onChanged: checkboxCallback,
-        ));
+      ),
+    );
   }
 }

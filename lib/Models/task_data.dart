@@ -5,8 +5,8 @@ import 'task.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [
-    Task(name: 'buy milk000'),
-    Task(name: 'buy milk10'),
+    Task(name: 'خرید شیر'),
+    Task(name: 'حل کردن مشق ها'),
     // Task(name: 'buy milk2000'),
   ];
 
