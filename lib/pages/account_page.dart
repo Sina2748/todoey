@@ -94,7 +94,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile1')),
+      appBar: GradiantAppBar(pageTitle: 'منو '),
       backgroundColor: Colors.green,
       // body: Center(child: Text('data')),
 

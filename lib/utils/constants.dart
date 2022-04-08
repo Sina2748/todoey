@@ -7,7 +7,7 @@ final supabase = Supabase.instance.client;
 extension ShowSnackBar on BuildContext {
   void showSnackBar({
     required String message,
-    Color backgroundColor = Colors.white,
+    Color backgroundColor = Colors.teal,
   }) {
     ScaffoldMessenger.of(this).showSnackBar(SnackBar(
       content: Text(message),
@@ -34,7 +34,7 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => Size.fromHeight(130);
+  Size get preferredSize => Size.fromHeight(80);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
               colors: [Colors.greenAccent, Colors.teal],
             ),
           ),
-          padding: EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
+          padding: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -61,7 +61,7 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
                     style: GoogleFonts.lemonada(
                       textStyle: TextStyle(
                         color: Theme.of(context).colorScheme.surface,
-                        fontSize: 25,
+                        fontSize: 20,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -70,12 +70,12 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
                     width: 10,
                   ),
                   CircleAvatar(
-                    radius: 30,
+                    radius: 20,
                     backgroundColor: Theme.of(context).colorScheme.surface,
                     child: Icon(
                       Icons.list,
                       color: Theme.of(context).colorScheme.primary,
-                      size: 30,
+                      size: 25,
                     ),
                   ),
                 ],
