@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase/supabase.dart';
 import 'package:todoey/components/auth_required_state.dart';
@@ -93,26 +94,57 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile')),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
-        children: [
-          TextFormField(
-            controller: _usernameController,
-            decoration: const InputDecoration(labelText: 'User Name'),
+      appBar: AppBar(title: const Text('Profile1')),
+      backgroundColor: Colors.green,
+      // body: Center(child: Text('data')),
+
+      body: Container(
+        decoration: kBackgroundImage,
+        padding: EdgeInsets.all(20),
+        // color: Theme.of(context).colorScheme.surface,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TextFormField(
+                controller: _usernameController,
+                decoration: const InputDecoration(labelText: 'User Name'),
+              ),
+              const SizedBox(height: 18),
+              TextFormField(
+                controller: _websiteController,
+                decoration: const InputDecoration(labelText: 'Website'),
+              ),
+              const SizedBox(height: 18),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      onPressed: _updateProfile,
+                      child: Text(_loading ? 'Saving...' : 'Update')),
+                  ElevatedButton(
+                      onPressed: _signOut, child: const Text('Sign Out')),
+                ],
+              ),
+              const SizedBox(height: 25),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/taskscreen');
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: 30,
+                      bottom: 30,
+                      left: 50,
+                      right: 50,
+                    ),
+                    child: Text(
+                      'TODO',
+                    ),
+                  ))
+            ],
           ),
-          const SizedBox(height: 18),
-          TextFormField(
-            controller: _websiteController,
-            decoration: const InputDecoration(labelText: 'Website'),
-          ),
-          const SizedBox(height: 18),
-          ElevatedButton(
-              onPressed: _updateProfile,
-              child: Text(_loading ? 'Saving...' : 'Update')),
-          const SizedBox(height: 18),
-          ElevatedButton(onPressed: _signOut, child: const Text('Sign Out')),
-        ],
+        ),
       ),
     );
   }

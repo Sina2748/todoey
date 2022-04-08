@@ -5,7 +5,20 @@ import 'screens/task_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/Models/task_data.dart';
 
-void main() {
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:todoey/pages/account_page.dart';
+import 'package:todoey/pages/login_page.dart';
+import 'package:todoey/pages/splash_page.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    // TODO: Replace credentials with your own
+    url: 'https://akqgwjakzlijndpqptxi.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFrcWd3amFremxpam5kcHFwdHhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDk0MjExNjIsImV4cCI6MTk2NDk5NzE2Mn0.28KySaUFeXuIUPjVqKp6JOC4mevviutD5OjZRRacbo4',
+  );
   runApp(
     /// Providers are above [MyApp] instead of inside it, so that tests
     /// can use [MyApp] while mocking the providers
@@ -24,6 +37,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{
+        '/': (_) => const SplashPage(),
+        '/login': (_) => const LoginPage(),
+        '/account': (_) => const AccountPage(),
+        '/taskscreen': (_) => const TasksScreen(),
+      },
       theme: ThemeData(
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
@@ -46,7 +66,7 @@ class MyApp extends StatelessWidget {
       ),
       // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)),
       // darkTheme: ThemeData.dark(),
-      home: TasksScreen(),
+      // home: TasksScreen(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:todoey/utils/constants.dart';
 import 'add_task_screen.dart';
 import 'package:todoey/widgets/task_list.dart';
 import 'package:todoey/Models/task.dart';
@@ -88,20 +89,10 @@ class TasksScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
+              decoration: kBackgroundImage,
               // alignment: Alignment.bottomLeft,
               padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/pattern.jpg'),
-                  fit: BoxFit.cover,
-                ),
 
-                // color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(0),
-                  topRight: Radius.circular(0),
-                ),
-              ),
               child: TasksList(),
             ),
           )

@@ -18,3 +18,10 @@ extension ShowSnackBar on BuildContext {
     showSnackBar(message: message, backgroundColor: Colors.red);
   }
 }
+
+var kBackgroundImage = BoxDecoration(
+  image: DecorationImage(
+    image: AssetImage('assets/images/pattern.jpg'),
+    fit: BoxFit.cover,
+  ),
+);
