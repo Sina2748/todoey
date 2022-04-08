@@ -16,52 +16,8 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          toolbarHeight: 130,
-          flexibleSpace: Container(
-            height: 400,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [Colors.greenAccent, Colors.teal],
-              ),
-            ),
-            padding: EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'لیست انجام کارها',
-                      style: GoogleFonts.lemonada(
-                        textStyle: TextStyle(
-                          color: Theme.of(context).colorScheme.surface,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Theme.of(context).colorScheme.surface,
-                      child: Icon(
-                        Icons.list,
-                        color: Theme.of(context).colorScheme.primary,
-                        size: 30,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )),
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      appBar: GradiantAppBar(pageTitle: 'لیست انجام کارها'),
+      // backgroundColor: Theme.of(context).colorScheme.primary,
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
         foregroundColor: Theme.of(context).colorScheme.surface,
