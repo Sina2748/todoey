@@ -49,6 +49,5 @@ class TaskData extends ChangeNotifier {
   getTasksFromCloud(String user_id) async {
     var userCloudTasks = await subabaseManager.readData(user_id);
     print(userCloudTasks);
-
   }
 }
