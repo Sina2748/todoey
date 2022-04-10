@@ -1,7 +1,9 @@
 import 'dart:collection';
-
+import 'package:todoey/components/supabase_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'task.dart';
+
+SupabaseManager subabaseManager = SupabaseManager();
 
 class TaskData extends ChangeNotifier {
   final List<Task> _tasks = [
@@ -42,5 +44,11 @@ class TaskData extends ChangeNotifier {
 
     final Task item = _tasks.removeAt(oldIndex);
     _tasks.insert(newIndex, item);
+  }
+
+  getTasksFromCloud(String user_id) async {
+    var userCloudTasks = await subabaseManager.readData(user_id);
+    print(userCloudTasks);
+
   }
 }

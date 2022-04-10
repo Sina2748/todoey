@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todoey/components/supabase_manager.dart';
+import 'package:todoey/Models/task_data.dart';
 
 final supabase = Supabase.instance.client;
 
@@ -27,6 +29,8 @@ var kBackgroundImage = BoxDecoration(
   ),
 );
 
+SupabaseManager subabaseManager = SupabaseManager();
+
 class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
   final String pageTitle;
   GradiantAppBar({
@@ -40,6 +44,14 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         toolbarHeight: 130,
+        leading: ElevatedButton(
+          onPressed: () {
+            print('pushed');
+            TaskData()
+                .getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
+          },
+          child: Text('see'),
+        ),
         flexibleSpace: Container(
           height: 400,
           decoration: BoxDecoration(

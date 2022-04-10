@@ -9,6 +9,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:todoey/pages/account_page.dart';
 import 'package:todoey/pages/login_page.dart';
 import 'package:todoey/pages/splash_page.dart';
+import 'components/supabase_manager.dart';
+
+SupabaseManager subabaseManager = SupabaseManager();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
