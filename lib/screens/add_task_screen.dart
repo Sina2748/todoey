@@ -3,6 +3,7 @@ import 'package:todoey/widgets/task_list.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/Models/task_data.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todoey/utils/constants.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final Function addNewTaskcallback;
@@ -51,8 +52,7 @@ class AddTaskScreen extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary,
               onPressed: () {
                 // addNewTaskcallback(newTask);
-                context.read<TaskData>().addTask(
-                    newTask!, '2dbfd106-63e8-4759-a992-7c2316d5edeb', false);
+                context.read<TaskData>().addTask(newTask!, user_id, false);
                 Navigator.pop(context);
               },
               child: Text(

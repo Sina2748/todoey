@@ -6,6 +6,12 @@ import 'package:todoey/Models/task_data.dart';
 import 'package:provider/provider.dart';
 
 final supabase = Supabase.instance.client;
+String user_id = 'a';
+getUserID(userId) {
+  print('userId: $userId');
+  user_id = userId;
+  print('user_id: $user_id');
+}
 
 extension ShowSnackBar on BuildContext {
   void showSnackBar({

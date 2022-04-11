@@ -19,6 +19,9 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
 
   /// Called once a user id is received within `onAuthenticated()`
   Future<void> _getProfile(String userId) async {
+    print(userId);
+    //sending user id to costants
+    getUserID(userId);
     setState(() {
       _loading = true;
     });
