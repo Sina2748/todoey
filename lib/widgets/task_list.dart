@@ -12,6 +12,13 @@ class TasksList extends StatefulWidget {
 
 class _TasksListState extends State<TasksList> {
   @override
+  void initState() {
+    context
+        .read<TaskData>()
+        .addCloudTasksToList('2dbfd106-63e8-4759-a992-7c2316d5edeb');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ReorderableListView(
       children: <Widget>[

@@ -10,6 +10,7 @@ class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? newTask;
+
     return Container(
       color: Theme.of(context).colorScheme.background,
       child: Container(
