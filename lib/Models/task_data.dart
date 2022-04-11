@@ -6,6 +6,7 @@ import 'task.dart';
 SupabaseManager subabaseManager = SupabaseManager();
 
 class TaskData extends ChangeNotifier {
+  // List<Task> _tasks = getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
   final List<Task> _tasks = [
     Task(name: 'با زدن دکمه + به کارهات اضافه کن'),
     Task(name: 'با زدن ▢ کارها تغییر حالت می دن'),
@@ -14,6 +15,7 @@ class TaskData extends ChangeNotifier {
   ];
 
   UnmodifiableListView<Task> get tasks {
+    // TaskData().getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
     return UnmodifiableListView(_tasks);
   }
 
@@ -48,6 +50,17 @@ class TaskData extends ChangeNotifier {
 
   getTasksFromCloud(String user_id) async {
     var userCloudTasks = await subabaseManager.readData(user_id);
-    print(userCloudTasks);
+    // print(userCloudTasks);
+    final List<Task> _tasks = [];
+    // print(userCloudTasks.length);
+    for (int i = 0; i < userCloudTasks.length; i++) {
+      var name = userCloudTasks[i]['task_column'];
+
+      var adding = Task(name: name);
+      _tasks.add(adding);
+      // print(_tasks);
+      // return _tasks;
+    } // for ends
+    notifyListeners();
   }
 }

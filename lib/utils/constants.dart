@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoey/components/supabase_manager.dart';
 import 'package:todoey/Models/task_data.dart';
+import 'package:provider/provider.dart';
 
 final supabase = Supabase.instance.client;
 
@@ -47,7 +48,9 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
         leading: ElevatedButton(
           onPressed: () {
             print('pushed');
-            TaskData()
+
+            context
+                .watch<TaskData>()
                 .getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
           },
           child: Text('see'),
