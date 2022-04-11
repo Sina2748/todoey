@@ -8,10 +8,12 @@ SupabaseManager subabaseManager = SupabaseManager();
 class TaskData extends ChangeNotifier {
   // List<Task> _tasks = getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
   List<Task> _tasks = [
-    Task(name: 'با زدن دکمه + به کارهات اضافه کن'),
-    Task(name: 'با زدن ▢ کارها تغییر حالت می دن'),
-    Task(name: 'با دو بار زدن روی هر کار اون رو حذف کن'),
-    Task(name: 'با نگه‌داشتن روی هر کدوم از کارها اون کار رو جا‌بجا کن'),
+    Task(name: 'با زدن دکمه + به کارهات اضافه کن', isDone: true),
+    Task(name: 'با زدن ▢ کارها تغییر حالت می دن', isDone: true),
+    Task(name: 'با دو بار زدن روی هر کار اون رو حذف کن', isDone: true),
+    Task(
+        name: 'با نگه‌داشتن روی هر کدوم از کارها اون کار رو جا‌بجا کن',
+        isDone: true),
   ];
 
   UnmodifiableListView<Task> get tasks {
@@ -23,8 +25,8 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
-  addTask(String newTaskTitle) async {
-    final task = Task(name: newTaskTitle);
+  addTask(String newTaskTitle, bool isDone) async {
+    final task = Task(name: newTaskTitle, isDone: isDone);
     _tasks.add(task);
   }
 
@@ -52,7 +54,8 @@ class TaskData extends ChangeNotifier {
 
     for (int i = 0; i < userCloudTasks.length; i++) {
       var name = userCloudTasks[i]['task_column'];
-      var adding = Task(name: name);
+      var isDone = userCloudTasks[i]['isDone_column'];
+      var adding = Task(name: name, isDone: isDone);
       _tasks.add(adding);
     } // for end
 
