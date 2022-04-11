@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todoey/widgets/task_list.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/Models/task_data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final Function addNewTaskcallback;
@@ -30,13 +31,14 @@ class AddTaskScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Add Task',
+              'چه کار دیگری باید انجام شود؟',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 30,
+              style: GoogleFonts.lemonada(
+                  textStyle: TextStyle(
+                fontSize: 15,
                 color: Theme.of(context).colorScheme.onSecondary,
-                fontWeight: FontWeight.w500,
-              ),
+                fontWeight: FontWeight.w600,
+              )),
             ),
             TextField(
               onChanged: (e) {
@@ -49,14 +51,17 @@ class AddTaskScreen extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary,
               onPressed: () {
                 // addNewTaskcallback(newTask);
-                context.read<TaskData>().addTask(newTask!, false);
+                context.read<TaskData>().addTask(
+                    newTask!, '2dbfd106-63e8-4759-a992-7c2316d5edeb', false);
                 Navigator.pop(context);
               },
               child: Text(
-                'add',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Theme.of(context).colorScheme.onSecondary,
+                'اضافه کن',
+                style: GoogleFonts.lemonada(
+                  textStyle: TextStyle(
+                    fontSize: 15,
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  ),
                 ),
               ),
             ),

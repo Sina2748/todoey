@@ -7,14 +7,7 @@ SupabaseManager subabaseManager = SupabaseManager();
 
 class TaskData extends ChangeNotifier {
   // List<Task> _tasks = getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
-  List<Task> _tasks = [
-    Task(name: 'با زدن دکمه + به کارهات اضافه کن', isDone: true),
-    Task(name: 'با زدن ▢ کارها تغییر حالت می دن', isDone: true),
-    Task(name: 'با دو بار زدن روی هر کار اون رو حذف کن', isDone: true),
-    Task(
-        name: 'با نگه‌داشتن روی هر کدوم از کارها اون کار رو جا‌بجا کن',
-        isDone: true),
-  ];
+  List<Task> _tasks = [];
 
   UnmodifiableListView<Task> get tasks {
     // _tasks = await getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
@@ -25,9 +18,11 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
-  addTask(String newTaskTitle, bool isDone) async {
+  addTask(String newTaskTitle, String user_is, bool isDone) async {
     final task = Task(name: newTaskTitle, isDone: isDone);
     _tasks.add(task);
+    subabaseManager.addData(newTaskTitle, user_is, false);
+    notifyListeners();
   }
 
   updateTask(int index) {

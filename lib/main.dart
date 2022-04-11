@@ -51,10 +51,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
-          primary: Color(0xff188958),
+          primary: Color(0xff12454c),
           onPrimary: Colors.white,
           secondary: Color(0xffc8e0de),
-          onSecondary: Color(0xff169779),
+          onSecondary: Color(0xff29a387),
           error: Color(0xffff0000),
           onError: Color(0xffffc7c7),
           background: Color(0xffE1E2E1),
