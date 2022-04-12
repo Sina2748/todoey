@@ -28,13 +28,13 @@ class SupabaseManager {
     return response.data;
   }
 
-  updateData(int id, bool isDoneValue) {
+  updateData(taskId, bool isDoneValue) {
     var response = client
         .from('tasks_table')
-        .update({'idDone_column': isDoneValue})
-        .eq('id', id)
+        .update({'isDone_column': isDoneValue})
+        .eq('taskId', taskId)
         .execute();
-    print(response);
+    print('updateData: $response');
   }
 
   deleteData(int id) {

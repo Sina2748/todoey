@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'package:todoey/components/supabase_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'task.dart';
+import 'package:todoey/utils/constants.dart';
 
 SupabaseManager subabaseManager = SupabaseManager();
 
@@ -27,7 +28,10 @@ class TaskData extends ChangeNotifier {
 
   updateTask(int index) {
     tasks[index].toggleDone();
-
+    var isDone = tasks[index].isDone;
+    var taskId = tasks[index].taskId;
+    subabaseManager.updateData(taskId, isDone);
+    print('index: $index, taskId : $taskId, isDone: $isDone,');
     notifyListeners();
   }
 
@@ -48,9 +52,10 @@ class TaskData extends ChangeNotifier {
     var userCloudTasks = await subabaseManager.readData(user_id);
 
     for (int i = 0; i < userCloudTasks.length; i++) {
+      var taskId = userCloudTasks[i]['taskId'];
       var name = userCloudTasks[i]['task_column'];
       var isDone = userCloudTasks[i]['isDone_column'];
-      var adding = Task(name: name, isDone: isDone);
+      var adding = Task(taskId: taskId, name: name, isDone: isDone);
       _tasks.add(adding);
     } // for end
 

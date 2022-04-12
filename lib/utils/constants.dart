@@ -6,10 +6,11 @@ import 'package:todoey/Models/task_data.dart';
 import 'package:provider/provider.dart';
 
 final supabase = Supabase.instance.client;
-String user_id = 'a';
+
+String user_id = '2dbfd106-63e8-4759-a992-7c2316d5edeb';
 getUserID(userId) {
   print('userId: $userId');
-  user_id = userId;
+  // user_id = userId;
   print('user_id: $user_id');
 }
 

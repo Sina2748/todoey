@@ -53,6 +53,7 @@ class AddTaskScreen extends StatelessWidget {
               onPressed: () {
                 // addNewTaskcallback(newTask);
                 context.read<TaskData>().addTask(newTask!, user_id, false);
+                context.read<TaskData>().addCloudTasksToList(user_id);
                 Navigator.pop(context);
               },
               child: Text(
