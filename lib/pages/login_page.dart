@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase/supabase.dart';
 import 'package:todoey/components/auth_state.dart';
 import 'package:todoey/utils/constants.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -70,6 +71,9 @@ class _LoginPageState extends AuthState<LoginPage> {
             ),
             const SizedBox(height: 18),
             TextFormField(
+              inputFormatters: [
+                FilteringTextInputFormatter.deny(RegExp('[ ]')),
+              ],
               controller: _emailController,
               decoration: const InputDecoration(
                 labelText: 'Email: ',

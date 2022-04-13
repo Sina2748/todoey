@@ -37,8 +37,9 @@ class SupabaseManager {
     print('updateData: $response');
   }
 
-  deleteData(int id) {
-    var response = client.from('tasks_table').delete().eq('id', id).execute();
+  deleteData(int? taskId) {
+    var response =
+        client.from('tasks_table').delete().eq('taskId', taskId).execute();
     print(response);
   }
 }

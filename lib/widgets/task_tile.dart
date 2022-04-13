@@ -6,12 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 class TaskTile extends StatelessWidget {
   final bool? isChecked;
   final String? taskTitle;
+  final int? tileTaskId;
   final void Function(bool?)? checkboxCallback;
   final void Function()? gestureCallback;
 
   TaskTile({
     required this.isChecked,
     required this.taskTitle,
+    required this.tileTaskId,
     required this.checkboxCallback,
     required this.gestureCallback,
   });
@@ -24,16 +26,13 @@ class TaskTile extends StatelessWidget {
         value: isChecked,
         onChanged: checkboxCallback,
       ),
-      title: GestureDetector(
-        onDoubleTap: gestureCallback,
-        child: Text(
-          taskTitle!,
-          textAlign: TextAlign.center,
-          style: GoogleFonts.harmattan(
-            textStyle: TextStyle(
-                fontSize: 18,
-                decoration: isChecked! ? TextDecoration.lineThrough : null),
-          ),
+      title: Text(
+        taskTitle!,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.harmattan(
+          textStyle: TextStyle(
+              fontSize: 18,
+              decoration: isChecked! ? TextDecoration.lineThrough : null),
         ),
       ),
     );

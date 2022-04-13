@@ -36,6 +36,9 @@ class TaskData extends ChangeNotifier {
   }
 
   deleteTask(int index) {
+    // _tasks.removeAt(index);
+    var taskId = tasks[index].taskId;
+    subabaseManager.deleteData(taskId);
     _tasks.removeAt(index);
     notifyListeners();
   }

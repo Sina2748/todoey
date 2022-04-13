@@ -7,10 +7,11 @@ import 'package:provider/provider.dart';
 
 final supabase = Supabase.instance.client;
 
-String user_id = '2dbfd106-63e8-4759-a992-7c2316d5edeb';
+// String user_id = '2dbfd106-63e8-4759-a992-7c2316d5edeb';
+String user_id = 'a';
 getUserID(userId) {
   print('userId: $userId');
-  // user_id = userId;
+  user_id = userId;
   print('user_id: $user_id');
 }
 

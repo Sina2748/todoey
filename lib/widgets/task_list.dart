@@ -25,21 +25,29 @@ class _TasksListState extends State<TasksList> {
         for (int index = 0;
             index < context.watch<TaskData>().tasks.length;
             index += 1)
-          Card(
-            key: Key('$index'),
-            child: ListTile(
-              title: TaskTile(
-                isChecked: context.watch<TaskData>().tasks[index].isDone,
-                taskTitle: context.watch<TaskData>().tasks[index].name,
-                checkboxCallback: (checkboxState) {
-                  context.read<TaskData>().updateTask(index);
-                  if (context.read<TaskData>().tasks[index].isDone == true) {
-                    playSound(noteNumber);
-                  }
-                },
-                gestureCallback: () {
-                  context.read<TaskData>().deleteTask(index);
-                },
+          Dismissible(
+            onDismissed: (direction) {
+              context.read<TaskData>().deleteTask(index);
+              // context.read<TaskData>().addCloudTasksToList(user_id);
+            },
+            key: UniqueKey(),
+            child: Card(
+              key: Key('$index'),
+              child: ListTile(
+                title: TaskTile(
+                  isChecked: context.watch<TaskData>().tasks[index].isDone,
+                  taskTitle: context.watch<TaskData>().tasks[index].name,
+                  tileTaskId: context.watch<TaskData>().tasks[index].taskId,
+                  checkboxCallback: (checkboxState) {
+                    context.read<TaskData>().updateTask(index);
+                    if (context.read<TaskData>().tasks[index].isDone == true) {
+                      playSound(noteNumber);
+                    }
+                  },
+                  gestureCallback: () {
+                    context.read<TaskData>().deleteTask(index);
+                  },
+                ),
               ),
             ),
           ),
