@@ -9,6 +9,7 @@ SupabaseManager subabaseManager = SupabaseManager();
 class TaskData extends ChangeNotifier {
   // List<Task> _tasks = getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
   List<Task> _tasks = [];
+  List taskIndexList = [];
 
   UnmodifiableListView<Task> get tasks {
     // _tasks = await getTasksFromCloud('2dbfd106-63e8-4759-a992-7c2316d5edeb');
@@ -20,7 +21,7 @@ class TaskData extends ChangeNotifier {
   }
 
   addTask(String newTaskTitle, String user_is, bool isDone) async {
-    final task = Task(name: newTaskTitle, isDone: isDone);
+    final task = Task(name: newTaskTitle, isDone: isDone, taskIndex: 10);
     _tasks.add(task);
     subabaseManager.addData(newTaskTitle, user_is, false);
     notifyListeners();
@@ -44,10 +45,44 @@ class TaskData extends ChangeNotifier {
   }
 
   reorderTaskList(int oldIndex, int newIndex) {
-    (oldIndex < newIndex);
-
     final Task item = _tasks.removeAt(oldIndex);
     _tasks.insert(newIndex, item);
+    _tasks[newIndex].taskIndex = newIndex;
+
+    // subabaseManager.updateTaskIndex(item.taskId, newIndex);
+    if (oldIndex < newIndex) {
+      for (int i = oldIndex; i < newIndex - oldIndex; i++) {
+        _tasks[i].taskIndex = i;
+        // _tasks.sort((x, y) => x.taskIndex.compareTo(y.taskIndex));
+        print(taskIndexList);
+      }
+
+      for (int i = 0; i < _tasks.length; i++) {
+        print('Name: ${_tasks[i].name} - Index: ${_tasks[i].taskIndex}');
+        subabaseManager.updateTaskIndex(_tasks[i].taskId, _tasks[i].taskIndex);
+      }
+    }
+
+    // print('AAA: ${_tasks[0].name}');
+    // // _tasks.sort((x, y) => x.taskIndex.compareTo(y.taskIndex));
+    // print('AAA: ${_tasks[0].name}');
+    //
+    // print('new position: ${_tasks[newIndex].taskIndex}');
+    // // var a;
+    // // var b;
+    // // Map indexUpdateCell;
+    // // Map<String, int>? indexUpdate;
+    // // var taskId;
+    // for (int i = 0; i < _tasks.length; i++) {
+    //   int a = _tasks[i].taskIndex;
+    //   // indexUpdateCell = {'task_idex': a};
+    //   int? b = _tasks[i].taskId;
+    //   // taskId = {'taskId': b};
+    //
+    //   // indexUpdate.map(indexUpdateCell);
+    //   print('taskId: $b, taskIndex:$a');
+    //   subabaseManager.updateTaskIndex(b, a);
+    // }
   }
 
   getTasksFromCloud(String user_id) async {
@@ -58,12 +93,20 @@ class TaskData extends ChangeNotifier {
       var taskId = userCloudTasks[i]['taskId'];
       var name = userCloudTasks[i]['task_column'];
       var isDone = userCloudTasks[i]['isDone_column'];
-      var adding = Task(taskId: taskId, name: name, isDone: isDone);
+      int addingTaskIndex = userCloudTasks[i]['task_index'];
+
+      var adding = Task(
+          taskId: taskId,
+          name: name,
+          isDone: isDone,
+          taskIndex: addingTaskIndex);
       _tasks.add(adding);
+      taskIndexList.add(addingTaskIndex);
     } // for end
 
     notifyListeners();
-    print(_tasks);
+    // print(_tasks);
+    print('taskIndexList: $taskIndexList');
     return _tasks;
   }
 

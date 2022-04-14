@@ -15,7 +15,7 @@ class _TasksListState extends State<TasksList> {
   @override
   void initState() {
     context.read<TaskData>().addCloudTasksToList(user_id);
-    print(user_id);
+    print('>>> userId: $user_id');
   }
 
   @override
@@ -27,6 +27,7 @@ class _TasksListState extends State<TasksList> {
             index += 1)
           Dismissible(
             onDismissed: (direction) {
+              print(index);
               context.read<TaskData>().deleteTask(index);
               // context.read<TaskData>().addCloudTasksToList(user_id);
             },
@@ -57,6 +58,7 @@ class _TasksListState extends State<TasksList> {
           if (oldIndex < newIndex) {
             newIndex -= 1;
           }
+          print('oldindex: $oldIndex - newIndex: $newIndex');
           context.read<TaskData>().reorderTaskList(oldIndex, newIndex);
         });
       },

@@ -1,5 +1,6 @@
 import 'package:supabase/supabase.dart';
 import 'package:flutter/material.dart';
+import 'package:todoey/utils/constants.dart';
 
 class SupabaseManager {
   static String supabaseUrl = 'https://akqgwjakzlijndpqptxi.supabase.co';
@@ -23,8 +24,10 @@ class SupabaseManager {
         .from('tasks_table')
         .select()
         .eq('user_id', user_id)
+        .order('task_index', ascending: true)
         .execute();
 
+    print(response);
     return response.data;
   }
 
@@ -35,6 +38,14 @@ class SupabaseManager {
         .eq('taskId', taskId)
         .execute();
     print('updateData: $response');
+  }
+
+  updateTaskIndex(taskId, indexUpdate) {
+    var response = client
+        .from('tasks_table')
+        .update({'task_index': indexUpdate})
+        .eq('taskId', taskId)
+        .execute();
   }
 
   deleteData(int? taskId) {
