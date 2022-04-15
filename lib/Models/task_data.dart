@@ -56,34 +56,45 @@ class TaskData extends ChangeNotifier {
         // _tasks.sort((x, y) => x.taskIndex.compareTo(y.taskIndex));
         print(taskIndexList);
       }
+    }
 
-      for (int i = 0; i < _tasks.length; i++) {
-        print('Name: ${_tasks[i].name} - Index: ${_tasks[i].taskIndex}');
-        subabaseManager.updateTaskIndex(_tasks[i].taskId, _tasks[i].taskIndex);
+    if (oldIndex > newIndex) {
+      print('>>>>>>>>>>>>>>${oldIndex >= oldIndex - newIndex}');
+      for (int i = oldIndex - 1; i < oldIndex - newIndex && i >= 0; i--) {
+        _tasks[i].taskIndex = i;
+        // _tasks.sort((x, y) => x.taskIndex.compareTo(y.taskIndex));
+        print(taskIndexList);
+        print('fgfgfgfgfgggggfg --- $i');
       }
     }
 
-    // print('AAA: ${_tasks[0].name}');
-    // // _tasks.sort((x, y) => x.taskIndex.compareTo(y.taskIndex));
-    // print('AAA: ${_tasks[0].name}');
-    //
-    // print('new position: ${_tasks[newIndex].taskIndex}');
-    // // var a;
-    // // var b;
-    // // Map indexUpdateCell;
-    // // Map<String, int>? indexUpdate;
-    // // var taskId;
-    // for (int i = 0; i < _tasks.length; i++) {
-    //   int a = _tasks[i].taskIndex;
-    //   // indexUpdateCell = {'task_idex': a};
-    //   int? b = _tasks[i].taskId;
-    //   // taskId = {'taskId': b};
-    //
-    //   // indexUpdate.map(indexUpdateCell);
-    //   print('taskId: $b, taskIndex:$a');
-    //   subabaseManager.updateTaskIndex(b, a);
-    // }
+    for (int i = 0; i < _tasks.length; i++) {
+      print('Name: ${_tasks[i].name} - Index: ${_tasks[i].taskIndex}');
+      subabaseManager.updateTaskIndex(_tasks[i].taskId, _tasks[i].taskIndex);
+    }
   }
+
+  // print('AAA: ${_tasks[0].name}');
+  // // _tasks.sort((x, y) => x.taskIndex.compareTo(y.taskIndex));
+  // print('AAA: ${_tasks[0].name}');
+  //
+  // print('new position: ${_tasks[newIndex].taskIndex}');
+  // // var a;
+  // // var b;
+  // // Map indexUpdateCell;
+  // // Map<String, int>? indexUpdate;
+  // // var taskId;
+  // for (int i = 0; i < _tasks.length; i++) {
+  //   int a = _tasks[i].taskIndex;
+  //   // indexUpdateCell = {'task_idex': a};
+  //   int? b = _tasks[i].taskId;
+  //   // taskId = {'taskId': b};
+  //
+  //   // indexUpdate.map(indexUpdateCell);
+  //   print('taskId: $b, taskIndex:$a');
+  //   subabaseManager.updateTaskIndex(b, a);
+  // }
+  // }
 
   getTasksFromCloud(String user_id) async {
     final List<Task> _tasks = [];
