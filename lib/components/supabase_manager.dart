@@ -9,11 +9,12 @@ class SupabaseManager {
 
   final client = SupabaseClient(supabaseUrl, supabaseKey);
 
-  addData(String taskValue, String user_is, bool isDoneValue) {
+  addData(String taskValue, String user_is, bool isDoneValue, taskIndex) {
     var response = client.from('tasks_table').insert({
       'task_column': taskValue,
       'user_id': user_is,
       'isDone_column': false,
+      'task_index': taskIndex,
     }).execute();
     print('$taskValue - $isDoneValue');
     print(response);

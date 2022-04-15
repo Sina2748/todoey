@@ -21,9 +21,13 @@ class TaskData extends ChangeNotifier {
   }
 
   addTask(String newTaskTitle, String user_is, bool isDone) async {
-    final task = Task(name: newTaskTitle, isDone: isDone, taskIndex: 10);
+    final task = Task(
+      name: newTaskTitle,
+      isDone: isDone,
+      taskIndex: _tasks.length + 1,
+    );
     _tasks.add(task);
-    subabaseManager.addData(newTaskTitle, user_is, false);
+    subabaseManager.addData(newTaskTitle, user_is, false, task.taskIndex);
     notifyListeners();
   }
 
