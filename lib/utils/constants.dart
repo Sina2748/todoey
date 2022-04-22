@@ -47,54 +47,50 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => Size.fromHeight(80);
+  Size get preferredSize => Size.fromHeight(50);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        toolbarHeight: 130,
-        flexibleSpace: Container(
-          height: 400,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [Colors.greenAccent, Colors.teal],
+      // toolbarHeight: 130,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            pageTitle,
+            style: GoogleFonts.lemonada(
+              textStyle: TextStyle(
+                color: Theme.of(context).colorScheme.surface,
+                fontSize: 20,
+                fontWeight: FontWeight.w300,
+              ),
             ),
           ),
-          padding: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    pageTitle,
-                    style: GoogleFonts.lemonada(
-                      textStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.surface,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Theme.of(context).colorScheme.surface,
-                    child: Icon(
-                      Icons.list,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 25,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+          SizedBox(
+            width: 5,
           ),
-        ));
+          CircleAvatar(
+            radius: 20,
+            backgroundColor: Theme.of(context).colorScheme.surface,
+            child: Icon(
+              Icons.list,
+              color: Theme.of(context).colorScheme.primary,
+              size: 25,
+            ),
+          ),
+        ],
+      ),
+      flexibleSpace: Container(
+        // height: 400,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.greenAccent, Colors.teal],
+          ),
+        ),
+        // padding: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 10),
+      ),
+    );
   }
 }
