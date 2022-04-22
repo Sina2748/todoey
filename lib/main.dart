@@ -43,10 +43,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         // '/': (_) => const TasksScreen(),
+        '/': (_) => const AccountPage(),
 
-        '/': (_) => const SplashPage(),
-        '/login': (_) => const LoginPage(),
-        '/account': (_) => const AccountPage(),
+        // '/': (_) => const SplashPage(),
+        // '/login': (_) => const LoginPage(),
+        // '/account': (_) => const AccountPage(),
         '/taskscreen': (_) => const TasksScreen(),
       },
       theme: ThemeData(

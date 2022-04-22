@@ -101,53 +101,147 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
       backgroundColor: Colors.green,
       // body: Center(child: Text('data')),
 
-      body: Container(
-        decoration: kBackgroundImage,
-        padding: EdgeInsets.all(20),
-        // color: Theme.of(context).colorScheme.surface,
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: _usernameController,
-                decoration: const InputDecoration(labelText: 'User Name'),
-              ),
-              const SizedBox(height: 18),
-              TextFormField(
-                controller: _websiteController,
-                decoration: const InputDecoration(labelText: 'Website'),
-              ),
-              const SizedBox(height: 18),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/taskscreen');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                          left: 10,
+                          right: 10,
+                        ),
+                        child: Column(
+                          children: [
+                            Icon(Icons.list),
+                            Text(
+                              'TO DO List',
+                            ),
+                          ],
+                        ),
+                      )),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/taskscreen');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                          left: 10,
+                          right: 10,
+                        ),
+                        child: Column(
+                          children: [
+                            Icon(Icons.access_alarms_sharp),
+                            Text(
+                              'Pomodoro',
+                            ),
+                          ],
+                        ),
+                      )),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/taskscreen');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                          left: 10,
+                          right: 10,
+                        ),
+                        child: Column(
+                          children: [
+                            Icon(Icons.help_outline),
+                            Text(
+                              '-',
+                            ),
+                          ],
+                        ),
+                      )),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(
+              color: Colors.grey[200],
+              child: Column(
                 children: [
-                  ElevatedButton(
-                      onPressed: _updateProfile,
-                      child: Text(_loading ? 'Saving...' : 'Update')),
-                  ElevatedButton(
-                      onPressed: _signOut, child: const Text('Sign Out')),
+                  Text('آموزش‌ها'),
+                  Container(
+                    child: Row(
+                      children: [
+                        Card(
+                          margin: EdgeInsets.all(20),
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            child: Image.network(
+                                "https://c.tenor.com/0L7ORkuhrtUAAAAM/patrick-star-to-do-list.gif",
+                                fit: BoxFit.fill),
+                          ),
+                          color: Colors.grey[300],
+                          elevation: 10,
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
-              const SizedBox(height: 25),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/taskscreen');
-                  },
-                  child: Container(
-                    padding: EdgeInsets.only(
-                      top: 30,
-                      bottom: 30,
-                      left: 50,
-                      right: 50,
-                    ),
-                    child: Text(
-                      'TODO',
-                    ),
-                  ))
-            ],
+            ),
           ),
-        ),
+          Container(
+            decoration: kBackgroundImage,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            // color: Theme.of(context).colorScheme.surface,
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextFormField(
+                    controller: _usernameController,
+                    decoration: const InputDecoration(labelText: 'User Name'),
+                  ),
+                  const SizedBox(height: 18),
+                  TextFormField(
+                    controller: _websiteController,
+                    decoration: const InputDecoration(labelText: 'Website'),
+                  ),
+                  const SizedBox(height: 18),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                          onPressed: _updateProfile,
+                          child: Text(_loading ? 'Saving...' : 'Update')),
+                      ElevatedButton(
+                          onPressed: _signOut, child: const Text('Sign Out')),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
