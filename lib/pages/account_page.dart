@@ -183,7 +183,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
             ),
             Container(
               decoration: kBackgroundImage,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 3, vertical: 6),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -192,9 +192,22 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            // color: Colors.teal,
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  'https://www.humangest.it/images/To-do-list.jpg'),
+                              fit: BoxFit.fitHeight,
+                              alignment: Alignment(0.3, 0),
+                              colorFilter: ColorFilter.mode(
+                                  Colors.deepPurple[400]!, BlendMode.overlay),
+                            ),
+                          ),
+                          margin: EdgeInsets.all(6),
                           child: ElevatedButton(
                             style: ButtonStyle(
+                              elevation: MaterialStateProperty.all(0),
                               backgroundColor:
                                   MaterialStateProperty.all(Color(0x856FE2D0)),
                               shape: MaterialStateProperty.all(
@@ -210,7 +223,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
                               width: double.infinity,
                               padding: EdgeInsets.only(
                                 top: 10,
-                                bottom: 300,
+                                bottom: 200,
                                 left: 20,
                                 right: 20,
                               ),
@@ -265,7 +278,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(6),
                           child: ElevatedButton(
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
