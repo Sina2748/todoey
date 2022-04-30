@@ -10,6 +10,7 @@ import 'package:todoey/pages/account_page.dart';
 import 'package:todoey/pages/login_page.dart';
 import 'package:todoey/pages/splash_page.dart';
 import 'components/supabase_manager.dart';
+import 'screens/life_balance.dart';
 
 SupabaseManager subabaseManager = SupabaseManager();
 
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         // '/login': (_) => const LoginPage(),
         // '/account': (_) => const AccountPage(),
         '/taskscreen': (_) => const TasksScreen(),
+        '/lifebalancescreen': (_) => const lifeBalanceScreen(),
       },
       theme: ThemeData(
         colorScheme: const ColorScheme(

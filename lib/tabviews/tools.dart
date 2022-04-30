@@ -49,7 +49,7 @@ class TabBarTools extends StatelessWidget {
                         'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTX-6FlB_URfm0xzk7yz2wdpllefHqJs02cwqOiNuNCi2rLW4TU',
                     colorFilterMode: ColorFilter.mode(
                         Colors.indigo[400]!, BlendMode.colorBurn),
-                    navigatTo: '/taskscreen',
+                    navigatTo: '/lifebalancescreen',
                     textTitle: 'Balance Of Life',
                     iconTitle: Icons.circle_notifications,
                     buttonHight: 150.0,
