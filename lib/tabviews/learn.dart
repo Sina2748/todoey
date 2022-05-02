@@ -45,12 +45,12 @@ class TabBarLearn extends StatelessWidget {
                   child: Column(
                     children: [
                       Icon(
-                        Icons.update,
+                        Icons.swap_vertical_circle_sharp,
                         color: Colors.white,
                         size: 30,
                       ),
                       Text(
-                        'خروس بی محل',
+                        ' پومودورو چیست؟',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.lemonada(
                           color: Colors.white,
@@ -102,12 +102,12 @@ class TabBarLearn extends StatelessWidget {
                   child: Column(
                     children: [
                       Icon(
-                        Icons.update,
+                        Icons.pie_chart_sharp,
                         color: Colors.white,
                         size: 30,
                       ),
                       Text(
-                        'خروس بی محل',
+                        'چرخه تعادل زندگی',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.lemonada(
                           color: Colors.white,
@@ -159,12 +159,12 @@ class TabBarLearn extends StatelessWidget {
                   child: Column(
                     children: [
                       Icon(
-                        Icons.update,
+                        Icons.event_note,
                         color: Colors.white,
                         size: 30,
                       ),
                       Text(
-                        'خروس بی محل',
+                        'بولت ژورنال',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.lemonada(
                           color: Colors.white,
@@ -216,12 +216,12 @@ class TabBarLearn extends StatelessWidget {
                   child: Column(
                     children: [
                       Icon(
-                        Icons.update,
+                        Icons.qr_code_scanner,
                         color: Colors.white,
                         size: 30,
                       ),
                       Text(
-                        'خروس بی محل',
+                        'ایکیگای چیست؟',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.lemonada(
                           color: Colors.white,
