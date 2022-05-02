@@ -13,6 +13,8 @@ double value6 = 0.0;
 double value7 = 0.0;
 double value8 = 0.0;
 
+String? newLable;
+
 String lable1 = 'سلامتی';
 String lable2 = 'دین';
 String lable3 = 'تفریح';
@@ -30,6 +32,30 @@ class lifeBalanceScreen extends StatefulWidget {
 }
 
 class _lifeBalanceScreenState extends State<lifeBalanceScreen> {
+  void jj() {
+    setState(() {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        builder: (context) => SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: EditLable(
+              selectedLable: 'lable2',
+              setStateFunction: () {
+                setState(() {
+                  lable2 = newLable!;
+                  Navigator.pop(context);
+                });
+              },
+            ),
+          ),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +69,19 @@ class _lifeBalanceScreenState extends State<lifeBalanceScreen> {
           padding: EdgeInsets.all(6),
           child: Column(
             children: [
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  lable2,
+                  style: GoogleFonts.harmattan(
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
               Stack(
                 alignment: Alignment.center,
                 children: [
@@ -93,23 +132,7 @@ class _lifeBalanceScreenState extends State<lifeBalanceScreen> {
                       },
                     ),
                     arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          showModalBottomSheet(
-                            isScrollControlled: true,
-                            context: context,
-                            builder: (context) => SingleChildScrollView(
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    bottom: MediaQuery.of(context)
-                                        .viewInsets
-                                        .bottom),
-                                child: EditLable(a: lable2),
-                              ),
-                            ),
-                          );
-                        });
-                      },
+                      onLablePress: jj,
                       silderLable: lable2,
                       valueGiven: value2,
                       color: Colors.teal,
@@ -271,12 +294,13 @@ class arcSlider extends StatelessWidget {
 }
 
 class EditLable extends StatelessWidget {
-  final a;
-  const EditLable({required this.a});
+  final selectedLable;
+  final setStateFunction;
+  const EditLable(
+      {required this.selectedLable, required this.setStateFunction});
 
   @override
   Widget build(BuildContext context) {
-    String? newLable;
     return Container(
       color: Theme.of(context).colorScheme.background,
       child: Container(
@@ -315,13 +339,7 @@ class EditLable extends StatelessWidget {
             ),
             FlatButton(
               color: Theme.of(context).colorScheme.secondary,
-              onPressed: () {
-                lable2 = newLable!;
-                // addNewTaskcallback(newTask);
-                // context.read<TaskData>().addTask(newTask!, user_id, false);
-                // context.read<TaskData>().addCloudTasksToList(user_id);
-                Navigator.pop(context);
-              },
+              onPressed: setStateFunction,
               child: Text(
                 'اضافه کن',
                 style: GoogleFonts.lemonada(
@@ -339,6 +357,7 @@ class EditLable extends StatelessWidget {
   }
 }
 
+//
 class LinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
