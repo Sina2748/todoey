@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoey/utils/constants.dart';
 import 'dart:math';
-import 'add_task_screen.dart';
 
 double value1 = 0.0;
 double value2 = 0.0;
@@ -13,16 +12,49 @@ double value6 = 0.0;
 double value7 = 0.0;
 double value8 = 0.0;
 
+List valueList = [
+  value1,
+  value2,
+  value3,
+  value4,
+  value5,
+  value6,
+  value7,
+  value8
+];
 String? newLable;
+int changingLable = 0;
 
-String lable1 = 'سلامتی';
-String lable2 = 'دین';
-String lable3 = 'تفریح';
-String lable4 = 'پول';
-String lable5 = 'درس';
-String lable6 = 'عشق';
-String lable7 = 'خانواده';
-String lable8 = 'رشد';
+String label1 = 'سلامتی';
+String label2 = 'دین';
+String label3 = 'تفریح';
+String label4 = 'پول';
+String label5 = 'درس';
+String label6 = 'عشق';
+String label7 = 'خانواده';
+String label8 = 'رشد';
+
+List labelList = [
+  label1,
+  label2,
+  label3,
+  label4,
+  label5,
+  label6,
+  label7,
+  label8
+];
+
+List colorList = [
+  Colors.greenAccent,
+  Colors.teal,
+  Colors.cyan,
+  Colors.indigo,
+  Colors.deepPurple,
+  Colors.purple,
+  Colors.pink,
+  Colors.pinkAccent
+];
 
 class lifeBalanceScreen extends StatefulWidget {
   const lifeBalanceScreen({Key? key}) : super(key: key);
@@ -32,29 +64,31 @@ class lifeBalanceScreen extends StatefulWidget {
 }
 
 class _lifeBalanceScreenState extends State<lifeBalanceScreen> {
-  void jj() {
-    setState(() {
-      showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        builder: (context) => SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: EditLable(
-              selectedLable: 'lable2',
-              setStateFunction: () {
-                setState(() {
-                  lable2 = newLable!;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-          ),
-        ),
-      );
-    });
-  }
+  // List aList = [];
+  // for(int index = 0 ; index < 8; index++)
+
+  // void jj() {
+  //   showModalBottomSheet(
+  //     isScrollControlled: true,
+  //     context: context,
+  //     builder: (context) => SingleChildScrollView(
+  //       child: Container(
+  //         padding:
+  //             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+  //         child: EditLable(
+  //           selectedLable: 'این لیبل',
+  //           setStateFunction: () {
+  //             labelList[changingLable] = newLable!;
+  //             setState(() {
+  //               Navigator.pop(context);
+  //             });
+  //           },
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  //
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +106,7 @@ class _lifeBalanceScreenState extends State<lifeBalanceScreen> {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  lable2,
+                  label2,
                   style: GoogleFonts.harmattan(
                     textStyle: TextStyle(
                       fontSize: 20,
@@ -116,122 +150,34 @@ class _lifeBalanceScreenState extends State<lifeBalanceScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 9),
                 child: Column(
                   children: [
-                    arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          lable1 = 'value';
-                        });
-                      },
-                      silderLable: lable1,
-                      valueGiven: value1,
-                      color: Colors.greenAccent,
-                      onchange: (value) {
-                        setState(() {
-                          value1 = value;
-                        });
-                      },
-                    ),
-                    arcSlider(
-                      onLablePress: jj,
-                      silderLable: lable2,
-                      valueGiven: value2,
-                      color: Colors.teal,
-                      onchange: (value) {
-                        setState(() {
-                          value2 = value;
-                        });
-                      },
-                    ),
-                    arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          lable1 = 'value';
-                        });
-                      },
-                      silderLable: lable3,
-                      valueGiven: value3,
-                      color: Colors.cyan,
-                      onchange: (value) {
-                        setState(() {
-                          value3 = value;
-                        });
-                      },
-                    ),
-                    arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          lable1 = 'value';
-                        });
-                      },
-                      silderLable: lable4,
-                      valueGiven: value4,
-                      color: Colors.indigo,
-                      onchange: (value) {
-                        setState(() {
-                          value4 = value;
-                        });
-                      },
-                    ),
-                    arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          lable1 = 'value';
-                        });
-                      },
-                      silderLable: lable5,
-                      valueGiven: value5,
-                      color: Colors.deepPurple,
-                      onchange: (value) {
-                        setState(() {
-                          value5 = value;
-                        });
-                      },
-                    ),
-                    arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          lable1 = 'value';
-                        });
-                      },
-                      silderLable: lable6,
-                      valueGiven: value6,
-                      color: Colors.purple,
-                      onchange: (value) {
-                        setState(() {
-                          value6 = value;
-                        });
-                      },
-                    ),
-                    arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          lable1 = 'value';
-                        });
-                      },
-                      silderLable: lable7,
-                      valueGiven: value7,
-                      color: Colors.pink,
-                      onchange: (value) {
-                        setState(() {
-                          value7 = value;
-                        });
-                      },
-                    ),
-                    arcSlider(
-                      onLablePress: () {
-                        setState(() {
-                          lable1 = 'value';
-                        });
-                      },
-                      silderLable: lable8,
-                      valueGiven: value8,
-                      color: Colors.pinkAccent,
-                      onchange: (value) {
-                        setState(() {
-                          value8 = value;
-                        });
-                      },
-                    ),
+                    for (int index = 0; index < 8; index++)
+                      arcSlider(
+                        onLablePress: () {
+                          labelList[index] = newLable!;
+                          setState(() {
+                            Navigator.pop(context);
+                          });
+                        },
+                        silderLable: labelList[index],
+                        valueGiven: valueList[index],
+                        color: colorList[index],
+                        onchange: (value) {
+                          setState(() {
+                            valueList[index] = value;
+                          });
+                        },
+                      ),
+                    // arcSlider(
+                    //   onLablePress: jj,
+                    //   silderLable: label2,
+                    //   valueGiven: value2,
+                    //   color: Colors.teal,
+                    //   onchange: (value) {
+                    //     setState(() {
+                    //       value2 = value;
+                    //     });
+                    //   },
+                    // ),
                   ],
                 ),
               ),
@@ -260,7 +206,6 @@ class arcSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myTextController = TextEditingController();
     return Row(
       children: [
         Expanded(
@@ -275,7 +220,22 @@ class arcSlider extends StatelessWidget {
         ),
         Container(
           child: TextButton(
-            onPressed: onLablePress,
+            onPressed: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (context) => SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
+                    child: EditLable(
+                      selectedLable: 'این لیبل',
+                      setStateFunction: onLablePress,
+                    ),
+                  ),
+                ),
+              );
+            },
             child: Text(
               silderLable,
               style: GoogleFonts.harmattan(
@@ -320,7 +280,8 @@ class EditLable extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'چه کار دیگری باید انجام شود؟',
+              ' تغیر لیبل $selectedLable به:',
+              textDirection: TextDirection.rtl,
               textAlign: TextAlign.center,
               style: GoogleFonts.lemonada(
                   textStyle: TextStyle(
@@ -341,7 +302,7 @@ class EditLable extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary,
               onPressed: setStateFunction,
               child: Text(
-                'اضافه کن',
+                'تغییر بده',
                 style: GoogleFonts.lemonada(
                   textStyle: TextStyle(
                     fontSize: 15,
@@ -361,155 +322,10 @@ class EditLable extends StatelessWidget {
 class LinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final Paint paint1 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.greenAccent
-      ..strokeCap = StrokeCap.round;
-
-    final Paint paint2 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.teal
-      ..strokeCap = StrokeCap.round;
-
-    final Paint paint3 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.cyan
-      ..strokeCap = StrokeCap.round;
-
-    final Paint paint4 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.indigo
-      ..strokeCap = StrokeCap.round;
-
-    final Paint paint5 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.deepPurple
-      ..strokeCap = StrokeCap.round;
-
-    final Paint paint6 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.purple
-      ..strokeCap = StrokeCap.round;
-
-    final Paint paint7 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.pink
-      ..strokeCap = StrokeCap.round;
-
-    final Paint paint8 = Paint()
-      ..strokeWidth = 5.0
-      ..color = Colors.pinkAccent
-      ..strokeCap = StrokeCap.round;
-
     double degToRad(double deg) => deg * (pi / 180.0);
 
-    final path1 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value1 / 10,
-            width: size.width * value1 / 10,
-          ),
-          degToRad(0),
-          degToRad(-45),
-          false);
-
-    final path2 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value2 / 10,
-            width: size.width * value2 / 10,
-          ),
-          degToRad(-45),
-          degToRad(-45),
-          false);
-
-    final path3 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value3 / 10,
-            width: size.width * value3 / 10,
-          ),
-          degToRad(-90),
-          degToRad(-45),
-          false);
-
-    final path4 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value4 / 10,
-            width: size.width * value4 / 10,
-          ),
-          degToRad(-135),
-          degToRad(-45),
-          false);
-
-    final path5 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value5 / 10,
-            width: size.width * value5 / 10,
-          ),
-          degToRad(-180),
-          degToRad(-45),
-          false);
-
-    final path6 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value6 / 10,
-            width: size.width * value6 / 10,
-          ),
-          degToRad(-225),
-          degToRad(-45),
-          false);
-
-    final path7 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value7 / 10,
-            width: size.width * value7 / 10,
-          ),
-          degToRad(-270),
-          degToRad(-45),
-          false);
-
-    final path8 = Path()
-      ..moveTo(size.height / 2, size.width / 2)
-      ..arcTo(
-          Rect.fromCenter(
-            center: Offset(size.height / 2, size.width / 2),
-            height: size.height * value8 / 10,
-            width: size.width * value8 / 10,
-          ),
-          degToRad(-315),
-          degToRad(-45),
-          false);
-
-    canvas.drawPath(path1, paint1);
-    canvas.drawPath(path2, paint2);
-
-    canvas.drawPath(path3, paint3);
-    canvas.drawPath(path4, paint4);
-
-    canvas.drawPath(path5, paint5);
-    canvas.drawPath(path6, paint6);
-
-    canvas.drawPath(path7, paint7);
-    canvas.drawPath(path8, paint8);
+    List paintList = [];
+    List pathList = [];
 
     void arcLable(var varName, int arcStart, arcName) {
       final textPainter = TextPainter(
@@ -528,14 +344,32 @@ class LinePainter extends CustomPainter {
       textPainter.paint(canvas, offset);
     }
 
-    arcLable(value1, 0, lable1);
-    arcLable(value2, -45, lable2);
-    arcLable(value3, -90, lable3);
-    arcLable(value4, -135, lable4);
-    arcLable(value5, -180, lable5);
-    arcLable(value6, -225, lable6);
-    arcLable(value7, -270, lable7);
-    arcLable(value8, -315, lable8);
+    for (int index = 0; index < 8; index++) {
+      final Paint paint1 = Paint()
+        ..strokeWidth = 5.0
+        ..color = colorList[index]
+        ..strokeCap = StrokeCap.round;
+
+      paintList.add(paint1);
+
+      final pathObject = Path()
+        ..moveTo(size.height / 2, size.width / 2)
+        ..arcTo(
+            Rect.fromCenter(
+              center: Offset(size.height / 2, size.width / 2),
+              height: size.height * valueList[index] / 10,
+              width: size.width * valueList[index] / 10,
+            ),
+            degToRad(0 + (index * -45)),
+            degToRad(-45),
+            false);
+
+      pathList.add(pathObject);
+
+      canvas.drawPath(pathList[index], paintList[index]);
+
+      arcLable(valueList[index], 0 + (index * -45), labelList[index]);
+    }
   }
 
   @override
