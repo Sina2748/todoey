@@ -12,6 +12,8 @@ import 'package:todoey/pages/splash_page.dart';
 import 'components/supabase_manager.dart';
 import 'screens/life_balance.dart';
 
+import 'screens/teachingscreens/pomodoro_teaching_screen.dart';
+
 SupabaseManager subabaseManager = SupabaseManager();
 
 Future<void> main() async {
@@ -51,6 +53,8 @@ class MyApp extends StatelessWidget {
         // '/account': (_) => const AccountPage(),
         '/taskscreen': (_) => const TasksScreen(),
         '/lifebalancescreen': (_) => const lifeBalanceScreen(),
+        // learn
+        '/pomodoroteachingscreen': (_) => const PomodoroTeachingScreen(),
       },
       theme: ThemeData(
         colorScheme: const ColorScheme(
