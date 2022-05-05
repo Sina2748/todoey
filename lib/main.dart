@@ -11,6 +11,7 @@ import 'package:todoey/pages/login_page.dart';
 import 'package:todoey/pages/splash_page.dart';
 import 'components/supabase_manager.dart';
 import 'screens/life_balance.dart';
+import 'screens/pomodoro_screen.dart';
 
 import 'screens/teachingscreens/pomodoro_teaching_screen.dart';
 
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         // '/account': (_) => const AccountPage(),
         '/taskscreen': (_) => const TasksScreen(),
         '/lifebalancescreen': (_) => const lifeBalanceScreen(),
+        '/pomodoroscreen': (_) => const PomodoroScreen(),
         // learn
         '/pomodoroteachingscreen': (_) => const PomodoroTeachingScreen(),
       },

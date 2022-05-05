@@ -65,7 +65,7 @@ class TabBarTools extends StatelessWidget {
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkEdvhj1__eimJTZPaRsBFJreV4IRuPM6KLg&usqp=CAU',
                     colorFilterMode:
                         ColorFilter.mode(Colors.red[900]!, BlendMode.overlay),
-                    navigatTo: '/taskscreen',
+                    navigatTo: '/pomodoroscreen',
                     textTitle: 'Pomodoro',
                     iconTitle: Icons.access_alarms_sharp,
                     buttonHight: 250.0,

@@ -31,9 +31,14 @@ class PomodoroTeachingScreen extends StatelessWidget {
             image: Container(
               height: double.infinity,
               color: Colors.red,
-              child: Image.asset(
-                'assets/images/n1.jpg',
-                fit: BoxFit.fill,
+              child: GestureDetector(
+                onDoubleTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset(
+                  'assets/images/n1.jpg',
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             useScrollView:
