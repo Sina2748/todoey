@@ -6,6 +6,10 @@ import 'dart:async';
 
 var reamLight = Colors.grey.withOpacity(0.1);
 
+int workTimer = 25;
+int breakTimer = 5;
+int timerNumber = workTimer;
+
 class PomodoroScreen extends StatefulWidget {
   const PomodoroScreen({
     Key? key,
@@ -18,11 +22,27 @@ class PomodoroScreen extends StatefulWidget {
 class _PomodoroScreenState extends State<PomodoroScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  static const countdownDuration = Duration(minutes: 25);
+
+  // var countdownDuration = Duration(minutes: timerNumber);
+  var countdownDuration;
   Duration duration = Duration();
   Timer? timer;
 
   bool countDown = true;
+  bool working = true;
+
+  void toggleTimerNumber() {
+    setState(() {
+      print('toggleTimerNumber');
+      if (working) {
+        timerNumber = workTimer;
+        reset();
+      } else {
+        timerNumber = breakTimer;
+        reset();
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -35,6 +55,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void reset() {
+    countdownDuration = Duration(minutes: timerNumber);
     if (countDown) {
       setState(() => duration = countdownDuration);
     } else {
@@ -44,12 +65,12 @@ class _PomodoroScreenState extends State<PomodoroScreen>
 
   void startTimer() {
     timer?.cancel();
-    timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
+    timer = Timer.periodic(Duration(milliseconds: 1000), (_) => addTime());
   }
 
   void addTime() {
     final addSeconds = countDown ? -1 : 1;
-    print('addSeconds: $addSeconds');
+    // print('addSeconds: $addSeconds');
     setState(() {
       if (reamLight == Colors.teal.withOpacity(0.2)) {
         reamLight = Colors.red.withOpacity(0.2);
@@ -57,9 +78,13 @@ class _PomodoroScreenState extends State<PomodoroScreen>
         reamLight = Colors.teal.withOpacity(0.2);
       }
       final seconds = duration.inSeconds + addSeconds;
-      print('seconds: $seconds');
+      // print('seconds: $seconds');
       if (seconds < 0) {
         timer?.cancel();
+        controller.reverse();
+        reamLight = Colors.grey.withOpacity(0.1);
+        working ? working = false : working = true;
+        toggleTimerNumber();
       } else {
         duration = Duration(seconds: seconds);
       }
@@ -67,7 +92,6 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void stopTimer({bool resets = true}) {
-    reamLight = Colors.grey.withOpacity(0.1);
     if (resets) {
       reset();
     }
@@ -153,10 +177,6 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                             ),
                           ),
                           onTap: () {
-                            print('stopped');
-                            print('isRunning: $isRunning');
-                            print('isCompleted: $isCompleted');
-
                             if (isRunning) {
                               stopTimer(resets: false);
                               controller.reverse();
