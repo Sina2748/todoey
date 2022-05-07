@@ -13,7 +13,9 @@ class PomodoroScreen extends StatefulWidget {
   State<PomodoroScreen> createState() => _PomodoroScreenState();
 }
 
-class _PomodoroScreenState extends State<PomodoroScreen> {
+class _PomodoroScreenState extends State<PomodoroScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
   static const countdownDuration = Duration(minutes: 25);
   Duration duration = Duration();
   Timer? timer;
@@ -22,8 +24,11 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 450),
+    );
     reset();
   }
 
@@ -41,8 +46,10 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
 
   void addTime() {
     final addSeconds = countDown ? -1 : 1;
+    print('addSeconds: $addSeconds');
     setState(() {
       final seconds = duration.inSeconds + addSeconds;
+      print('seconds: $seconds');
       if (seconds < 0) {
         timer?.cancel();
       } else {
@@ -58,127 +65,6 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
     setState(() => timer?.cancel());
   }
 
-////////////////////////////////
-
-//   @override
-//   Widget build(BuildContext context) => Scaffold(
-//         backgroundColor: Colors.orange[50],
-//         appBar: AppBar(
-//           automaticallyImplyLeading: false,
-//           title: Text("Flutter StopWatch Timer Demo"),
-//         ),
-//         body: Center(
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               buildTime(),
-//               SizedBox(
-//                 height: 80,
-//               ),
-//               buildButtons()
-//             ],
-//           ),
-//         ),
-//       );
-//
-//   Widget buildTime() {
-//     String twoDigits(int n) => n.toString().padLeft(2, '0');
-//     final hours = twoDigits(duration.inHours);
-//     final minutes = twoDigits(duration.inMinutes.remainder(60));
-//     final seconds = twoDigits(duration.inSeconds.remainder(60));
-//     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-//       buildTimeCard(time: hours, header: 'HOURS'),
-//       SizedBox(
-//         width: 8,
-//       ),
-//       buildTimeCard(time: minutes, header: 'MINUTES'),
-//       SizedBox(
-//         width: 8,
-//       ),
-//       buildTimeCard(time: seconds, header: 'SECONDS'),
-//     ]);
-//   }
-//
-//   Widget buildTimeCard({required String time, required String header}) =>
-//       Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Container(
-//             padding: EdgeInsets.all(8),
-//             decoration: BoxDecoration(
-//                 color: Colors.white, borderRadius: BorderRadius.circular(20)),
-//             child: Text(
-//               time,
-//               style: TextStyle(
-//                   fontWeight: FontWeight.bold,
-//                   color: Colors.black,
-//                   fontSize: 50),
-//             ),
-//           ),
-//           SizedBox(
-//             height: 24,
-//           ),
-//           Text(header, style: TextStyle(color: Colors.black45)),
-//         ],
-//       );
-//
-//   Widget buildButtons() {
-//     final isRunning = timer == null ? false : timer!.isActive;
-//     final isCompleted = duration.inSeconds == 0;
-//     return isRunning || isCompleted
-//         ? Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               ButtonWidget(
-//                   text: 'STOP',
-//                   onClicked: () {
-//                     if (isRunning) {
-//                       stopTimer(resets: false);
-//                     }
-//                   }),
-//               SizedBox(
-//                 width: 12,
-//               ),
-//               ButtonWidget(text: "CANCEL", onClicked: stopTimer),
-//             ],
-//           )
-//         : ButtonWidget(
-//             text: "Start Timer!",
-//             color: Colors.black,
-//             backgroundColor: Colors.white,
-//             onClicked: () {
-//               startTimer();
-//             });
-//   }
-// }
-//
-// class ButtonWidget extends StatelessWidget {
-//   final String text;
-//   final Color color;
-//   final Color backgroundColor;
-//   final VoidCallback onClicked;
-//
-//   const ButtonWidget(
-//       {Key? key,
-//       required this.text,
-//       required this.onClicked,
-//       this.color = Colors.white,
-//       this.backgroundColor = Colors.black})
-//       : super(key: key);
-//   @override
-//   Widget build(BuildContext context) => ElevatedButton(
-//       style: ElevatedButton.styleFrom(
-//           primary: backgroundColor,
-//           padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
-//       onPressed: onClicked,
-//       child: Text(
-//         text,
-//         style: TextStyle(fontSize: 20, color: color),
-//       ));
-// }
-
-//////////////////////////////////////////////////
-
   @override
   Widget build(BuildContext context) {
     String twoDigits(int n) => n.toString().padLeft(2, '0');
@@ -189,7 +75,7 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
     final isRunning = timer == null ? false : timer!.isActive;
     final isCompleted = duration.inSeconds == 0;
 // return isRunning || isCompleted
-    print('isRunning: $isRunning');
+
     return Scaffold(
       // appBar: GradiantAppBar(pageTitle: 'پومودورو'),
       body: Container(
@@ -244,65 +130,65 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
                   ],
                 ),
                 SizedBox(height: 20),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    //---- Shadow
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: Colors.tealAccent.withOpacity(0.2),
-                          shape: BoxShape.circle),
-                    ),
-                    Container(
-                      width: 90,
-                      height: 90,
-                      decoration: BoxDecoration(
-                        gradient: const RadialGradient(
-                          center: Alignment(0.05, -0.08),
-                          colors: [Colors.white, Color(0xfff8f8f8)],
-                          stops: [0.5, 0.9],
+                isRunning || isCompleted
+                    ? StopWatchButton(
+                        buttonIcon: GestureDetector(
+                          child: Center(
+                            child: AnimatedIcon(
+                              size: 50,
+                              color: Colors.green,
+                              icon: AnimatedIcons.play_pause,
+                              progress: controller,
+                              semanticLabel: 'Start the timer',
+                            ),
+                          ),
+                          onTap: () {
+                            print('stopped');
+                            print('isRunning: $isRunning');
+                            print('isCompleted: $isCompleted');
+
+                            if (isRunning) {
+                              stopTimer(resets: false);
+                              controller.reverse();
+                            }
+                          },
                         ),
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 4,
-                            blurRadius: 7,
-                            offset: Offset(-2, 4),
+
+                        // TextButton(
+                        //   onPressed: () async {
+                        //     print('1');
+                        //     print('isRunning: $isRunning');
+                        //     print('isCompleted: $isCompleted');
+                        //
+                        //     if (isRunning) {
+                        //       stopTimer(resets: false);
+                        //     }
+                        //   },
+                        //   child: Icon(
+                        //     Icons.pause,
+                        //     size: 50,
+                        //     color: Colors.teal[700],
+                        //   ),
+                        // ),
+                      )
+                    : StopWatchButton(
+                        buttonIcon: GestureDetector(
+                          child: Center(
+                            child: AnimatedIcon(
+                              size: 50,
+                              color: Colors.green,
+                              icon: AnimatedIcons.play_pause,
+                              progress: controller,
+                              semanticLabel: 'Start the timer',
+                            ),
                           ),
-                        ],
+                          onTap: () {
+                            controller.forward();
+                            print('started');
+                            startTimer();
+                          },
+                        ),
                       ),
-                    ),
-                    //
-                    isRunning || isCompleted
-                        ? TextButton(
-                            onPressed: () {
-                              print('1');
-                              if (isRunning) {
-                                stopTimer(resets: false);
-                              }
-                            },
-                            child: Icon(
-                              Icons.pause,
-                              size: 50,
-                              color: Colors.teal[700],
-                            ),
-                          )
-                        : TextButton(
-                            onPressed: () {
-                              print('2');
-                              startTimer();
-                            },
-                            child: Icon(
-                              Icons.play_arrow,
-                              size: 50,
-                              color: Colors.teal[700],
-                            ),
-                          ),
-                  ],
-                ),
                 SizedBox(height: 20),
                 Row(
                   children: [
@@ -403,6 +289,65 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class StopWatchButton extends StatelessWidget {
+  final buttonIcon;
+  const StopWatchButton({Key? key, required this.buttonIcon}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        //---- Shadow
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+              color: Colors.tealAccent.withOpacity(0.2),
+              shape: BoxShape.circle),
+        ),
+        Container(
+          child: buttonIcon,
+          width: 90,
+          height: 90,
+          decoration: BoxDecoration(
+            gradient: const RadialGradient(
+              center: Alignment(0.05, -0.08),
+              colors: [Colors.white, Color(0xfff8f8f8)],
+              stops: [0.5, 0.9],
+            ),
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 4,
+                blurRadius: 7,
+                offset: Offset(-2, 4),
+              ),
+            ],
+          ),
+        ),
+
+        // TextButton(
+        //      onPressed: () async {
+        //        print('2');
+        //        print('isRunning: $isRunning');
+        //        print('isCompleted: $isCompleted');
+        //
+        //        startTimer();
+        //        await Future.delayed(Duration(seconds: 5));
+        //      },
+        //      child: Icon(
+        //        Icons.play_arrow,
+        //        size: 50,
+        //        color: Colors.teal[700],
+        //      ),
+        //    ),
+      ],
     );
   }
 }
