@@ -4,6 +4,8 @@ import 'package:todoey/utils/constants.dart';
 import 'dart:math';
 import 'dart:async';
 
+var reamLight = Colors.grey.withOpacity(0.1);
+
 class PomodoroScreen extends StatefulWidget {
   const PomodoroScreen({
     Key? key,
@@ -27,7 +29,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 450),
+      duration: Duration(milliseconds: 1000),
     );
     reset();
   }
@@ -41,6 +43,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void startTimer() {
+    timer?.cancel();
     timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
   }
 
@@ -48,6 +51,11 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     final addSeconds = countDown ? -1 : 1;
     print('addSeconds: $addSeconds');
     setState(() {
+      if (reamLight == Colors.teal.withOpacity(0.2)) {
+        reamLight = Colors.red.withOpacity(0.2);
+      } else {
+        reamLight = Colors.teal.withOpacity(0.2);
+      }
       final seconds = duration.inSeconds + addSeconds;
       print('seconds: $seconds');
       if (seconds < 0) {
@@ -59,6 +67,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void stopTimer({bool resets = true}) {
+    reamLight = Colors.grey.withOpacity(0.1);
     if (resets) {
       reset();
     }
@@ -132,11 +141,12 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                 SizedBox(height: 20),
                 isRunning || isCompleted
                     ? StopWatchButton(
+                        colorReam: reamLight,
                         buttonIcon: GestureDetector(
                           child: Center(
                             child: AnimatedIcon(
                               size: 50,
-                              color: Colors.green,
+                              color: Colors.teal,
                               icon: AnimatedIcons.play_pause,
                               progress: controller,
                               semanticLabel: 'Start the timer',
@@ -172,11 +182,12 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                         // ),
                       )
                     : StopWatchButton(
+                        colorReam: reamLight,
                         buttonIcon: GestureDetector(
                           child: Center(
                             child: AnimatedIcon(
                               size: 50,
-                              color: Colors.green,
+                              color: Colors.teal,
                               icon: AnimatedIcons.play_pause,
                               progress: controller,
                               semanticLabel: 'Start the timer',
@@ -295,19 +306,26 @@ class _PomodoroScreenState extends State<PomodoroScreen>
 
 class StopWatchButton extends StatelessWidget {
   final buttonIcon;
-  const StopWatchButton({Key? key, required this.buttonIcon}) : super(key: key);
+  final Color colorReam;
+  const StopWatchButton(
+      {Key? key, required this.buttonIcon, required this.colorReam})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Color _color = Colors.tealAccent.withOpacity(0.2);
     return Stack(
       alignment: Alignment.center,
       children: [
         //---- Shadow
-        Container(
+        AnimatedContainer(
+          duration: Duration(milliseconds: 300),
           width: 100,
           height: 100,
+          curve: Curves.fastOutSlowIn,
           decoration: BoxDecoration(
-              color: Colors.tealAccent.withOpacity(0.2),
+              // color: Colors.tealAccent.withOpacity(0.2),
+              color: colorReam,
               shape: BoxShape.circle),
         ),
         Container(
