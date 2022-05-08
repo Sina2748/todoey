@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todoey/utils/constants.dart';
 import 'dart:math';
 import 'dart:async';
+import 'package:todoey/widgets/soundplayer.dart';
 
 var reamLight = Colors.grey.withOpacity(0.1);
 
@@ -23,6 +24,13 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
 
+  List<Color> colorListB = [Colors.white, Color(0xfff1f1f1)];
+  Color iconButtonactiveColorB = Colors.grey.withOpacity(0.3);
+  Color iconactiveColorB = Colors.teal[700]!;
+  List<Color> colorList = [Colors.white, Colors.grey.withOpacity(0.3)];
+  Color iconButtonactiveColor = Colors.teal.withOpacity(1);
+  Color iconactiveColor = Colors.grey.shade300;
+
   // var countdownDuration = Duration(minutes: timerNumber);
   var countdownDuration;
   Duration duration = Duration();
@@ -31,13 +39,34 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   bool countDown = true;
   bool working = true;
 
+  void selectBreak() {
+    iconactiveColor = Colors.teal[700]!;
+    iconButtonactiveColor = Colors.grey.withOpacity(0.3);
+    colorList = [Colors.white, Color(0xfff1f1f1)];
+    colorListB = [Colors.white, iconButtonactiveColor];
+    iconButtonactiveColorB = Colors.teal.withOpacity(1);
+    iconactiveColorB = Colors.grey.shade300;
+  }
+
+  void selectWork() {
+    iconactiveColorB = Colors.teal[700]!;
+    print('icon pressed WITH FUNCTION');
+    iconButtonactiveColorB = Colors.grey.withOpacity(0.3);
+    colorListB = [Colors.white, Color(0xfff1f1f1)];
+    colorList = [Colors.white, iconButtonactiveColor];
+    iconButtonactiveColor = Colors.teal.withOpacity(1);
+    iconactiveColor = Colors.grey.shade300;
+  }
+
   void toggleTimerNumber() {
     setState(() {
       print('toggleTimerNumber');
       if (working) {
+        selectWork();
         timerNumber = workTimer;
         reset();
       } else {
+        selectBreak();
         timerNumber = breakTimer;
         reset();
       }
@@ -64,8 +93,9 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void startTimer() {
+    playSoundHere();
     timer?.cancel();
-    timer = Timer.periodic(Duration(milliseconds: 1000), (_) => addTime());
+    timer = Timer.periodic(Duration(milliseconds: 10), (_) => addTime());
   }
 
   void addTime() {
@@ -83,6 +113,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
         timer?.cancel();
         controller.reverse();
         reamLight = Colors.grey.withOpacity(0.1);
+        playSoundHere();
         working ? working = false : working = true;
         toggleTimerNumber();
       } else {
@@ -92,10 +123,18 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void stopTimer({bool resets = true}) {
+    playSoundHere();
     if (resets) {
       reset();
     }
     setState(() => timer?.cancel());
+  }
+
+  void playSoundHere() async {
+    for (int i = 1; i < 5; i++) {
+      playSound(i);
+      await Future.delayed(Duration(milliseconds: 400 + (i * 100)));
+    }
   }
 
   @override
@@ -221,99 +260,148 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                         ),
                       ),
                 SizedBox(height: 20),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            //---- Shadow
-                            Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  shape: BoxShape.rectangle),
-                            ),
-                            Container(
-                              width: 70,
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    begin: Alignment.topRight,
-                                    colors: [Colors.white, Color(0xfff1f1f1)],
-                                    stops: [0.1, 0.9],
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.3),
-                                      spreadRadius: 3,
-                                      blurRadius: 5,
-                                      offset: Offset(-1, 3),
-                                    ),
-                                  ]),
-                              child: Icon(
-                                Icons.work,
-                                color: Colors.teal[700],
+                Container(
+                  padding: EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              //---- Shadow
+                              Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.2),
+                                    shape: BoxShape.rectangle),
                               ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          '25 min',
-                          style:
-                              TextStyle(fontSize: 20, color: Colors.blueGrey),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            //---- Shadow
-                            Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  shape: BoxShape.rectangle),
-                            ),
-                            Container(
-                              width: 70,
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    begin: Alignment.topRight,
-                                    colors: [Colors.white, Color(0xfff1f1f1)],
-                                    stops: [0.1, 0.9],
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.3),
-                                      spreadRadius: 3,
-                                      blurRadius: 5,
-                                      offset: Offset(-1, 3),
+                              AnimatedContainer(
+                                curve: Curves.fastOutSlowIn,
+                                duration: const Duration(seconds: 1),
+                                width: 70,
+                                height: 70,
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      colors: colorList,
+                                      stops: [0.1, 0.9],
                                     ),
-                                  ]),
-                              child: Icon(
-                                Icons.emoji_food_beverage,
-                                color: Colors.teal[700],
+                                    shape: BoxShape.rectangle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: iconButtonactiveColor,
+                                        spreadRadius: 3,
+                                        blurRadius: 5,
+                                        offset: Offset(-1, 3),
+                                      ),
+                                    ]),
+                                child: IconButton(
+                                  icon: Icon(Icons.work),
+                                  onPressed: () {
+                                    working = true;
+                                    toggleTimerNumber();
+                                    setState(() {
+                                      iconactiveColor = Colors.grey.shade300;
+                                      print('icon pressed');
+                                      iconButtonactiveColor =
+                                          Colors.teal.withOpacity(1);
+                                      colorList = [
+                                        Colors.white,
+                                        iconButtonactiveColor
+                                      ];
+                                      colorListB = [
+                                        Colors.white,
+                                        Color(0xfff1f1f1)
+                                      ];
+                                      iconButtonactiveColorB =
+                                          Colors.grey.withOpacity(0.3);
+                                      iconactiveColorB = Colors.teal[700]!;
+                                    });
+                                  },
+                                  color: iconactiveColor,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          '5 min',
-                          style:
-                              TextStyle(fontSize: 20, color: Colors.blueGrey),
-                        )
-                      ],
-                    ),
-                  ],
+                            ],
+                          ),
+                          Text(
+                            '25 min',
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.blueGrey),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              //---- Shadow
+                              Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.2),
+                                    shape: BoxShape.rectangle),
+                              ),
+                              AnimatedContainer(
+                                curve: Curves.fastOutSlowIn,
+                                duration: const Duration(seconds: 1),
+                                width: 70,
+                                height: 70,
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      colors: colorListB,
+                                      stops: [0.1, 0.9],
+                                    ),
+                                    shape: BoxShape.rectangle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: iconButtonactiveColorB,
+                                        spreadRadius: 3,
+                                        blurRadius: 5,
+                                        offset: Offset(-1, 3),
+                                      ),
+                                    ]),
+                                child: IconButton(
+                                  icon: Icon(Icons.emoji_food_beverage),
+                                  onPressed: () {
+                                    working = false;
+                                    toggleTimerNumber();
+                                    setState(() {
+                                      iconactiveColor = Colors.teal[700]!;
+                                      print('icon pressed');
+                                      iconButtonactiveColor =
+                                          Colors.grey.withOpacity(0.3);
+                                      colorList = [
+                                        Colors.white,
+                                        Color(0xfff1f1f1)
+                                      ];
+                                      colorListB = [
+                                        Colors.white,
+                                        iconButtonactiveColor
+                                      ];
+                                      iconButtonactiveColorB =
+                                          Colors.teal.withOpacity(1);
+                                      iconactiveColorB = Colors.grey.shade300;
+                                    });
+                                  },
+                                  color: iconactiveColorB,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            '5 min',
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.blueGrey),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
