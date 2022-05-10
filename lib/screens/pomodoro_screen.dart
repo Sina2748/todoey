@@ -4,6 +4,8 @@ import 'package:todoey/utils/constants.dart';
 import 'dart:math';
 import 'dart:async';
 import 'package:todoey/widgets/soundplayer.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'pomodoro_bottom_sheet.dart';
 
 var reamLight = Colors.grey.withOpacity(0.1);
 
@@ -25,11 +27,11 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   late AnimationController controller;
 
   List<Color> colorListB = [Colors.white, Color(0xfff1f1f1)];
-  Color iconButtonactiveColorB = Colors.grey.withOpacity(0.3);
-  Color iconactiveColorB = Colors.teal[700]!;
-  List<Color> colorList = [Colors.white, Colors.grey.withOpacity(0.3)];
-  Color iconButtonactiveColor = Colors.teal.withOpacity(1);
-  Color iconactiveColor = Colors.grey.shade300;
+  Color iconButtonactiveColorB = Colors.grey.withOpacity(0.9);
+  Color iconactiveColorB = Colors.grey.shade600;
+  List<Color> colorList = [Colors.white, Color(0xffecfcfa)];
+  Color iconButtonactiveColor = Colors.teal;
+  Color iconactiveColor = Colors.teal[700]!;
 
   // var countdownDuration = Duration(minutes: timerNumber);
   var countdownDuration;
@@ -40,22 +42,22 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   bool working = true;
 
   void selectBreak() {
-    iconactiveColor = Colors.teal[700]!;
-    iconButtonactiveColor = Colors.grey.withOpacity(0.3);
+    iconactiveColor = Colors.grey.shade600;
+    iconButtonactiveColor = Colors.grey.withOpacity(0.9);
     colorList = [Colors.white, Color(0xfff1f1f1)];
-    colorListB = [Colors.white, iconButtonactiveColor];
-    iconButtonactiveColorB = Colors.teal.withOpacity(1);
-    iconactiveColorB = Colors.grey.shade300;
+    colorListB = [Colors.white, Color(0xffecfcfa)];
+    iconButtonactiveColorB = Colors.teal.shade700;
+    iconactiveColorB = Colors.teal[700]!;
   }
 
   void selectWork() {
-    iconactiveColorB = Colors.teal[700]!;
+    iconactiveColorB = Colors.grey.shade600;
     print('icon pressed WITH FUNCTION');
-    iconButtonactiveColorB = Colors.grey.withOpacity(0.3);
+    iconButtonactiveColorB = Colors.grey.withOpacity(0.9);
     colorListB = [Colors.white, Color(0xfff1f1f1)];
-    colorList = [Colors.white, iconButtonactiveColor];
-    iconButtonactiveColor = Colors.teal.withOpacity(1);
-    iconactiveColor = Colors.grey.shade300;
+    colorList = [Colors.white, Color(0xffecfcfa)];
+    iconButtonactiveColor = Colors.teal.shade700;
+    iconactiveColor = Colors.teal[700]!;
   }
 
   void toggleTimerNumber() {
@@ -131,7 +133,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void playSoundHere() async {
-    for (int i = 1; i < 5; i++) {
+    for (int i = 1; i < 6; i++) {
       playSound(i);
       await Future.delayed(Duration(milliseconds: 400 + (i * 100)));
     }
@@ -264,140 +266,150 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                   padding: EdgeInsets.all(12),
                   child: Row(
                     children: [
-                      Column(
+                      Stack(
+                        alignment: Alignment.center,
                         children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              //---- Shadow
-                              Container(
-                                width: 80,
-                                height: 80,
-                                decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.2),
-                                    shape: BoxShape.rectangle),
-                              ),
-                              AnimatedContainer(
-                                curve: Curves.fastOutSlowIn,
-                                duration: const Duration(seconds: 1),
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      colors: colorList,
-                                      stops: [0.1, 0.9],
-                                    ),
-                                    shape: BoxShape.rectangle,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: iconButtonactiveColor,
-                                        spreadRadius: 3,
-                                        blurRadius: 5,
-                                        offset: Offset(-1, 3),
-                                      ),
-                                    ]),
-                                child: IconButton(
-                                  icon: Icon(Icons.work),
-                                  onPressed: () {
-                                    working = true;
-                                    toggleTimerNumber();
-                                    setState(() {
-                                      iconactiveColor = Colors.grey.shade300;
-                                      print('icon pressed');
-                                      iconButtonactiveColor =
-                                          Colors.teal.withOpacity(1);
-                                      colorList = [
-                                        Colors.white,
-                                        iconButtonactiveColor
-                                      ];
-                                      colorListB = [
-                                        Colors.white,
-                                        Color(0xfff1f1f1)
-                                      ];
-                                      iconButtonactiveColorB =
-                                          Colors.grey.withOpacity(0.3);
-                                      iconactiveColorB = Colors.teal[700]!;
-                                    });
-                                  },
-                                  color: iconactiveColor,
-                                ),
-                              ),
-                            ],
+                          //---- Shadow
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                shape: BoxShape.rectangle),
                           ),
-                          Text(
-                            '25 min',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.blueGrey),
-                          )
+                          AnimatedContainer(
+                            curve: Curves.fastOutSlowIn,
+                            duration: const Duration(seconds: 1),
+                            width: 70,
+                            height: 70,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  colors: colorList,
+                                  stops: [0.1, 0.9],
+                                ),
+                                shape: BoxShape.rectangle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: iconButtonactiveColor,
+                                    spreadRadius: 3,
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ]),
+                            child: IconButton(
+                              icon: Icon(Icons.work),
+                              onPressed: () {
+                                working = true;
+                                toggleTimerNumber();
+                              },
+                              color: iconactiveColor,
+                            ),
+                          ),
                         ],
                       ),
-                      Column(
+                      Stack(
+                        alignment: Alignment.center,
                         children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              //---- Shadow
-                              Container(
-                                width: 80,
-                                height: 80,
-                                decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.2),
-                                    shape: BoxShape.rectangle),
-                              ),
-                              AnimatedContainer(
-                                curve: Curves.fastOutSlowIn,
-                                duration: const Duration(seconds: 1),
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      colors: colorListB,
-                                      stops: [0.1, 0.9],
-                                    ),
-                                    shape: BoxShape.rectangle,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: iconButtonactiveColorB,
-                                        spreadRadius: 3,
-                                        blurRadius: 5,
-                                        offset: Offset(-1, 3),
-                                      ),
-                                    ]),
-                                child: IconButton(
-                                  icon: Icon(Icons.emoji_food_beverage),
-                                  onPressed: () {
-                                    working = false;
-                                    toggleTimerNumber();
-                                    setState(() {
-                                      iconactiveColor = Colors.teal[700]!;
-                                      print('icon pressed');
-                                      iconButtonactiveColor =
-                                          Colors.grey.withOpacity(0.3);
-                                      colorList = [
-                                        Colors.white,
-                                        Color(0xfff1f1f1)
-                                      ];
-                                      colorListB = [
-                                        Colors.white,
-                                        iconButtonactiveColor
-                                      ];
-                                      iconButtonactiveColorB =
-                                          Colors.teal.withOpacity(1);
-                                      iconactiveColorB = Colors.grey.shade300;
-                                    });
-                                  },
-                                  color: iconactiveColorB,
-                                ),
-                              ),
-                            ],
+                          //---- Shadow
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                shape: BoxShape.rectangle),
                           ),
-                          Text(
-                            '5 min',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.blueGrey),
-                          )
+                          AnimatedContainer(
+                            curve: Curves.fastOutSlowIn,
+                            duration: const Duration(seconds: 1),
+                            width: 70,
+                            height: 70,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  colors: colorListB,
+                                  stops: [0.1, 0.9],
+                                ),
+                                shape: BoxShape.rectangle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: iconButtonactiveColorB,
+                                    spreadRadius: 3,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 1),
+                                  ),
+                                ]),
+                            child: IconButton(
+                              icon: Icon(Icons.emoji_food_beverage),
+                              onPressed: () {
+                                working = false;
+                                toggleTimerNumber();
+                              },
+                              color: iconactiveColorB,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          //---- Shadow
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                shape: BoxShape.rectangle),
+                          ),
+                          Container(
+                            width: 70,
+                            height: 70,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  colors: [Colors.white, Color(0xfff1f1f1)],
+                                  stops: [0.1, 0.9],
+                                ),
+                                shape: BoxShape.rectangle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.9),
+                                    spreadRadius: 3,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 1),
+                                  ),
+                                ]),
+                            child: IconButton(
+                              icon: Icon(Icons.settings),
+                              color: Colors.grey.shade600,
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) => SingleChildScrollView(
+                                    child: BottomSheetUp(
+                                      workCallBack: (value) {
+                                        setState(() {
+                                          workTimer = value;
+                                          toggleTimerNumber();
+                                          print(workTimer);
+                                        });
+                                      },
+                                      selectedTime: breakTimer.toString(),
+                                      breakCallBack: (value) {
+                                        setState(() {
+                                          breakTimer = value;
+                                          toggleTimerNumber();
+                                          print(breakTimer);
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -421,7 +433,7 @@ class StopWatchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color _color = Colors.tealAccent.withOpacity(0.2);
+    // Color _color = Colors.tealAccent.withOpacity(0.2);
     return Stack(
       alignment: Alignment.center,
       children: [
