@@ -8,6 +8,9 @@ import 'package:todoey/widgets/soundplayer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pomodoro_bottom_sheet.dart';
 import 'dart:math';
+import 'dart:math';
+
+var ppp;
 
 double raidus = 30;
 var reamLight = Colors.grey.withOpacity(0.1);
@@ -89,6 +92,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void reset() {
+    ppp = 359.9;
     countdownDuration = Duration(minutes: timerNumber);
     if (countDown) {
       setState(() => duration = countdownDuration);
@@ -125,6 +129,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
         toggleTimerNumber();
       } else {
         duration = Duration(seconds: seconds);
+        ppp = duration.inSeconds * 6 / timerNumber;
       }
     });
   }
@@ -141,7 +146,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   void playSoundHere() async {
     for (int i = 1; i < 3; i++) {
       playSound(i);
-      await Future.delayed(Duration(milliseconds: 300 + (i * 70)));
+      await Future.delayed(Duration(milliseconds: 200 + (i * 70)));
     }
   }
 
@@ -208,7 +213,8 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                             ),
                           ]),
                       child: CustomPaint(
-                        painter: ClockPainter(),
+                        painter:
+                            ClockPainter(ppp, Colors.grey.withOpacity(0.2)),
                       ),
                     ),
                     Container(
@@ -479,51 +485,35 @@ class StopWatchButton extends StatelessWidget {
 
 //---- Painting the Clock
 class ClockPainter extends CustomPainter {
+  ClockPainter(this.sweepAngle, this.color);
+  final double? sweepAngle;
+  final Color? color;
+
   @override
   void paint(Canvas canvas, Size size) {
-    double degToRad(double deg) => deg * (-pi / 180.0);
+    final Paint paint = Paint()
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 12.0 // 1.
+      ..style = PaintingStyle.stroke // 2.
+      ..color = color!; // 3.
 
-    void paint(Canvas canvas, Size size) {
-      final Rect rect = Offset.zero & size;
-      const RadialGradient gradient = RadialGradient(
-        center: Alignment(0.7, -0.6),
-        radius: 0.2,
-        colors: <Color>[Color(0xFFFFFF00), Color(0xFF0099FF)],
-        stops: <double>[0.4, 1.0],
-      );
-      canvas.drawRect(
-        rect,
-        Paint()..shader = gradient.createShader(rect),
-      );
-    }
+    double degToRad(double deg) => deg * (pi / 180.0);
+
+    final path = Path()
+      ..arcTo(
+          // 4.
+          Rect.fromCenter(
+            center: Offset(size.height / 2, size.width / 2),
+            height: size.height - 30,
+            width: size.width - 30,
+          ), // 5.
+          degToRad(-90), // 6.
+          degToRad(sweepAngle!), // 7.
+          false);
+
+    canvas.drawPath(path, paint); // 8.
   }
 
   @override
-  SemanticsBuilderCallback get semanticsBuilder {
-    return (Size size) {
-      // Annotate a rectangle containing the picture of the sun
-      // with the label "Sun". When text to speech feature is enabled on the
-      // device, a user will be able to locate the sun on this picture by
-      // touch.
-      Rect rect = Offset.zero & size;
-      final double width = size.shortestSide * 0.4;
-      rect = const Alignment(0.8, -0.9).inscribe(Size(width, width), rect);
-      return <CustomPainterSemantics>[
-        CustomPainterSemantics(
-          rect: rect,
-          properties: const SemanticsProperties(
-            label: 'Sun',
-            textDirection: TextDirection.ltr,
-          ),
-        ),
-      ];
-    };
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
-    // throw UnimplementedError();
-    return false;
-  }
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
