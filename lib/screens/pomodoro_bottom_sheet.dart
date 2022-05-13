@@ -19,6 +19,7 @@ class BottomSheetUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        color: Colors.teal.shade50,
         padding: EdgeInsets.all(36),
         // padding:
         //     EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),

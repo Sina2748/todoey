@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:todoey/utils/constants.dart';
 import 'dart:math';
 import 'dart:async';
 import 'package:todoey/widgets/soundplayer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pomodoro_bottom_sheet.dart';
+import 'dart:math';
 
+double raidus = 30;
 var reamLight = Colors.grey.withOpacity(0.1);
 
 int workTimer = 25;
@@ -97,7 +100,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   void startTimer() {
     playSoundHere();
     timer?.cancel();
-    timer = Timer.periodic(Duration(milliseconds: 10), (_) => addTime());
+    timer = Timer.periodic(Duration(milliseconds: 1000), (_) => addTime());
   }
 
   void addTime() {
@@ -105,8 +108,10 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     // print('addSeconds: $addSeconds');
     setState(() {
       if (reamLight == Colors.teal.withOpacity(0.2)) {
+        raidus = 60;
         reamLight = Colors.red.withOpacity(0.2);
       } else {
+        raidus = 30;
         reamLight = Colors.teal.withOpacity(0.2);
       }
       final seconds = duration.inSeconds + addSeconds;
@@ -126,6 +131,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
 
   void stopTimer({bool resets = true}) {
     playSoundHere();
+    reamLight = Colors.grey.withOpacity(0.1);
     if (resets) {
       reset();
     }
@@ -133,9 +139,9 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void playSoundHere() async {
-    for (int i = 1; i < 6; i++) {
+    for (int i = 1; i < 3; i++) {
       playSound(i);
-      await Future.delayed(Duration(milliseconds: 400 + (i * 100)));
+      await Future.delayed(Duration(milliseconds: 300 + (i * 70)));
     }
   }
 
@@ -153,6 +159,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     return Scaffold(
       // appBar: GradiantAppBar(pageTitle: 'پومودورو'),
       body: Container(
+        alignment: Alignment.center,
         height: double.infinity,
         width: double.infinity,
         decoration: kBackgroundImage,
@@ -166,11 +173,24 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                   children: [
                     //---- Shadow
                     Container(
-                      width: 330,
-                      height: 330,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          shape: BoxShape.circle),
+                      height: 390,
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 1000),
+                        curve: Curves.fastOutSlowIn,
+                        width: 300 + raidus,
+                        height: 300 + raidus,
+                        decoration: BoxDecoration(
+                            // color: Colors.red.withOpacity(0.2),
+                            gradient: RadialGradient(
+                              stops: [0.9, 1],
+                              colors: [
+                                reamLight,
+                                Colors.white.withOpacity(0.2)
+                              ],
+                              // begin: Alignment(0, 0),
+                            ),
+                            shape: BoxShape.circle),
+                      ),
                     ),
                     //---- Painting the Arc
                     Container(
@@ -224,23 +244,6 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                             }
                           },
                         ),
-
-                        // TextButton(
-                        //   onPressed: () async {
-                        //     print('1');
-                        //     print('isRunning: $isRunning');
-                        //     print('isCompleted: $isCompleted');
-                        //
-                        //     if (isRunning) {
-                        //       stopTimer(resets: false);
-                        //     }
-                        //   },
-                        //   child: Icon(
-                        //     Icons.pause,
-                        //     size: 50,
-                        //     color: Colors.teal[700],
-                        //   ),
-                        // ),
                       )
                     : StopWatchButton(
                         colorReam: reamLight,
@@ -469,22 +472,6 @@ class StopWatchButton extends StatelessWidget {
             ],
           ),
         ),
-
-        // TextButton(
-        //      onPressed: () async {
-        //        print('2');
-        //        print('isRunning: $isRunning');
-        //        print('isCompleted: $isCompleted');
-        //
-        //        startTimer();
-        //        await Future.delayed(Duration(seconds: 5));
-        //      },
-        //      child: Icon(
-        //        Icons.play_arrow,
-        //        size: 50,
-        //        color: Colors.teal[700],
-        //      ),
-        //    ),
       ],
     );
   }
@@ -495,6 +482,42 @@ class ClockPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     double degToRad(double deg) => deg * (-pi / 180.0);
+
+    void paint(Canvas canvas, Size size) {
+      final Rect rect = Offset.zero & size;
+      const RadialGradient gradient = RadialGradient(
+        center: Alignment(0.7, -0.6),
+        radius: 0.2,
+        colors: <Color>[Color(0xFFFFFF00), Color(0xFF0099FF)],
+        stops: <double>[0.4, 1.0],
+      );
+      canvas.drawRect(
+        rect,
+        Paint()..shader = gradient.createShader(rect),
+      );
+    }
+  }
+
+  @override
+  SemanticsBuilderCallback get semanticsBuilder {
+    return (Size size) {
+      // Annotate a rectangle containing the picture of the sun
+      // with the label "Sun". When text to speech feature is enabled on the
+      // device, a user will be able to locate the sun on this picture by
+      // touch.
+      Rect rect = Offset.zero & size;
+      final double width = size.shortestSide * 0.4;
+      rect = const Alignment(0.8, -0.9).inscribe(Size(width, width), rect);
+      return <CustomPainterSemantics>[
+        CustomPainterSemantics(
+          rect: rect,
+          properties: const SemanticsProperties(
+            label: 'Sun',
+            textDirection: TextDirection.ltr,
+          ),
+        ),
+      ];
+    };
   }
 
   @override
