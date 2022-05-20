@@ -16,11 +16,12 @@ class TabBarLearn extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+          children: const [
             LearnButton(
+              iconShape: Icons.list_sharp,
               navigation: '/pomodoroteachingscreen',
               backgroundPicture: 'assets/images/af.jpg',
-              title: 'پومودرو',
+              title: 'لیست کارها',
               locationPadding: EdgeInsets.only(
                 top: 130,
                 bottom: 20,
@@ -29,9 +30,10 @@ class TabBarLearn extends StatelessWidget {
               ),
             ),
             LearnButton(
+              iconShape: Icons.run_circle_outlined,
               navigation: '/pomodoroteachingscreen',
               backgroundPicture: 'assets/images/ac.jpg',
-              title: 'پومودرو',
+              title: 'چرخه زندگی',
               locationPadding: EdgeInsets.only(
                 top: 130,
                 bottom: 20,
@@ -40,9 +42,10 @@ class TabBarLearn extends StatelessWidget {
               ),
             ),
             LearnButton(
+              iconShape: Icons.timer,
               navigation: '/pomodoroteachingscreen',
               backgroundPicture: 'assets/images/ad.jpg',
-              title: 'پومودرو',
+              title: 'پومودورو',
               locationPadding: EdgeInsets.only(
                 top: 130,
                 bottom: 20,
@@ -51,6 +54,7 @@ class TabBarLearn extends StatelessWidget {
               ),
             ),
             LearnButton(
+              iconShape: Icons.swap_vertical_circle_sharp,
               navigation: '/pomodoroteachingscreen',
               backgroundPicture: 'assets/images/ag.jpg',
               title: 'پومودرو',
@@ -73,9 +77,11 @@ class LearnButton extends StatelessWidget {
   final String backgroundPicture;
   final String title;
   final dynamic locationPadding;
+  final IconData iconShape;
 
   const LearnButton(
       {Key? key,
+      required this.iconShape,
       required this.navigation,
       required this.backgroundPicture,
       required this.title,
@@ -116,7 +122,7 @@ class LearnButton extends StatelessWidget {
             child: Column(
               children: [
                 Icon(
-                  Icons.swap_vertical_circle_sharp,
+                  iconShape,
                   color: Colors.white,
                   size: 30,
                 ),
