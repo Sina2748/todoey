@@ -113,6 +113,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
 
   void startTimer() {
     startedTime = tz.TZDateTime.now(tz.local).second;
+    final prefs = await SharedPreferences.getInstance();
 
     notificationPromodoroEnds(countdownDuration.inSeconds);
     playSoundHere();
