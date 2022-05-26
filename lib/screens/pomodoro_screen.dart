@@ -9,6 +9,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'pomodoro_bottom_sheet.dart';
 import 'dart:math';
 import 'dart:math';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:todoey/notification_service.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:shared_preferences/shared_preferences.dart';
+
+int startedTime = 0;
 
 var ppp;
 
@@ -88,6 +95,9 @@ class _PomodoroScreenState extends State<PomodoroScreen>
       vsync: this,
       duration: Duration(milliseconds: 1000),
     );
+    //
+    tz.initializeTimeZones();
+
     reset();
   }
 
@@ -102,14 +112,16 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void startTimer() {
+    startedTime = tz.TZDateTime.now(tz.local).second;
+
+    notificationPromodoroEnds(countdownDuration.inSeconds);
     playSoundHere();
     timer?.cancel();
     timer = Timer.periodic(Duration(milliseconds: 1000), (_) => addTime());
   }
 
   void addTime() {
-    final addSeconds = countDown ? -1 : 1;
-    // print('addSeconds: $addSeconds');
+    // animations
     setState(() {
       if (reamLight == Colors.teal.withOpacity(0.2)) {
         raidus = 60;
@@ -118,8 +130,10 @@ class _PomodoroScreenState extends State<PomodoroScreen>
         raidus = 30;
         reamLight = Colors.teal.withOpacity(0.2);
       }
-      final seconds = duration.inSeconds + addSeconds;
-      // print('seconds: $seconds');
+      // time
+      final seconds = (Duration(minutes: timerNumber).inSeconds) -
+          (tz.TZDateTime.now(tz.local).second - startedTime);
+
       if (seconds < 0) {
         timer?.cancel();
         controller.reverse();
@@ -136,6 +150,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
 
   void stopTimer({bool resets = true}) {
     playSoundHere();
+    stopNotificationPromodoroEnds(1);
     reamLight = Colors.grey.withOpacity(0.1);
     if (resets) {
       reset();
@@ -245,7 +260,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
                           ),
                           onTap: () {
                             if (isRunning) {
-                              stopTimer(resets: false);
+                              stopTimer(resets: true);
                               controller.reverse();
                             }
                           },

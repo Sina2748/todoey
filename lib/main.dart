@@ -15,10 +15,18 @@ import 'screens/pomodoro_screen.dart';
 
 import 'screens/teachingscreens/pomodoro_teaching_screen.dart';
 
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'notification_service.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
+
 SupabaseManager subabaseManager = SupabaseManager();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+// to initialize the notificationservice. notifications
+  NotificationService().initNotification();
 
   await Supabase.initialize(
     url: 'https://akqgwjakzlijndpqptxi.supabase.co',

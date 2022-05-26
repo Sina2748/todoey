@@ -3,9 +3,15 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-void f() {
-  print('tz.TZDateTime.now(tz.local)');
-  print(tz.TZDateTime.now(tz.local).month);
+void stopNotificationPromodoroEnds(notificationID) {
+  print('>>>>>>>>>>>>>>>>> stop Notification Promodoro Ends');
+  NotificationService().stopNotification(notificationID);
+}
+
+void notificationPromodoroEnds(notificationDuration) {
+  print('>>>>>>>>> notificationDuration: $notificationDuration');
+  NotificationService().showNotification(1, 'Notification_title.text',
+      'Notification_descrp.text', notificationDuration);
 }
 
 class NotificationService {
@@ -42,12 +48,17 @@ class NotificationService {
     await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
-  Future<void> showNotification(int id, String title, String body) async {
+  Future<void> stopNotification(int id) async {
+    await flutterLocalNotificationsPlugin.cancel(id);
+  }
+
+  Future<void> showNotification(
+      int id, String title, String body, int notificationDuration) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id,
       title,
       body,
-      tz.TZDateTime.now(tz.local).add(Duration(seconds: 1)),
+      tz.TZDateTime.now(tz.local).add(Duration(seconds: notificationDuration)),
 
       //schedule the notification to show after 2 seconds.
       const NotificationDetails(
