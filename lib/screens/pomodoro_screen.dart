@@ -15,7 +15,26 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:shared_preferences/shared_preferences.dart';
 
-int startedTime = 0;
+String startedDateTime = 'hello';
+
+void setStartedTime() async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString('startedTime', tz.TZDateTime.now(tz.local).toString());
+  startedDateTime = 'hello';
+}
+
+void getStartedTime() async {
+  final prefs = await SharedPreferences.getInstance();
+  startedDateTime = await prefs.getString('startedTime')!;
+}
+
+void removeStartedTime() async {
+  final prefs = await SharedPreferences.getInstance();
+  final success = await prefs.remove('startedTime');
+  print('removed: $success');
+
+  print(await prefs.getString('startedTime'));
+}
 
 var ppp;
 
@@ -97,13 +116,15 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     );
     //
     tz.initializeTimeZones();
-
     reset();
   }
 
-  void reset() {
-    ppp = 359.9;
+  void reset() async {
+    ppp = 355.0;
     countdownDuration = Duration(minutes: timerNumber);
+    removeStartedTime();
+    startedDateTime = 'hello';
+
     if (countDown) {
       setState(() => duration = countdownDuration);
     } else {
@@ -111,10 +132,8 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     }
   }
 
-  void startTimer() {
-    startedTime = tz.TZDateTime.now(tz.local).second;
-    final prefs = await SharedPreferences.getInstance();
-
+  void startTimer() async {
+    setStartedTime();
     notificationPromodoroEnds(countdownDuration.inSeconds);
     playSoundHere();
     timer?.cancel();
@@ -122,6 +141,10 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void addTime() {
+    getStartedTime();
+    print(duration.inSeconds);
+    print(tz.TZDateTime.now(tz.local)
+        .difference(DateTime.parse(startedDateTime)));
     // animations
     setState(() {
       if (reamLight == Colors.teal.withOpacity(0.2)) {
@@ -132,8 +155,11 @@ class _PomodoroScreenState extends State<PomodoroScreen>
         reamLight = Colors.teal.withOpacity(0.2);
       }
       // time
+      getStartedTime();
       final seconds = (Duration(minutes: timerNumber).inSeconds) -
-          (tz.TZDateTime.now(tz.local).second - startedTime);
+          (tz.TZDateTime.now(tz.local)
+              .difference(DateTime.parse(startedDateTime))
+              .inSeconds);
 
       if (seconds < 0) {
         timer?.cancel();
