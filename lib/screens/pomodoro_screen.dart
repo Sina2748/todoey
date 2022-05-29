@@ -15,6 +15,9 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'background_service.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
+
 String startedDateTime = 'hello';
 
 void setStartedTime() async {
@@ -137,12 +140,13 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     notificationPromodoroEnds(countdownDuration.inSeconds);
     playSoundHere();
     timer?.cancel();
+    startBackgroundService();
     timer = Timer.periodic(Duration(milliseconds: 1000), (_) => addTime());
   }
 
   void addTime() {
     getStartedTime();
-    print(duration.inSeconds);
+    // print(duration.inSeconds);
     print(tz.TZDateTime.now(tz.local)
         .difference(DateTime.parse(startedDateTime)));
     // animations
@@ -176,6 +180,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void stopTimer({bool resets = true}) {
+    stopBackgroundService();
     playSoundHere();
     stopNotificationPromodoroEnds(1);
     reamLight = Colors.grey.withOpacity(0.1);
@@ -187,7 +192,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
 
   void playSoundHere() async {
     for (int i = 1; i < 3; i++) {
-      playSound(i);
+      // playSound(i);
       await Future.delayed(Duration(milliseconds: 200 + (i * 70)));
     }
   }
