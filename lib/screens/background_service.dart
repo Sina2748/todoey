@@ -110,6 +110,12 @@ void onStart(ServiceInstance service) async {
       if (seconds < 0) {
         playSoundHere();
         stopBackgroundService();
+        if (service is AndroidServiceInstance) {
+          service.setForegroundNotificationInfo(
+            title: "پومودورو",
+            content: "زمان به پایان رسید!",
+          );
+        }
       } else {
         duration = Duration(seconds: seconds);
       }

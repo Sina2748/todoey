@@ -213,7 +213,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
 // return isRunning || isCompleted
 
     return Scaffold(
-      // appBar: GradiantAppBar(pageTitle: 'پومودورو'),
+      appBar: GradiantAppBar(pageTitle: 'پومودورو'),
       body: Container(
         alignment: Alignment.center,
         height: double.infinity,
