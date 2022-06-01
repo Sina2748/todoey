@@ -36,10 +36,10 @@ class _TabBarLearnState extends State<TabBarLearn> {
                     initY = initY + (snapshot.data!.x);
                 }
                 return Positioned(
-                  left: 10 - initX * 5,
-                  right: 10 + initX * 5,
-                  top: 25 - initY * 5,
-                  bottom: 10 + initY * 5,
+                  left: 10 - initX * 7,
+                  right: 10 + initX * 7,
+                  top: 10 - initY * 7,
+                  bottom: 10 + initY * 7,
                   child: Center(
                     child: Container(
                       child: Stack(
@@ -47,15 +47,15 @@ class _TabBarLearnState extends State<TabBarLearn> {
                           Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Container(
-                              width: 230,
-                              height: 330,
+                              width: 250,
+                              height: 350,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                     isAntiAlias: true,
-                                    opacity: 0.8,
+                                    opacity: 0.5,
                                     image: AssetImage(imgUrl),
                                     colorFilter: new ColorFilter.mode(
-                                        Colors.white.withOpacity(.1),
+                                        Colors.black.withOpacity(.1),
                                         BlendMode.srcOver),
                                     fit: BoxFit.cover),
                                 borderRadius: BorderRadius.circular(10),
