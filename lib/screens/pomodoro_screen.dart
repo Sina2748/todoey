@@ -20,12 +20,19 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 
 String startedDateTime = 'hello';
 
-int workTimer = 35;
+int workTimer = 25;
 int breakTimer = 5;
 int timerNumber = workTimer;
 
 bool countDown = true;
 bool working = true;
+
+void playSoundHere() async {
+  for (int i = 1; i < 3; i++) {
+    playSound(i);
+    await Future.delayed(Duration(milliseconds: 200 + (i * 70)));
+  }
+}
 
 void setStartedTime() async {
   final prefs = await SharedPreferences.getInstance();
@@ -129,6 +136,7 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     countdownDuration = Duration(minutes: timerNumber);
     removeStartedTime();
     startedDateTime = 'hello';
+    stopBackgroundService();
 
     if (countDown) {
       setState(() => duration = countdownDuration);
@@ -148,10 +156,10 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   }
 
   void addTime() {
-    getStartedTime();
-    // print(duration.inSeconds);
-    print(tz.TZDateTime.now(tz.local)
-        .difference(DateTime.parse(startedDateTime)));
+    // getStartedTime();
+    // // print(duration.inSeconds);
+    // print(tz.TZDateTime.now(tz.local)
+    //     .difference(DateTime.parse(startedDateTime)));
     // animations
     setState(() {
       if (reamLight == Colors.teal.withOpacity(0.2)) {
@@ -191,13 +199,6 @@ class _PomodoroScreenState extends State<PomodoroScreen>
       reset();
     }
     setState(() => timer?.cancel());
-  }
-
-  void playSoundHere() async {
-    for (int i = 1; i < 3; i++) {
-      // playSound(i);
-      await Future.delayed(Duration(milliseconds: 200 + (i * 70)));
-    }
   }
 
   @override

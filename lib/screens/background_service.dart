@@ -15,7 +15,7 @@ import 'package:todoey/screens/pomodoro_screen.dart';
 
 void startBackgroundService(timerNumber) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  await preferences.setInt("hello", timerNumber);
+  await preferences.setInt("timerNumber", timerNumber);
 
   await initializeService();
 
@@ -89,39 +89,37 @@ void onStart(ServiceInstance service) async {
   service.on('stopService').listen((event) {
     service.stopSelf();
   });
-
-  service.on('setAsGo').listen((event) {
-    int timerSetDuration = 7;
-    print('>>>>>>>>>>>>>>>>>>> $timerSetDuration ');
-  });
+  //
+  // service.on('setAsGo').listen((event) {
+  //   int timerSetDuration = 7;
+  //   print('>>>>>>>>>>>>>>>>>>> $timerSetDuration ');
+  // });
 
   // int aa = Duration(minutes: 6).inSeconds;
   // bring to foreground
-  int hello = preferences.getInt("hello")!;
+  int timerNumber = preferences.getInt("timerNumber")!;
 
   Duration duration = Duration();
-  int seconds = Duration(minutes: hello).inSeconds;
+  int seconds = Duration(minutes: timerNumber).inSeconds;
 
   Timer.periodic(
     const Duration(seconds: 1),
     (timer) async {
-      print(hello);
       seconds = seconds - 1;
 
       if (seconds < 0) {
-        // playSoundHere();
+        playSoundHere();
         stopBackgroundService();
       } else {
         duration = Duration(seconds: seconds);
       }
 
-      print('>>>>>>>>>>>>>>>>> showLeftTime');
       String leftTime =
           '${duration.inMinutes.remainder(60)}:${duration.inSeconds.remainder(60)}';
 
       if (service is AndroidServiceInstance) {
         service.setForegroundNotificationInfo(
-          title: "پومودرو",
+          title: "پومودورو",
           content: " زمان باقی مانده: $leftTime",
         );
       }
@@ -153,18 +151,18 @@ void onStart(ServiceInstance service) async {
   );
 }
 
-Duration duration = Duration();
-int seconds = Duration(minutes: 6).inSeconds;
-
-String showLeftTime() {
-  seconds = seconds - 1;
-  if (seconds < 0) {
-    // playSoundHere();
-    stopBackgroundService();
-  } else {
-    duration = Duration(seconds: seconds);
-  }
-  print(timerNumber);
-  print('>>>>>>>>>>>>>>>>> showLeftTime');
-  return ('${duration.inMinutes.remainder(60)}:${duration.inSeconds.remainder(60)}');
-}
+// Duration duration = Duration();
+// int seconds = Duration(minutes: 6).inSeconds;
+//
+// String showLeftTime() {
+//   seconds = seconds - 1;
+//   if (seconds < 0) {
+//     playSoundHere();
+//     stopBackgroundService();
+//   } else {
+//     duration = Duration(seconds: seconds);
+//   }
+//   print(timerNumber);
+//   print('>>>>>>>>>>>>>>>>> showLeftTime');
+//   return ('${duration.inMinutes.remainder(60)}:${duration.inSeconds.remainder(60)}');
+// }

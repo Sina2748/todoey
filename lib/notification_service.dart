@@ -10,8 +10,8 @@ void stopNotificationPromodoroEnds(notificationID) {
 
 void notificationPromodoroEnds(notificationDuration) {
   print('>>>>>>>>> notificationDuration: $notificationDuration');
-  NotificationService().showNotification(1, 'Notification_title.text',
-      'Notification_descrp.text', notificationDuration);
+  NotificationService().showNotification(
+      1, 'پومودورو', 'زمان به پایان رسید!', notificationDuration);
 }
 
 class NotificationService {
