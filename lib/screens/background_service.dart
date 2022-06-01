@@ -2,13 +2,21 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-
+import 'package:todoey/utils/constants.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void startBackgroundService() async {
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
+
+import 'package:todoey/screens/pomodoro_screen.dart';
+
+void startBackgroundService(timerNumber) async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  await preferences.setInt("hello", timerNumber);
+
   await initializeService();
 
   // final service = FlutterBackgroundService();
@@ -17,11 +25,13 @@ void startBackgroundService() async {
 
 void stopBackgroundService() async {
   final service = FlutterBackgroundService();
+
   service.invoke("stopService");
 }
 
 Future<void> initializeService() async {
   print('initializeService');
+
   final service = FlutterBackgroundService();
   await service.configure(
     androidConfiguration: AndroidConfiguration(
@@ -64,7 +74,7 @@ void onStart(ServiceInstance service) async {
   // We have to register the plugin manually
 
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  await preferences.setString("hello", "world");
+  // await preferences.setString("hello", "world");
 
   if (service is AndroidServiceInstance) {
     service.on('setAsForeground').listen((event) {
@@ -80,40 +90,81 @@ void onStart(ServiceInstance service) async {
     service.stopSelf();
   });
 
-  // bring to foreground
-  Timer.periodic(const Duration(seconds: 1), (timer) async {
-    final hello = preferences.getString("hello");
-    print(hello);
-
-    if (service is AndroidServiceInstance) {
-      service.setForegroundNotificationInfo(
-        title: "My App Service",
-        content: "Updated at ${DateTime.now()}",
-      );
-    }
-
-    /// you can see this log in logcat
-    print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
-
-    // test using external plugin
-    final deviceInfo = DeviceInfoPlugin();
-    String? device;
-    if (Platform.isAndroid) {
-      final androidInfo = await deviceInfo.androidInfo;
-      device = androidInfo.model;
-    }
-
-    if (Platform.isIOS) {
-      final iosInfo = await deviceInfo.iosInfo;
-      device = iosInfo.model;
-    }
-
-    service.invoke(
-      'update',
-      {
-        "current_date": DateTime.now().toIso8601String(),
-        "device": device,
-      },
-    );
+  service.on('setAsGo').listen((event) {
+    int timerSetDuration = 7;
+    print('>>>>>>>>>>>>>>>>>>> $timerSetDuration ');
   });
+
+  // int aa = Duration(minutes: 6).inSeconds;
+  // bring to foreground
+  int hello = preferences.getInt("hello")!;
+
+  Duration duration = Duration();
+  int seconds = Duration(minutes: hello).inSeconds;
+
+  Timer.periodic(
+    const Duration(seconds: 1),
+    (timer) async {
+      print(hello);
+      seconds = seconds - 1;
+
+      if (seconds < 0) {
+        // playSoundHere();
+        stopBackgroundService();
+      } else {
+        duration = Duration(seconds: seconds);
+      }
+
+      print('>>>>>>>>>>>>>>>>> showLeftTime');
+      String leftTime =
+          '${duration.inMinutes.remainder(60)}:${duration.inSeconds.remainder(60)}';
+
+      if (service is AndroidServiceInstance) {
+        service.setForegroundNotificationInfo(
+          title: "پومودرو",
+          content: " زمان باقی مانده: $leftTime",
+        );
+      }
+
+      /// you can see this log in logcat
+      print('FLUTTER BACKGROUND SERVICE: ${DateTime.now()}');
+
+      // test using external plugin
+      final deviceInfo = DeviceInfoPlugin();
+      String? device;
+      if (Platform.isAndroid) {
+        final androidInfo = await deviceInfo.androidInfo;
+        device = androidInfo.model;
+      }
+
+      if (Platform.isIOS) {
+        final iosInfo = await deviceInfo.iosInfo;
+        device = iosInfo.model;
+      }
+
+      service.invoke(
+        'update',
+        {
+          "current_date": DateTime.now().toIso8601String(),
+          "device": device,
+        },
+      );
+    },
+  );
+}
+
+Duration duration = Duration();
+int seconds = Duration(minutes: 6).inSeconds;
+
+String showLeftTime() {
+  seconds = seconds - 1;
+  if (seconds < 0) {
+    // playSoundHere();
+    stopBackgroundService();
+  } else {
+    duration = Duration(seconds: seconds);
+  }
+  print(timerNumber);
+  print('>>>>>>>>>>>>>>>>> showLeftTime');
+  return ('${duration.inMinutes.remainder(60)}:${duration.inSeconds.remainder(60)}');
 }

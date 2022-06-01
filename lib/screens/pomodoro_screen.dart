@@ -20,6 +20,13 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 
 String startedDateTime = 'hello';
 
+int workTimer = 35;
+int breakTimer = 5;
+int timerNumber = workTimer;
+
+bool countDown = true;
+bool working = true;
+
 void setStartedTime() async {
   final prefs = await SharedPreferences.getInstance();
   await prefs.setString('startedTime', tz.TZDateTime.now(tz.local).toString());
@@ -43,10 +50,6 @@ var ppp;
 
 double raidus = 30;
 var reamLight = Colors.grey.withOpacity(0.1);
-
-int workTimer = 25;
-int breakTimer = 5;
-int timerNumber = workTimer;
 
 class PomodoroScreen extends StatefulWidget {
   const PomodoroScreen({
@@ -73,9 +76,6 @@ class _PomodoroScreenState extends State<PomodoroScreen>
   Duration duration = Duration();
   Timer? timer;
 
-  bool countDown = true;
-  bool working = true;
-
   void selectBreak() {
     iconactiveColor = Colors.grey.shade600;
     iconButtonactiveColor = Colors.grey.withOpacity(0.9);
@@ -101,10 +101,12 @@ class _PomodoroScreenState extends State<PomodoroScreen>
       if (working) {
         selectWork();
         timerNumber = workTimer;
+        print('timerNumber: $timerNumber');
         reset();
       } else {
         selectBreak();
         timerNumber = breakTimer;
+        print('timerNumber: $timerNumber');
         reset();
       }
     });
@@ -140,7 +142,8 @@ class _PomodoroScreenState extends State<PomodoroScreen>
     notificationPromodoroEnds(countdownDuration.inSeconds);
     playSoundHere();
     timer?.cancel();
-    startBackgroundService();
+    startBackgroundService(timerNumber);
+    // FlutterBackgroundService().invoke("setAsGo");
     timer = Timer.periodic(Duration(milliseconds: 1000), (_) => addTime());
   }
 
