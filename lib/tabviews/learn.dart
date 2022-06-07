@@ -53,10 +53,10 @@ class _TabBarLearnState extends State<TabBarLearn> {
                               initY = initY + (snapshot.data!.x);
                           }
                           return Positioned(
-                            left: 0 - initX * 4,
-                            right: 0 + initX * 4,
-                            top: 25 - initY * 4,
-                            bottom: 10 + initY * 4,
+                            left: 0 - initX * 1.9,
+                            right: 0 + initX * 1.9,
+                            top: 0 - initY * 1.9,
+                            bottom: 0 + initY * 1.9,
                             child: Center(
                               child: Container(
                                 child: Stack(
@@ -139,10 +139,10 @@ class _TabBarLearnState extends State<TabBarLearn> {
                               initY = initY + (snapshot.data!.x);
                           }
                           return Positioned(
-                            left: 0 - initX * 4,
-                            right: 0 + initX * 4,
-                            top: 25 - initY * 4,
-                            bottom: 10 + initY * 4,
+                            left: 0 - initX * 1.9,
+                            right: 0 + initX * 1.9,
+                            top: 0 - initY * 1.9,
+                            bottom: 0 + initY * 1.9,
                             child: Center(
                               child: Container(
                                 child: Stack(
@@ -225,10 +225,10 @@ class _TabBarLearnState extends State<TabBarLearn> {
                               initY = initY + (snapshot.data!.x);
                           }
                           return Positioned(
-                            left: 0 - initX * 4,
-                            right: 0 + initX * 4,
-                            top: 25 - initY * 4,
-                            bottom: 10 + initY * 4,
+                            left: 0 - initX * 1.9,
+                            right: 0 + initX * 1.9,
+                            top: 0 - initY * 1.9,
+                            bottom: 0 + initY * 1.9,
                             child: Center(
                               child: Container(
                                 child: Stack(
