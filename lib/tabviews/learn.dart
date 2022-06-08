@@ -76,10 +76,14 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                     : 0 + initX * 1.9,
                             top: 20 - initY * 1.9 > 30.0
                                 ? 30.0
-                                : 20 - initY * 1.9,
+                                : 20 - initY * 1.9 < -30.0
+                                    ? -30.0
+                                    : 20 - initY * 1.9,
                             bottom: -20 + initY * 1.9 < -30
                                 ? -30.0
-                                : -20 + initY * 1.9,
+                                : -20 + initY * 1.9 > 30
+                                    ? 30
+                                    : -20 + initY * 1.9,
                             child: Center(
                               child: Container(
                                 child: Stack(
@@ -195,10 +199,27 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                   initY = initY + (snapshot.data!.x);
                               }
                               return Positioned(
-                                left: 0 - initX * 1.9,
-                                right: 0 + initX * 1.9,
-                                top: 0 - initY * 1.9,
-                                bottom: 0 + initY * 1.9,
+                                left: 0 - initX * 1.9 < 10.0 &&
+                                        0 - initX * 1.9 > -10.0
+                                    ? 0 - initX * 1.9
+                                    : 0 - initX * 1.9 > 10.0
+                                        ? 10.0
+                                        : -10,
+                                right: -0 + initX * 1.9 < -10.0
+                                    ? -10.0
+                                    : 0 + initX * 1.9 > 10.0
+                                        ? 10.0
+                                        : 0 + initX * 1.9,
+                                top: 20 - initY * 1.9 > 30.0
+                                    ? 30.0
+                                    : 20 - initY * 1.9 < -30.0
+                                        ? -30.0
+                                        : 20 - initY * 1.9,
+                                bottom: -20 + initY * 1.9 < -30
+                                    ? -30.0
+                                    : -20 + initY * 1.9 > 30
+                                        ? 30
+                                        : -20 + initY * 1.9,
                                 child: Center(
                                   child: Container(
                                     child: Stack(
