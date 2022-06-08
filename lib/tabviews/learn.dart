@@ -23,7 +23,16 @@ class _TabBarLearnState extends State<TabBarLearn> {
 
   String imgUrl = 'assets/images/af.jpg';
   String imgBlurUrl = 'assets/images/blur af.png';
+
+  String b1ImgUrl = 'assets/images/hero/B1.png';
+  String b1ImgBlurUrl = 'assets/images/hero/B1S.png';
+  String b2ImgUrl = 'assets/images/hero/B2.png';
+  String b2ImgBlurUrl = 'assets/images/hero/B2S.png';
+  String b3ImgUrl = 'assets/images/hero/B3.png';
+  String b3ImgBlurUrl = 'assets/images/hero/B3S.png';
+
   double initX = 0.0, initY = 0.0;
+  double lim = 10.0;
   var top;
   var bottom;
 
@@ -176,7 +185,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,8 +194,8 @@ class _TabBarLearnState extends State<TabBarLearn> {
                       clipBehavior: Clip.none,
                       children: [
                         Container(
-                          height: 250,
-                          width: 150,
+                          height: 230,
+                          width: 175,
                           child: null,
                         ),
                         StreamBuilder<GyroscopeEvent>(
@@ -199,27 +208,27 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                   initY = initY + (snapshot.data!.x);
                               }
                               return Positioned(
-                                left: 0 - initX * 1.9 < 10.0 &&
-                                        0 - initX * 1.9 > -10.0
+                                left: 0 - initX * 1.9 < lim &&
+                                        0 - initX * 1.9 > -lim
                                     ? 0 - initX * 1.9
-                                    : 0 - initX * 1.9 > 10.0
-                                        ? 10.0
-                                        : -10,
-                                right: -0 + initX * 1.9 < -10.0
-                                    ? -10.0
-                                    : 0 + initX * 1.9 > 10.0
-                                        ? 10.0
+                                    : 0 - initX * 1.9 > lim
+                                        ? lim
+                                        : -5,
+                                right: -0 + initX * 1.9 < -lim
+                                    ? -lim
+                                    : 0 + initX * 1.9 > lim
+                                        ? lim
                                         : 0 + initX * 1.9,
-                                top: 20 - initY * 1.9 > 30.0
-                                    ? 30.0
-                                    : 20 - initY * 1.9 < -30.0
-                                        ? -30.0
-                                        : 20 - initY * 1.9,
-                                bottom: -20 + initY * 1.9 < -30
-                                    ? -30.0
-                                    : -20 + initY * 1.9 > 30
-                                        ? 30
-                                        : -20 + initY * 1.9,
+                                top: 0 - initY * 1.9 > lim
+                                    ? lim
+                                    : 0 - initY * 1.9 < -lim
+                                        ? -lim
+                                        : 0 - initY * 1.9,
+                                bottom: -0 + initY * 1.9 < -lim
+                                    ? -lim
+                                    : -0 + initY * 1.9 > lim
+                                        ? lim
+                                        : -0 + initY * 1.9,
                                 child: Center(
                                   child: Container(
                                     child: Stack(
@@ -227,19 +236,16 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                         Padding(
                                           padding: const EdgeInsets.all(0.0),
                                           child: Container(
-                                            width: 150,
-                                            height: 250,
+                                            width: 175,
+                                            height: 230,
                                             decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.white,
-                                                  width: 0),
                                               image: DecorationImage(
-                                                opacity: 0.9,
+                                                opacity: 0.6,
                                                 colorFilter: ColorFilter.mode(
                                                     Colors.white
                                                         .withOpacity(.2),
                                                     BlendMode.srcOver),
-                                                image: AssetImage(imgBlurUrl),
+                                                image: AssetImage(b1ImgBlurUrl),
                                                 fit: BoxFit.fill,
                                               ),
                                               borderRadius:
@@ -265,12 +271,12 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                     context, '/pomodoroteachingscreen');
                               },
                               child: Container(
-                                width: 150,
-                                height: 250,
+                                width: 175,
+                                height: 230,
                                 decoration: BoxDecoration(
                                   // border: Border.all(color: Colors.white, width: 2),
                                   image: DecorationImage(
-                                    image: AssetImage(imgUrl),
+                                    image: AssetImage(b1ImgUrl),
                                     fit: BoxFit.fill,
                                     isAntiAlias: true,
                                   ),
@@ -288,7 +294,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                         children: [
                           Container(
                             height: 200,
-                            width: 150,
+                            width: 175,
                             child: null,
                           ),
                           StreamBuilder<GyroscopeEvent>(
@@ -301,10 +307,27 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                     initY = initY + (snapshot.data!.x);
                                 }
                                 return Positioned(
-                                  left: 0 - initX * 1.9,
-                                  right: 0 + initX * 1.9,
-                                  top: 0 - initY * 1.9,
-                                  bottom: 0 + initY * 1.9,
+                                  left: 0 - initX * 1.9 < lim &&
+                                          0 - initX * 1.9 > -lim
+                                      ? 0 - initX * 1.9
+                                      : 0 - initX * 1.9 > lim
+                                          ? lim
+                                          : -5,
+                                  right: -0 + initX * 1.9 < -lim
+                                      ? -lim
+                                      : 0 + initX * 1.9 > lim
+                                          ? lim
+                                          : 0 + initX * 1.9,
+                                  top: 0 - initY * 1.9 > lim
+                                      ? lim
+                                      : 0 - initY * 1.9 < -lim
+                                          ? -lim
+                                          : 0 - initY * 1.9,
+                                  bottom: -0 + initY * 1.9 < -lim
+                                      ? -lim
+                                      : -0 + initY * 1.9 > lim
+                                          ? lim
+                                          : -0 + initY * 1.9,
                                   child: Center(
                                     child: Container(
                                       child: Stack(
@@ -312,19 +335,17 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                           Padding(
                                             padding: const EdgeInsets.all(0.0),
                                             child: Container(
-                                              width: 150,
+                                              width: 175,
                                               height: 200,
                                               decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.white,
-                                                    width: 0),
                                                 image: DecorationImage(
-                                                  opacity: 0.9,
+                                                  opacity: 0.6,
                                                   colorFilter: ColorFilter.mode(
                                                       Colors.white
                                                           .withOpacity(.2),
                                                       BlendMode.srcOver),
-                                                  image: AssetImage(imgBlurUrl),
+                                                  image:
+                                                      AssetImage(b2ImgBlurUrl),
                                                   fit: BoxFit.fill,
                                                 ),
                                                 borderRadius:
@@ -350,12 +371,12 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                       context, '/pomodoroteachingscreen');
                                 },
                                 child: Container(
-                                  width: 150,
+                                  width: 175,
                                   height: 200,
                                   decoration: BoxDecoration(
                                     // border: Border.all(color: Colors.white, width: 2),
                                     image: DecorationImage(
-                                      image: AssetImage(imgUrl),
+                                      image: AssetImage(b2ImgUrl),
                                       fit: BoxFit.fill,
                                       isAntiAlias: true,
                                     ),
@@ -372,7 +393,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(35.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
 
                 // color: Colors.red,
                 child: Stack(
@@ -393,10 +414,27 @@ class _TabBarLearnState extends State<TabBarLearn> {
                               initY = initY + (snapshot.data!.x);
                           }
                           return Positioned(
-                            left: 0 - initX * 1.9,
-                            right: 0 + initX * 1.9,
-                            top: 0 - initY * 1.9,
-                            bottom: 0 + initY * 1.9,
+                            left:
+                                0 - initX * 1.9 < lim && 0 - initX * 1.9 > -lim
+                                    ? 0 - initX * 1.9
+                                    : 0 - initX * 1.9 > lim
+                                        ? lim
+                                        : -5,
+                            right: -0 + initX * 1.9 < -lim
+                                ? -lim
+                                : 0 + initX * 1.9 > lim
+                                    ? lim
+                                    : 0 + initX * 1.9,
+                            top: 0 - initY * 1.9 > lim
+                                ? lim
+                                : 0 - initY * 1.9 < -lim
+                                    ? -lim
+                                    : 0 - initY * 1.9,
+                            bottom: -0 + initY * 1.9 < -lim
+                                ? -lim
+                                : -0 + initY * 1.9 > lim
+                                    ? lim
+                                    : -0 + initY * 1.9,
                             child: Center(
                               child: Container(
                                 child: Stack(
@@ -404,7 +442,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                     Padding(
                                       padding: const EdgeInsets.all(0.0),
                                       child: Container(
-                                        width: 380,
+                                        width: 400,
                                         height: 200,
                                         decoration: BoxDecoration(
                                           border: Border.all(
@@ -414,7 +452,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                             colorFilter: ColorFilter.mode(
                                                 Colors.white.withOpacity(.2),
                                                 BlendMode.srcOver),
-                                            image: AssetImage(imgBlurUrl),
+                                            image: AssetImage(b3ImgBlurUrl),
                                             fit: BoxFit.fill,
                                           ),
                                           borderRadius:
@@ -445,7 +483,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                             decoration: BoxDecoration(
                               // border: Border.all(color: Colors.white, width: 2),
                               image: DecorationImage(
-                                image: AssetImage(imgUrl),
+                                image: AssetImage(b3ImgUrl),
                                 fit: BoxFit.fill,
                                 isAntiAlias: true,
                               ),
@@ -482,10 +520,27 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                   initY = initY + (snapshot.data!.x);
                               }
                               return Positioned(
-                                left: 0 - initX * 1.9,
-                                right: 0 + initX * 1.9,
-                                top: 0 - initY * 1.9,
-                                bottom: 0 + initY * 1.9,
+                                left: 0 - initX * 1.9 < 10.0 &&
+                                        0 - initX * 1.9 > -10.0
+                                    ? 0 - initX * 1.9
+                                    : 0 - initX * 1.9 > 10.0
+                                        ? 10.0
+                                        : -10,
+                                right: -0 + initX * 1.9 < -10.0
+                                    ? -10.0
+                                    : 0 + initX * 1.9 > 10.0
+                                        ? 10.0
+                                        : 0 + initX * 1.9,
+                                top: 20 - initY * 1.9 > 30.0
+                                    ? 30.0
+                                    : 20 - initY * 1.9 < -30.0
+                                        ? -30.0
+                                        : 20 - initY * 1.9,
+                                bottom: -20 + initY * 1.9 < -30
+                                    ? -30.0
+                                    : -20 + initY * 1.9 > 30
+                                        ? 30
+                                        : -20 + initY * 1.9,
                                 child: Center(
                                   child: Container(
                                     child: Stack(
