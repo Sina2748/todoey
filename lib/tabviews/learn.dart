@@ -24,6 +24,8 @@ class _TabBarLearnState extends State<TabBarLearn> {
   String imgUrl = 'assets/images/af.jpg';
   String imgBlurUrl = 'assets/images/blur af.png';
   double initX = 0.0, initY = 0.0;
+  var top;
+  var bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +44,42 @@ class _TabBarLearnState extends State<TabBarLearn> {
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    Container(
-                      // width: 400,
-                      height: 500,
-                      // child: null,
-                    ),
                     StreamBuilder<GyroscopeEvent>(
                         stream: SensorsPlatform.instance.gyroscopeEvents,
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             if (snapshot.data!.y.abs() > 0.0)
                               initX = initX + (snapshot.data!.y);
+
                             if (snapshot.data!.x.abs() > 0.0)
                               initY = initY + (snapshot.data!.x);
+                            top = 20 - initY * 1.9 > 30.0
+                                ? 30.0
+                                : 20 - initY * 1.9;
+                            bottom = -20 + initY * 1.9 < -30
+                                ? -30.0
+                                : -20 + initY * 1.9;
+                            print(bottom);
+                            print(top);
                           }
                           return Positioned(
-                            left: 0 - initX * 0,
-                            right: 0 + initX * 0,
-                            top: 0 - initY * 1.9,
-                            bottom: 0 + initY * 1.9,
+                            left: 0 - initX * 1.9 < 10.0 &&
+                                    0 - initX * 1.9 > -10.0
+                                ? 0 - initX * 1.9
+                                : 0 - initX * 1.9 > 10.0
+                                    ? 10.0
+                                    : -10,
+                            right: -0 + initX * 1.9 < -10.0
+                                ? -10.0
+                                : 0 + initX * 1.9 > 10.0
+                                    ? 10.0
+                                    : 0 + initX * 1.9,
+                            top: 20 - initY * 1.9 > 30.0
+                                ? 30.0
+                                : 20 - initY * 1.9,
+                            bottom: -20 + initY * 1.9 < -30
+                                ? -30.0
+                                : -20 + initY * 1.9,
                             child: Center(
                               child: Container(
                                 child: Stack(
@@ -74,7 +93,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                           border: Border.all(
                                               color: Colors.white, width: 0),
                                           image: DecorationImage(
-                                            opacity: 0.9,
+                                            opacity: 0.8,
                                             colorFilter: ColorFilter.mode(
                                                 Colors.white.withOpacity(.2),
                                                 BlendMode.srcOver),
@@ -119,12 +138,221 @@ class _TabBarLearnState extends State<TabBarLearn> {
                         ),
                       ),
                     ),
+                    Positioned(
+                      bottom: 100,
+                      right: 20,
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        alignment: Alignment.center,
+                        height: 200,
+                        width: 300,
+                        child: Row(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: Text('go!'),
+                            ),
+                            Spacer(),
+                            Text(
+                              'تخفیف ويژه',
+                              textDirection: TextDirection.rtl,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.lemonada(
+                                  textStyle: TextStyle(
+                                fontSize: 25,
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                fontWeight: FontWeight.w600,
+                              )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          height: 250,
+                          width: 150,
+                          child: null,
+                        ),
+                        StreamBuilder<GyroscopeEvent>(
+                            stream: SensorsPlatform.instance.gyroscopeEvents,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                if (snapshot.data!.y.abs() > 0.0)
+                                  initX = initX + (snapshot.data!.y);
+                                if (snapshot.data!.x.abs() > 0.0)
+                                  initY = initY + (snapshot.data!.x);
+                              }
+                              return Positioned(
+                                left: 0 - initX * 1.9,
+                                right: 0 + initX * 1.9,
+                                top: 0 - initY * 1.9,
+                                bottom: 0 + initY * 1.9,
+                                child: Center(
+                                  child: Container(
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(0.0),
+                                          child: Container(
+                                            width: 150,
+                                            height: 250,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.white,
+                                                  width: 0),
+                                              image: DecorationImage(
+                                                opacity: 0.9,
+                                                colorFilter: ColorFilter.mode(
+                                                    Colors.white
+                                                        .withOpacity(.2),
+                                                    BlendMode.srcOver),
+                                                image: AssetImage(imgBlurUrl),
+                                                fit: BoxFit.fill,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                        Positioned(
+                          // left: 20,
+                          // right: 20,
+                          // top: 10,
+                          bottom: 00,
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, '/pomodoroteachingscreen');
+                              },
+                              child: Container(
+                                width: 150,
+                                height: 250,
+                                decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.white, width: 2),
+                                  image: DecorationImage(
+                                    image: AssetImage(imgUrl),
+                                    fit: BoxFit.fill,
+                                    isAntiAlias: true,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            height: 200,
+                            width: 150,
+                            child: null,
+                          ),
+                          StreamBuilder<GyroscopeEvent>(
+                              stream: SensorsPlatform.instance.gyroscopeEvents,
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  if (snapshot.data!.y.abs() > 0.0)
+                                    initX = initX + (snapshot.data!.y);
+                                  if (snapshot.data!.x.abs() > 0.0)
+                                    initY = initY + (snapshot.data!.x);
+                                }
+                                return Positioned(
+                                  left: 0 - initX * 1.9,
+                                  right: 0 + initX * 1.9,
+                                  top: 0 - initY * 1.9,
+                                  bottom: 0 + initY * 1.9,
+                                  child: Center(
+                                    child: Container(
+                                      child: Stack(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(0.0),
+                                            child: Container(
+                                              width: 150,
+                                              height: 200,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.white,
+                                                    width: 0),
+                                                image: DecorationImage(
+                                                  opacity: 0.9,
+                                                  colorFilter: ColorFilter.mode(
+                                                      Colors.white
+                                                          .withOpacity(.2),
+                                                      BlendMode.srcOver),
+                                                  image: AssetImage(imgBlurUrl),
+                                                  fit: BoxFit.fill,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                          Positioned(
+                            // left: 20,
+                            // right: 20,
+                            // top: 10,
+                            bottom: 00,
+                            child: Center(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/pomodoroteachingscreen');
+                                },
+                                child: Container(
+                                  width: 150,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    // border: Border.all(color: Colors.white, width: 2),
+                                    image: DecorationImage(
+                                      image: AssetImage(imgUrl),
+                                      fit: BoxFit.fill,
+                                      isAntiAlias: true,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
               Container(
-                height: 230,
-                width: 350,
+                padding: const EdgeInsets.all(35.0),
+
                 // color: Colors.red,
                 child: Stack(
                   clipBehavior: Clip.none,
@@ -209,89 +437,286 @@ class _TabBarLearnState extends State<TabBarLearn> {
                   ],
                 ),
               ),
-              Container(
-                height: 230,
-                width: 300,
-                // color: Colors.red,
-                child: Stack(
-                  clipBehavior: Clip.none,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: 400,
-                      height: 200,
-                      child: null,
-                    ),
-                    StreamBuilder<GyroscopeEvent>(
-                        stream: SensorsPlatform.instance.gyroscopeEvents,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            if (snapshot.data!.y.abs() > 0.0)
-                              initX = initX + (snapshot.data!.y);
-                            if (snapshot.data!.x.abs() > 0.0)
-                              initY = initY + (snapshot.data!.x);
-                          }
-                          return Positioned(
-                            left: 0 - initX * 1.9,
-                            right: 0 + initX * 1.9,
-                            top: 0 - initY * 1.9,
-                            bottom: 0 + initY * 1.9,
-                            child: Center(
-                              child: Container(
-                                child: Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(0.0),
-                                      child: Container(
-                                        width: 380,
-                                        height: 200,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.white, width: 0),
-                                          image: DecorationImage(
-                                            opacity: 0.9,
-                                            colorFilter: ColorFilter.mode(
-                                                Colors.white.withOpacity(.2),
-                                                BlendMode.srcOver),
-                                            image: AssetImage(imgBlurUrl),
-                                            fit: BoxFit.fill,
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          child: null,
+                        ),
+                        StreamBuilder<GyroscopeEvent>(
+                            stream: SensorsPlatform.instance.gyroscopeEvents,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                if (snapshot.data!.y.abs() > 0.0)
+                                  initX = initX + (snapshot.data!.y);
+                                if (snapshot.data!.x.abs() > 0.0)
+                                  initY = initY + (snapshot.data!.x);
+                              }
+                              return Positioned(
+                                left: 0 - initX * 1.9,
+                                right: 0 + initX * 1.9,
+                                top: 0 - initY * 1.9,
+                                bottom: 0 + initY * 1.9,
+                                child: Center(
+                                  child: Container(
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(0.0),
+                                          child: Container(
+                                            width: 100,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.white,
+                                                  width: 0),
+                                              image: DecorationImage(
+                                                opacity: 0.9,
+                                                colorFilter: ColorFilter.mode(
+                                                    Colors.white
+                                                        .withOpacity(.2),
+                                                    BlendMode.srcOver),
+                                                image: AssetImage(imgBlurUrl),
+                                                fit: BoxFit.fill,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
+                                ),
+                              );
+                            }),
+                        Positioned(
+                          // left: 20,
+                          // right: 20,
+                          // top: 10,
+                          bottom: 00,
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, '/pomodoroteachingscreen');
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.white, width: 2),
+                                  image: DecorationImage(
+                                    image: AssetImage(imgUrl),
+                                    fit: BoxFit.fill,
+                                    isAntiAlias: true,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
                             ),
-                          );
-                        }),
-                    Positioned(
-                      // left: 20,
-                      // right: 20,
-                      // top: 10,
-                      // bottom: 10,
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, '/pomodoroteachingscreen');
-                          },
-                          child: Container(
-                            width: 400,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              // border: Border.all(color: Colors.white, width: 2),
-                              image: DecorationImage(
-                                image: AssetImage(imgUrl),
-                                fit: BoxFit.fill,
-                                isAntiAlias: true,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          child: null,
+                        ),
+                        StreamBuilder<GyroscopeEvent>(
+                            stream: SensorsPlatform.instance.gyroscopeEvents,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                if (snapshot.data!.y.abs() > 0.0)
+                                  initX = initX + (snapshot.data!.y);
+                                if (snapshot.data!.x.abs() > 0.0)
+                                  initY = initY + (snapshot.data!.x);
+                              }
+                              return Positioned(
+                                left: 0 - initX * 1.9,
+                                right: 0 + initX * 1.9,
+                                top: 0 - initY * 1.9,
+                                bottom: 0 + initY * 1.9,
+                                child: Center(
+                                  child: Container(
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(0.0),
+                                          child: Container(
+                                            width: 100,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.white,
+                                                  width: 0),
+                                              image: DecorationImage(
+                                                opacity: 0.9,
+                                                colorFilter: ColorFilter.mode(
+                                                    Colors.white
+                                                        .withOpacity(.2),
+                                                    BlendMode.srcOver),
+                                                image: AssetImage(imgBlurUrl),
+                                                fit: BoxFit.fill,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                        Positioned(
+                          // left: 20,
+                          // right: 20,
+                          // top: 10,
+                          bottom: 00,
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, '/pomodoroteachingscreen');
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.white, width: 2),
+                                  image: DecorationImage(
+                                    image: AssetImage(imgUrl),
+                                    fit: BoxFit.fill,
+                                    isAntiAlias: true,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                         ),
-                      ),
+                      ],
+                    ),
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          child: null,
+                        ),
+                        StreamBuilder<GyroscopeEvent>(
+                            stream: SensorsPlatform.instance.gyroscopeEvents,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                if (snapshot.data!.y.abs() > 0.0)
+                                  initX = initX + (snapshot.data!.y);
+                                if (snapshot.data!.x.abs() > 0.0)
+                                  initY = initY + (snapshot.data!.x);
+                              }
+                              return Positioned(
+                                left: 0 - initX * 1.9,
+                                right: 0 + initX * 1.9,
+                                top: 0 - initY * 1.9,
+                                bottom: 0 + initY * 1.9,
+                                child: Center(
+                                  child: Container(
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(0.0),
+                                          child: Container(
+                                            width: 100,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.white,
+                                                  width: 0),
+                                              image: DecorationImage(
+                                                opacity: 0.9,
+                                                colorFilter: ColorFilter.mode(
+                                                    Colors.white
+                                                        .withOpacity(.2),
+                                                    BlendMode.srcOver),
+                                                image: AssetImage(imgBlurUrl),
+                                                fit: BoxFit.fill,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                        Positioned(
+                          // left: 20,
+                          // right: 20,
+                          // top: 10,
+                          bottom: 00,
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, '/pomodoroteachingscreen');
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  // border: Border.all(color: Colors.white, width: 2),
+                                  image: DecorationImage(
+                                    image: AssetImage(imgUrl),
+                                    fit: BoxFit.fill,
+                                    isAntiAlias: true,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 35.0, vertical: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 100,
+                      child: Text(
+                          'A material widget thats displayed at the bottom of an app for '),
+                    ),
+                    Container(
+                      width: 100,
+                      child: Text('selecting among a small number of views'),
+                    ),
+                    Container(
+                      width: 100,
+                      child: Text('typically between three and five for '),
                     ),
                   ],
                 ),
