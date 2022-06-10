@@ -56,6 +56,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     headerFooterImage(
+                      height: 500,
                       AAA: Positioned(
                         bottom: 100,
                         right: 20,
@@ -167,27 +168,99 @@ class _TabBarLearnState extends State<TabBarLearn> {
                     ),
                     //Ending
                     headerFooterImage(
+                      height: 400,
                       AAA: Positioned(
-                        bottom: 100,
-                        right: 20,
+                        top: 0,
+                        left: 0,
+                        right: 0,
                         child: Container(
-                          padding: EdgeInsets.all(20),
-                          alignment: Alignment.center,
-                          height: 200,
-                          width: 300,
-                          child: Row(
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          color: Colors.green.withOpacity(0.3),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                'تخفیف ويژه',
+                                'از اینترنت چه خبر؟',
                                 textDirection: TextDirection.rtl,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.lemonada(
                                     textStyle: TextStyle(
                                   fontSize: 25,
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
+                                  color: Theme.of(context).colorScheme.primary,
                                   fontWeight: FontWeight.w600,
                                 )),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 230,
+                                    child: null,
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 100,
+                                    child: null,
+                                  )
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 230,
+                                    child: null,
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 100,
+                                    child: null,
+                                  )
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 230,
+                                    child: null,
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 100,
+                                    child: null,
+                                  )
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 230,
+                                    child: null,
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    color: Colors.red.withOpacity(0.3),
+                                    height: 100,
+                                    width: 100,
+                                    child: null,
+                                  )
+                                ],
                               ),
                             ],
                           ),
@@ -215,6 +288,7 @@ class headerFooterImage extends StatelessWidget {
     required this.picblur,
     required this.pic,
     required this.AAA,
+    required this.height,
   }) : super(key: key);
 
   final double initX;
@@ -222,12 +296,13 @@ class headerFooterImage extends StatelessWidget {
   final String picblur;
   final String pic;
   final dynamic AAA;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 500,
+      height: height,
       // color: Colors.red,
       child: Stack(
         clipBehavior: Clip.none,
