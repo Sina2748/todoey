@@ -20,16 +20,16 @@ class TabBarLearn extends StatefulWidget {
 class _TabBarLearnState extends State<TabBarLearn> {
   String heroImgUrl = 'assets/images/hero/hero.png';
   String heroImgBlurUrl = 'assets/images/hero/hero-shadow.png';
-
   String imgUrl = 'assets/images/af.jpg';
   String imgBlurUrl = 'assets/images/blur af.png';
-
   String b1ImgUrl = 'assets/images/hero/B1.png';
   String b1ImgBlurUrl = 'assets/images/hero/B1S.png';
   String b2ImgUrl = 'assets/images/hero/B2.png';
   String b2ImgBlurUrl = 'assets/images/hero/B2S.png';
   String b3ImgUrl = 'assets/images/hero/B3.png';
   String b3ImgBlurUrl = 'assets/images/hero/B3S.png';
+  String b4ImgUrl = 'assets/images/hero/B5.png';
+  String b4ImgBlurUrl = 'assets/images/hero/B5S.png';
 
   double initX = 0.0, initY = 0.0;
   var top;
@@ -53,129 +53,46 @@ class _TabBarLearnState extends State<TabBarLearn> {
                 }
 
                 return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: double.infinity,
-                      height: 500,
-                      // color: Colors.red,
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Positioned(
-                            left: 0 - initX * 1.9 < 10.0 &&
-                                    0 - initX * 1.9 > -10.0
-                                ? 0 - initX * 1.9
-                                : 0 - initX * 1.9 > 10.0
-                                    ? 10.0
-                                    : -10,
-                            right: -0 + initX * 1.9 < -10.0
-                                ? -10.0
-                                : 0 + initX * 1.9 > 10.0
-                                    ? 10.0
-                                    : 0 + initX * 1.9,
-                            top: 20 - initY * 1.9 > 30.0
-                                ? 30.0
-                                : 20 - initY * 1.9 < -30.0
-                                    ? -30.0
-                                    : 20 - initY * 1.9,
-                            bottom: -20 + initY * 1.9 < -30
-                                ? -30.0
-                                : -20 + initY * 1.9 > 30
-                                    ? 30
-                                    : -20 + initY * 1.9,
-                            child: Center(
-                              child: Container(
-                                child: Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(0.0),
-                                      child: Container(
-                                        // width: 380,
-                                        // height: 200,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.white, width: 0),
-                                          image: DecorationImage(
-                                            opacity: 0.8,
-                                            colorFilter: ColorFilter.mode(
-                                                Colors.white.withOpacity(.2),
-                                                BlendMode.srcOver),
-                                            image: AssetImage(heroImgBlurUrl),
-                                            fit: BoxFit.fitWidth,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(0),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                    headerFooterImage(
+                      AAA: Positioned(
+                        bottom: 100,
+                        right: 20,
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          alignment: Alignment.center,
+                          height: 200,
+                          width: 300,
+                          child: Row(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {},
+                                child: Text('go!'),
                               ),
-                            ),
+                              Spacer(),
+                              Text(
+                                'تخفیف ويژه',
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.lemonada(
+                                    textStyle: TextStyle(
+                                  fontSize: 25,
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                              ),
+                            ],
                           ),
-                          Positioned(
-                            // left: 20,
-                            // right: 20,
-                            // top: 10,
-                            // bottom: 10,
-                            child: Center(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, '/pomodoroteachingscreen');
-                                },
-                                child: Container(
-                                  // width: 400,
-                                  // height: 200,
-                                  decoration: BoxDecoration(
-                                    // border: Border.all(color: Colors.white, width: 2),
-                                    image: DecorationImage(
-                                      image: AssetImage(heroImgUrl),
-                                      fit: BoxFit.fitWidth,
-                                      isAntiAlias: true,
-                                    ),
-                                    borderRadius: BorderRadius.circular(0),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 100,
-                            right: 20,
-                            child: Container(
-                              padding: EdgeInsets.all(20),
-                              alignment: Alignment.center,
-                              height: 200,
-                              width: 300,
-                              child: Row(
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text('go!'),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    'تخفیف ويژه',
-                                    textDirection: TextDirection.rtl,
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.lemonada(
-                                        textStyle: TextStyle(
-                                      fontSize: 25,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
-                                      fontWeight: FontWeight.w600,
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
+                      initX: initX,
+                      initY: initY,
+                      picblur: heroImgBlurUrl,
+                      pic: heroImgUrl,
                     ),
+                    //thubnails
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: Row(
@@ -185,23 +102,50 @@ class _TabBarLearnState extends State<TabBarLearn> {
                           Container(
                             // color: Colors.redAccent,
                             child: imageStack(
+                                line1: 'To Do List',
+                                line2: 'عادت سازی برای انجام',
+                                line3: 'کارها',
                                 width: 175,
-                                height: 230,
+                                height: 270,
                                 initX: initX,
                                 initY: initY,
                                 bImgBlurUrl: b1ImgBlurUrl,
                                 bImgUrl: b1ImgUrl),
                           ),
                           Container(
-                            // color: Colors.red,
+                            // color: Colors.green,
                             alignment: Alignment.bottomCenter,
-                            child: imageStack(
-                                width: 175,
-                                height: 200,
-                                initX: initX,
-                                initY: initY,
-                                bImgBlurUrl: b2ImgBlurUrl,
-                                bImgUrl: b2ImgUrl),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 15),
+                                  margin: EdgeInsets.symmetric(horizontal: 20),
+                                  // color: Colors.red,
+                                  child: Text(
+                                    'آموزش‌ها:      ',
+                                    textDirection: TextDirection.rtl,
+                                    // textAlign: TextAlign.center,
+                                    style: GoogleFonts.lemonada(
+                                        textStyle: TextStyle(
+                                      fontSize: 15,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.w600,
+                                    )),
+                                  ),
+                                ),
+                                imageStack(
+                                    line1: 'پومودرو',
+                                    line2: 'روش مدیریت زمان',
+                                    width: 175,
+                                    height: 200,
+                                    initX: initX,
+                                    initY: initY,
+                                    bImgBlurUrl: b2ImgBlurUrl,
+                                    bImgUrl: b2ImgUrl),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -211,6 +155,9 @@ class _TabBarLearnState extends State<TabBarLearn> {
 
                       // color: Colors.red,
                       child: imageStack(
+                          line1: "ji",
+                          line2: "ji",
+                          line3: "",
                           width: 350,
                           height: 175,
                           initX: initX,
@@ -218,10 +165,150 @@ class _TabBarLearnState extends State<TabBarLearn> {
                           bImgBlurUrl: b3ImgBlurUrl,
                           bImgUrl: b3ImgUrl),
                     ),
+                    //Ending
+                    headerFooterImage(
+                      AAA: Positioned(
+                        bottom: 100,
+                        right: 20,
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          alignment: Alignment.center,
+                          height: 200,
+                          width: 300,
+                          child: Row(
+                            children: [
+                              Text(
+                                'تخفیف ويژه',
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.lemonada(
+                                    textStyle: TextStyle(
+                                  fontSize: 25,
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      initX: initX,
+                      initY: initY,
+                      picblur: b4ImgBlurUrl,
+                      pic: b4ImgUrl,
+                    ),
                   ],
                 );
               }),
         ),
+      ),
+    );
+  }
+}
+
+class headerFooterImage extends StatelessWidget {
+  const headerFooterImage({
+    Key? key,
+    required this.initX,
+    required this.initY,
+    required this.picblur,
+    required this.pic,
+    required this.AAA,
+  }) : super(key: key);
+
+  final double initX;
+  final double initY;
+  final String picblur;
+  final String pic;
+  final dynamic AAA;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 500,
+      // color: Colors.red,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+            left: 0 - initX * 1.9 < 10.0 && 0 - initX * 1.9 > -10.0
+                ? 0 - initX * 1.9
+                : 0 - initX * 1.9 > 10.0
+                    ? 10.0
+                    : -10,
+            right: -0 + initX * 1.9 < -10.0
+                ? -10.0
+                : 0 + initX * 1.9 > 10.0
+                    ? 10.0
+                    : 0 + initX * 1.9,
+            top: 20 - initY * 1.9 > 30.0
+                ? 30.0
+                : 20 - initY * 1.9 < -30.0
+                    ? -30.0
+                    : 20 - initY * 1.9,
+            bottom: -20 + initY * 1.9 < -30
+                ? -30.0
+                : -20 + initY * 1.9 > 30
+                    ? 30
+                    : -20 + initY * 1.9,
+            child: Center(
+              child: Container(
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(0.0),
+                      child: Container(
+                        // width: 380,
+                        // height: 200,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white, width: 0),
+                          image: DecorationImage(
+                            opacity: 0.8,
+                            colorFilter: ColorFilter.mode(
+                                Colors.white.withOpacity(.2),
+                                BlendMode.srcOver),
+                            image: AssetImage(picblur),
+                            fit: BoxFit.fitWidth,
+                          ),
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            // left: 20,
+            // right: 20,
+            // top: 10,
+            // bottom: 10,
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/pomodoroteachingscreen');
+                },
+                child: Container(
+                  // width: 400,
+                  // height: 200,
+                  decoration: BoxDecoration(
+                    // border: Border.all(color: Colors.white, width: 2),
+                    image: DecorationImage(
+                      image: AssetImage(pic),
+                      fit: BoxFit.fitWidth,
+                      isAntiAlias: true,
+                    ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          AAA,
+        ],
       ),
     );
   }
@@ -236,6 +323,9 @@ class imageStack extends StatelessWidget {
     required this.initY,
     required this.bImgBlurUrl,
     required this.bImgUrl,
+    required this.line1,
+    required this.line2,
+    this.line3 = "",
   }) : super(key: key);
   final double width;
   final double height;
@@ -243,8 +333,11 @@ class imageStack extends StatelessWidget {
   final double initY;
   final String bImgBlurUrl;
   final String bImgUrl;
+  final String line1;
+  final String line2;
+  final String line3;
 
-  final double lim = 50.0;
+  final double lim = 10.0;
   final double a = 1.9;
   @override
   Widget build(BuildContext context) {
@@ -279,12 +372,12 @@ class imageStack extends StatelessWidget {
                   : -0 + initY * a,
           child: Container(
             child: Container(
-              width: width - 5,
-              height: height - 5,
+              width: width - 10,
+              height: height - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                  opacity: 0.9,
+                  opacity: 0.7,
                   image: AssetImage(bImgBlurUrl),
                   fit: BoxFit.fill,
                 ),
@@ -313,6 +406,51 @@ class imageStack extends StatelessWidget {
             ),
           ),
         ),
+        Positioned(
+          bottom: 40,
+          right: 20,
+          child: Container(
+            // color: Colors.red,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  '$line1',
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.end,
+                  style: GoogleFonts.lemonada(
+                      textStyle: TextStyle(
+                    fontSize: 15,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontWeight: FontWeight.w600,
+                  )),
+                ),
+                Text(
+                  '$line2',
+                  textDirection: TextDirection.rtl,
+                  // textAlign: TextAlign.center,
+                  style: GoogleFonts.lemonada(
+                      textStyle: TextStyle(
+                    fontSize: 10,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontWeight: FontWeight.w600,
+                  )),
+                ),
+                Text(
+                  '$line3',
+                  textDirection: TextDirection.rtl,
+                  // textAlign: TextAlign.center,
+                  style: GoogleFonts.lemonada(
+                      textStyle: TextStyle(
+                    fontSize: 10,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontWeight: FontWeight.w600,
+                  )),
+                ),
+              ],
+            ),
+          ),
+        )
       ],
     );
   }
