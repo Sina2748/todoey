@@ -14,6 +14,7 @@ class TabBarTools extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: 15),
       decoration: kBackgroundImage,
       child: SingleChildScrollView(
         padding: EdgeInsets.all(6),

@@ -58,7 +58,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                   children: [
                     headerFooterImage(
                       height: 500,
-                      AAA: Positioned(
+                      WidgetOnTop: Positioned(
                         bottom: 100,
                         right: 20,
                         child: Container(
@@ -157,9 +157,9 @@ class _TabBarLearnState extends State<TabBarLearn> {
 
                       // color: Colors.red,
                       child: imageStack(
-                          line1: "ji",
-                          line2: "ji",
-                          line3: "",
+                          line1: "چرخه زندگی",
+                          line2: "هر هدف چقدر مهم هست؟",
+                          line3: "در یک نگاه تعادلش رو بررسی کن",
                           width: 350,
                           height: 175,
                           initX: initX,
@@ -170,7 +170,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                     //Ending
                     headerFooterImage(
                       height: 400,
-                      AAA: Positioned(
+                      WidgetOnTop: Positioned(
                         top: 0,
                         left: 0,
                         right: 0,
@@ -179,16 +179,21 @@ class _TabBarLearnState extends State<TabBarLearn> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
-                                'از اینترنت چه خبر؟',
-                                textDirection: TextDirection.rtl,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.lemonada(
-                                    textStyle: TextStyle(
-                                  fontSize: 25,
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontWeight: FontWeight.w600,
-                                )),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
+                                child: Text(
+                                  'از اینترنت چه خبر؟',
+                                  textDirection: TextDirection.rtl,
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lemonada(
+                                      textStyle: TextStyle(
+                                    fontSize: 25,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.w600,
+                                  )),
+                                ),
                               ),
                               NewsLink(
                                 newsTitle:
@@ -263,8 +268,13 @@ class NewsLink extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              alignment: Alignment.center,
-              color: Colors.white12,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white12,
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              alignment: Alignment.centerRight,
+              // color: Colors.white24,
               height: 80,
               width: 235,
               child: Text(
@@ -313,7 +323,7 @@ class headerFooterImage extends StatelessWidget {
     required this.initY,
     required this.picblur,
     required this.pic,
-    required this.AAA,
+    required this.WidgetOnTop,
     required this.height,
   }) : super(key: key);
 
@@ -321,7 +331,7 @@ class headerFooterImage extends StatelessWidget {
   final double initY;
   final String picblur;
   final String pic;
-  final dynamic AAA;
+  final dynamic WidgetOnTop;
   final double height;
 
   @override
@@ -408,7 +418,7 @@ class headerFooterImage extends StatelessWidget {
               ),
             ),
           ),
-          AAA,
+          WidgetOnTop,
         ],
       ),
     );

@@ -111,7 +111,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
       TabBarTools(),
       Container(
         decoration: kBackgroundImage,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 150),
         // color: Theme.of(context).colorScheme.surface,
         child: Center(
           child: Column(
