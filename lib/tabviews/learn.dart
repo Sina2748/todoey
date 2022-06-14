@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todoey/utils/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'dart:ui';
 
@@ -175,7 +176,6 @@ class _TabBarLearnState extends State<TabBarLearn> {
                         right: 0,
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 30),
-                          color: Colors.green.withOpacity(0.3),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
@@ -190,77 +190,36 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                   fontWeight: FontWeight.w600,
                                 )),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 230,
-                                    child: null,
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 100,
-                                    child: null,
-                                  )
-                                ],
+                              NewsLink(
+                                newsTitle:
+                                    '۱۱ راهکار برای افزایش تمرکز موقع کار',
+                                imageLink:
+                                    'https://cafetarget.com/wp-content/uploads/2020/09/steve-johnson-F3ig12CrnGo-unsplash-scaled.jpg',
+                                newsLink:
+                                    'https://cafetarget.com/2020/11/09/focus/',
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 230,
-                                    child: null,
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 100,
-                                    child: null,
-                                  )
-                                ],
+                              NewsLink(
+                                newsTitle:
+                                    '۳ دلیل عدم کارکد درست دفتر برنامه‌ریزی شخصی',
+                                imageLink:
+                                    'https://my-bujo.ir/wp-content/uploads/2021/12/3-%D8%AF%D9%84%DB%8C%D9%84-%D8%B9%D8%AF%D9%85-%DA%A9%D8%A7%D8%B1%DA%A9%D8%B1%D8%AF-%D8%AF%D8%B1%D8%B3%D8%AA-%D8%AF%D9%81%D8%AA%D8%B1-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%E2%80%8C%D8%B1%DB%8C%D8%B2%DB%8C-%D8%B4%D8%AE%D8%B5%DB%8C.jpg',
+                                newsLink:
+                                    'https://my-bujo.ir/3-%d8%af%d9%84%db%8c%d9%84-%d8%b9%d8%af%d9%85-%da%a9%d8%a7%d8%b1%da%a9%d8%b1%d8%af-%d8%af%d8%b1%d8%b3%d8%aa-%d8%af%d9%81%d8%aa%d8%b1-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87%e2%80%8c%d8%b1%db%8c%d8%b2/',
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 230,
-                                    child: null,
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 100,
-                                    child: null,
-                                  )
-                                ],
+                              NewsLink(
+                                newsTitle: 'ماه نگار',
+                                imageLink:
+                                    'https://cafetarget.com/wp-content/uploads/2020/09/photo_2020-08-24_15-11-21.jpg',
+                                newsLink:
+                                    'https://cafetarget.com/2020/09/07/monthly-log/',
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 230,
-                                    child: null,
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    color: Colors.red.withOpacity(0.3),
-                                    height: 100,
-                                    width: 100,
-                                    child: null,
-                                  )
-                                ],
+                              NewsLink(
+                                newsTitle:
+                                    'عادت نگاری و نقش اساسی آن در بولت ژورنال',
+                                imageLink:
+                                    'https://my-bujo.ir/wp-content/uploads/2020/05/%D8%B9%D8%A7%D8%AF%D8%AA-%D9%86%DA%AF%D8%A7%D8%B1%DB%8C-%D9%88-%D9%86%D9%82%D8%B4-%D8%A2%D9%86-%D8%AF%D8%B1-%D8%A8%D9%88%D9%84%D8%AA-%DA%98%D9%88%D8%B1%D9%86%D8%A7%D9%84-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87.jpg',
+                                newsLink:
+                                    'https://my-bujo.ir/%D8%B9%D8%A7%D8%AF%D8%AA-%D9%86%DA%AF%D8%A7%D8%B1%DB%8C-%D9%88-%D9%86%D9%82%D8%B4-%D8%A7%D8%B3%D8%A7%D8%B3%DB%8C-%D8%A2%D9%86-%D8%AF%D8%B1-%D8%A8%D9%88%D9%84%D8%AA-%DA%98%D9%88%D8%B1%D9%86%D8%A7%D9%84/',
                               ),
                             ],
                           ),
@@ -274,6 +233,73 @@ class _TabBarLearnState extends State<TabBarLearn> {
                   ],
                 );
               }),
+        ),
+      ),
+    );
+  }
+}
+
+class NewsLink extends StatelessWidget {
+  const NewsLink({
+    required this.imageLink,
+    required this.newsLink,
+    required this.newsTitle,
+    Key? key,
+  }) : super(key: key);
+  final String newsLink;
+  final String imageLink;
+  final String newsTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: GestureDetector(
+        onTap: () async {
+          if (!await launchUrl(Uri.parse(newsLink)))
+            throw 'Could not launch _url';
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              color: Colors.white12,
+              height: 80,
+              width: 235,
+              child: Text(
+                newsTitle,
+                textDirection: TextDirection.rtl,
+                textAlign: TextAlign.start,
+                style: GoogleFonts.harmattan(
+                    textStyle: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.w600,
+                )),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(imageLink),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(10),
+                // color: Colors.white,
+              ),
+              // color: Colors.red.withOpacity(0.3),
+              height: 80,
+              width: 100,
+              // child: Image.network(
+              //   imageLink,
+              //   fit: BoxFit.cover,
+              // ),
+            )
+          ],
         ),
       ),
     );
