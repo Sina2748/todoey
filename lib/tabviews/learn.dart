@@ -38,6 +38,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         decoration: kBackgroundImage,
@@ -57,7 +58,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     headerFooterImage(
-                      height: 500,
+                      height: screenWidth * 1450 / 1125,
                       WidgetOnTop: Positioned(
                         bottom: 100,
                         right: 20,
@@ -107,8 +108,8 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                 line1: 'To Do List',
                                 line2: 'عادت سازی برای انجام',
                                 line3: 'کارها',
-                                width: 175,
-                                height: 270,
+                                width: (screenWidth / 2) - 15,
+                                height: ((((screenWidth / 2) - 15) * 3) / 2),
                                 initX: initX,
                                 initY: initY,
                                 bImgBlurUrl: b1ImgBlurUrl,
@@ -140,8 +141,8 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                 imageStack(
                                     line1: 'پومودرو',
                                     line2: 'روش مدیریت زمان',
-                                    width: 175,
-                                    height: 200,
+                                    width: (screenWidth / 2) - 15,
+                                    height: ((screenWidth / 2) - 50) * 1.5,
                                     initX: initX,
                                     initY: initY,
                                     bImgBlurUrl: b2ImgBlurUrl,
@@ -160,8 +161,8 @@ class _TabBarLearnState extends State<TabBarLearn> {
                           line1: "چرخه زندگی",
                           line2: "هر هدف چقدر مهم هست؟",
                           line3: "در یک نگاه تعادلش رو بررسی کن",
-                          width: 350,
-                          height: 175,
+                          width: screenWidth - 25,
+                          height: (screenWidth - 25) / 2,
                           initX: initX,
                           initY: initY,
                           bImgBlurUrl: b3ImgBlurUrl,
@@ -169,7 +170,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                     ),
                     //Ending
                     headerFooterImage(
-                      height: 400,
+                      height: screenWidth * 1450 / 1125,
                       WidgetOnTop: Positioned(
                         top: 0,
                         left: 0,
@@ -180,8 +181,8 @@ class _TabBarLearnState extends State<TabBarLearn> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 5.0),
+                                padding: const EdgeInsets.only(
+                                    top: 35.0, bottom: 40),
                                 child: Text(
                                   'از اینترنت چه خبر؟',
                                   textDirection: TextDirection.rtl,
@@ -257,6 +258,7 @@ class NewsLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: GestureDetector(
@@ -276,7 +278,7 @@ class NewsLink extends StatelessWidget {
               alignment: Alignment.centerRight,
               // color: Colors.white24,
               height: 80,
-              width: 235,
+              width: screenWidth - 200,
               child: Text(
                 newsTitle,
                 textDirection: TextDirection.rtl,
@@ -448,7 +450,7 @@ class imageStack extends StatelessWidget {
   final String line2;
   final String line3;
 
-  final double lim = 10.0;
+  final double lim = 25.0;
   final double a = 1.9;
   @override
   Widget build(BuildContext context) {
