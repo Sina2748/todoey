@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todoey/utils/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'dart:ui';
 
@@ -60,31 +61,57 @@ class _TabBarLearnState extends State<TabBarLearn> {
                     headerFooterImage(
                       height: screenWidth * 1450 / 1125,
                       WidgetOnTop: Positioned(
-                        bottom: 100,
-                        right: 20,
+                        bottom: 50,
+                        left: 0,
                         child: Container(
-                          padding: EdgeInsets.all(20),
+                          // color: Colors.red,
+                          padding: EdgeInsets.symmetric(horizontal: 50),
                           alignment: Alignment.center,
-                          height: 200,
-                          width: 300,
-                          child: Row(
+                          height: 300,
+                          width: screenWidth,
+                          child: Column(
                             children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: Text('go!'),
+                              // Spacer(),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                alignment: Alignment.topRight,
+                                height: 100,
+                                child: Image.asset('assets/images/logoB.png'),
                               ),
-                              Spacer(),
-                              Text(
-                                'تخفیف ويژه',
-                                textDirection: TextDirection.rtl,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.lemonada(
-                                    textStyle: TextStyle(
-                                  fontSize: 25,
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
-                                  fontWeight: FontWeight.w600,
-                                )),
+                              Container(
+                                alignment: Alignment.topRight,
+                                height: 40,
+                                child: DefaultTextStyle(
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lemonada(
+                                      textStyle: TextStyle(
+                                    fontSize: 20,
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
+                                    fontWeight: FontWeight.w600,
+                                  )),
+                                  child: AnimatedTextKit(
+                                    totalRepeatCount: 5,
+                                    repeatForever: true,
+                                    pause: const Duration(milliseconds: 1000),
+                                    animatedTexts: [
+                                      FadeAnimatedText('تا ۴۰٪ تخفیف',
+                                          duration:
+                                              Duration(milliseconds: 5000)),
+                                      FadeAnimatedText('با ارسال رایگان',
+                                          duration:
+                                              Duration(milliseconds: 5000)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.topLeft,
+                                // color: Colors.green,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: Text('ورود به فروشگاه'),
+                                ),
                               ),
                             ],
                           ),
