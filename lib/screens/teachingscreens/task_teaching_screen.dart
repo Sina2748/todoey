@@ -40,7 +40,7 @@ class TaskTeachingScreen extends StatelessWidget {
               foregroundDecoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.3),
                 ], begin: Alignment.bottomRight),
               ),
               height: double.infinity,
@@ -50,7 +50,7 @@ class TaskTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/01.jpg',
+                  'assets/images/teachpomodoro/01.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -88,7 +88,7 @@ class TaskTeachingScreen extends StatelessWidget {
               foregroundDecoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.3),
                 ], begin: Alignment.bottomRight),
               ),
               height: double.infinity,
@@ -98,7 +98,7 @@ class TaskTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/02.jpg',
+                  'assets/images/teachpomodoro/02.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -136,7 +136,7 @@ class TaskTeachingScreen extends StatelessWidget {
               foregroundDecoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.3),
                 ], begin: Alignment.bottomRight),
               ),
               height: double.infinity,
@@ -146,7 +146,7 @@ class TaskTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/03.jpg',
+                  'assets/images/teachpomodoro/03.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -184,7 +184,7 @@ class TaskTeachingScreen extends StatelessWidget {
               foregroundDecoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.3),
                 ], begin: Alignment.bottomRight),
               ),
               height: double.infinity,
@@ -194,7 +194,7 @@ class TaskTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/04.jpg',
+                  'assets/images/teachpomodoro/04.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -232,7 +232,7 @@ class TaskTeachingScreen extends StatelessWidget {
               foregroundDecoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.3),
                 ], begin: Alignment.bottomRight),
               ),
               height: double.infinity,
@@ -242,7 +242,7 @@ class TaskTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/05.jpg',
+                  'assets/images/teachpomodoro/05.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -280,7 +280,7 @@ class TaskTeachingScreen extends StatelessWidget {
               foregroundDecoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.3),
                 ], begin: Alignment.bottomRight),
               ),
               height: double.infinity,
@@ -290,7 +290,7 @@ class TaskTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/06.jpg',
+                  'assets/images/teachpomodoro/06.webp',
                   fit: BoxFit.cover,
                 ),
               ),
