@@ -23,14 +23,14 @@ class TaskTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.bottomRight,
               fontSize: 30,
               containerHeight: 100,
-              contentViewerTitle: ' لیست کارهای ۸ تایی',
+              contentViewerTitle: 'مدیریت زمان با پومودورو',
             ), //Basic String Title
 
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
-                  'این روش خیلی ساده است، هر روز ۸ تا کار اصلی برای خودت تعریف می‌کنی و می‌نویسی. تا آخر روز باید همه رو انجام بدی و خط بزنی. فقط حواست باشه اگه نتونی کاری که نوشتی رو تا آخر روز انجام بدی، دیگه نمی‌تونی اون روز رو یه روز بدون نقص حساب کنی!',
+                  'این روش یک چرخه زمانیه. اول ۲۵ دقیقه به انجام کارها اختصاص داده می‌شه. مرحله بعد ۵ دقیقه برای استراحت گذاشته می‌شه و بعد از پایان زمان استراحت دوباره همین مراحل تکرار می‌شه.',
               containerHeight: 150,
               fontSize: 18,
             ),
@@ -70,16 +70,16 @@ class TaskTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
-              contentViewerTitle: ' ممکنه هر روز ۸ تا کار نداشته باشی',
+              containerHeight: 30,
+              contentViewerTitle: 'مراحل پومودورو',
             ), //Basic String Title
 
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
-                  'بعد از چند وقت می‌بینی که انجام ۸ تا کار زیادتر از اون چیزیه که فکر می‌کردی و مشکله تو یه روز انجام‌شون داد. ولی نکته طلایی اینجاست که اجازه داری  کارها رو جوری تعریف کنی که کوچک باشه. مثلا به جای تصمیم به تموم کردن یک کتاب، بهتره بنویسی شروع کتاب، یا مطالعه ی یک فصل از کتاب. ',
-              containerHeight: 150,
+                  'اول یه تایمر و لیست کارهایی که باید انجام بدین رو آماده کنین. بعد تایمر رو برای ۲۵ دقیقه تنظیم کنین و فقط روی انجام یک کار تمرکز کنین تا وقتی که زمان تمام بشه. وقتی زمان به پایان رسید یک علامت به نشانه انجام ۲۵ دقیقه کار  روی یک تکه کاغذ ثبت کنین و ۵ دقیقه استراحت کنین. بعد از ثبت چهارمین علامت ۳۰ دقیقه استراحت کنین.',
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -118,17 +118,16 @@ class TaskTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
-              contentViewerTitle:
-                  'حالا چرا این روش بهتر از لیست کارهای معمولی هست؟',
+              containerHeight: 40,
+              contentViewerTitle: 'فوت کوزه‌گری',
             ), //Basic String Title
 
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
-                  'خوبی این روش اینه که مجبورت می‌کنه بری سراغ کارهایی که همیشه  می‌ذاری برای بعد. عقب انداختن چندباره‌ی کارها به فردا و شنبه و اول ماه باعث می‌شه تعداد کارهای تلنبار شده هی بیشتر و بیشتر بشه و آدم بترسه که بره سراغشون. ',
-              containerHeight: 150,
+                  'اگر کاری که می‌خواهین انجام بدین در ۲۵ دقیقه تمام نمی‌شه اون را به قسمت‌های کوچک‌تر تقسیم کنین. ولی اگه کمتر از ۲۵ دقیقه وقت لازم داره سعی کنین چند کار ساده رو توی یک مقطع زمانی انجام بدین. یادتون باشه که نباید زمان کار رو زودتر از ۲۵ دقیقه تموم کنین. اگر زمان اضافه آمد اون را به دوره کردن درس و کارها اختصاص بدین. ',
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -168,14 +167,14 @@ class TaskTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
               containerHeight: 100,
-              contentViewerTitle: 'روزهای کاملت رو بشمار',
+              contentViewerTitle: 'پومودورو رو از کجا اومده؟',
             ), //Basic String Title
 
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
-                  'هر روزی که تونستی هر ۸ تا کار رو انجام بدی به‌عنوان یک روز کامل بشمار. بعد دنبال کن ببین چند روز هست که روز ناقص نداشتی و زنجیره روزهای کامل رو ادامه دادی. حواست باشه اگه یه روز ناقص داشته باشی باید زنجیره رو از اول شروع کنی .  ',
+                  'آقای چیریلو در سال ۱۹۸۰ تکنیک پومودورو رو زمانی که دانشجو بوده ابداع کرده و چون از زمان سنجی که شبیه گوجه فرنگی بوده برای اندازه‌گیری زمان استفاده می‌کرده اسم این روش رو پومودورو گذاشته، که به معنی گوجه فرنگی به زبان ایتالیاییه.  ',
               containerHeight: 150,
               fontSize: 18,
             ),
@@ -215,16 +214,16 @@ class TaskTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
-              contentViewerTitle: 'چرا شمردن روزهای کامل مهمه',
+              containerHeight: 40,
+              contentViewerTitle: 'مزیت پومودورو در چیست؟',
             ), //Basic String Title
 
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
-                  'وقی روزهای کامل رو بشماری و مثلا به روز ۱۰۰ ام بررسی دیگه دلت نمی‌یاد روز ناقص پیدا کنی. چون باید از اول شروع کنی و رکوردت رو از دست می‌دی. اینجوری راحت تر می‌شینی سر کارها. انگار که داری با خودت تو زنجیره نگه داشتن  رقابت می کنی. ',
-              containerHeight: 150,
+                  'چیزی که این روش رو خیلی محبوب می‌کنه اصرارش به استمرار و دوری از کمال‌طلبیه. هر مقطع یه شروع جدیده که خودت رو به چالش بکشی و حواس پرتی‌هات رو حداقل کنی. مزیت دیگه‌ش کوچک کردن کارهای سخت و بزرگ به قدم‌های کوچک و قابل انجام است. نتیجه کار براش مهم نیست، فقط می‌گه بشین و حواست رو جمع کن و انجام بده. ',
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -263,16 +262,16 @@ class TaskTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
-              contentViewerTitle: 'این روش از کجا اومده؟',
+              containerHeight: 70,
+              contentViewerTitle: 'ادامه مزیت‌های پومودورو',
             ), //Basic String Title
 
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
-                  'ما این روش رو اولین بار از کانال یوتوب پیتر مک‌کنین یاد گرفتیم. ولی گویا آقای اندی فریزلا توی چالش ۷۵ روز سخت هم به این روش اشاره کرده. یه کتاب هم در سال ۲۰۲۱ با اسم eight critical tasks منتشر شده.   ',
-              containerHeight: 150,
+                  'نکته دیگرش کمک به واقعی کردن درک زمان است. ۵ دقیقه استراحت مثل ۳۵ ثانیه می‌گذره. ولی ۲۵ دقیقه درس و کار انگار یک ساعت نیم طول می‌کشه. پیدا کردن درک درست از از زمان کمک می‌کنه که توی پیش‌بینی زمان لازم برای انجام کارها دقیق‌تر عمل کنی.  ',
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -304,54 +303,6 @@ class TaskTeachingScreen extends StatelessWidget {
             //   style: TextStyle(color: Colors.white),
             // ), //You can add button here for instance
           ),
-          PageViewModel(
-            decoration: const PageDecoration(
-              fullScreen: true,
-            ),
-            titleWidget: const ContentViewer(
-              contentAlignment: Alignment.bottomRight,
-              fontSize: 25,
-              containerHeight: 100,
-              contentViewerTitle: 'کاغذ و قلم یا دیجیتال؟',
-            ), //Basic String Title
-
-            // body: 'Body of 1st Page', //Basic String Body
-            bodyWidget: const ContentViewer(
-              contentAlignment: Alignment.topCenter,
-              contentViewerTitle:
-                  ' انتخاب با شماست. مزیت کاغذ و قلم در اینه که بدون باز کردن گوشی می‌تونید به لیست کارهاتون دست‌رسی داشته باشید. به این ترتیب تمرکزتون رو از دست نمی‌دین. مزیت گوشی هم اینه که همیشه همراه‌تون هست و می تونید توی دستگاه های دیگه هم بهش دسترسی داشته باشید.  ',
-              containerHeight: 160,
-              fontSize: 18,
-            ),
-            //If you want to use your own Widget
-            //Page decoration Contain all page customizations
-            image: Container(
-              foregroundDecoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
-                ], begin: Alignment.bottomRight),
-              ),
-              height: double.infinity,
-              color: Colors.red,
-              child: GestureDetector(
-                onDoubleTap: () {
-                  Navigator.pop(context);
-                },
-                child: Image.asset(
-                  'assets/images/teach8task/07.jpg',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            useScrollView:
-                true, //If you want to you can also wrap around Alignment
-            reverse: false, //If widget Order is reverse - body before image
-            // footer: const Text(
-            //   'Footer',
-            //   style: TextStyle(color: Colors.white),
-            // ), //You can add button here for instance
-          ),
 
           PageViewModel(
             decoration: const PageDecoration(
@@ -359,18 +310,18 @@ class TaskTeachingScreen extends StatelessWidget {
             ),
             // title: 'Title of 1st Page', //Basic String Title
             titleWidget: const ContentViewer(
-              contentAlignment: Alignment.bottomCenter,
-              fontSize: 30,
-              containerHeight: 50,
+              contentAlignment: Alignment.bottomRight,
+              fontSize: 25,
+              containerHeight: 30,
               contentViewerTitle: 'ابزار ما',
             ), //If you want to use your own Widget
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
                 contentAlignment: Alignment.topCenter,
                 contentViewerTitle:
-                    'ما هم یه نسخه از این ابزار ساختیم تا بتونید همینجا این روش رو امتحان کنید و اگر خوشتون اومده به استفاده از اون ادامه بدید. کافیه با زدن دکمه + کارهاتون رو به لیست اضافه کنید. بعد با نگه داشتن انگشت روی اونها جا به جاشون کنید.',
-                containerHeight: 150,
-                fontSize: 20), //If you want to use your own Widget
+                    'اپ‌های زیادی هستن که برای کمک به مدیریت زمان به روش پومودورو طراحی شدن. پیشنهاد شده برای کارهایی که به نیروی خلاقیت و تمرکز بیشتری نیاز داره، مثل کد نویسی، نویسندگی و آهنگسازی و غیره، بهتره زمان کار و استراحت افزایش پیدا کنه. ما هم این ابزار رو طراحی کردیم و این قابلیت رو براش در نظر گرفتیم تا راحت این روش رو امتحان کنید.',
+                containerHeight: 200,
+                fontSize: 18), //If you want to use your own Widget
             //Page decoration Contain all page customizations
             image: Container(
               foregroundDecoration: BoxDecoration(
