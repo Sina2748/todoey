@@ -106,10 +106,22 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                 ),
                               ),
                               Container(
-                                alignment: Alignment.topLeft,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 20,
+                                ),
+                                alignment: Alignment.topRight,
                                 // color: Colors.green,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    final urlC = Uri.parse('https://crepin.ir');
+                                    if (await canLaunchUrl(urlC)) {
+                                      await launchUrl(
+                                        urlC,
+                                        mode: LaunchMode.inAppWebView,
+                                      );
+                                    }
+                                  },
                                   child: Text('ورود به فروشگاه'),
                                 ),
                               ),
@@ -132,6 +144,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                           Container(
                             // color: Colors.redAccent,
                             child: imageStack(
+                                page: '/pomodoroteachingscreen',
                                 line1: 'To Do List',
                                 line2: 'عادت سازی برای انجام',
                                 line3: 'کارها',
@@ -166,6 +179,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                   ),
                                 ),
                                 imageStack(
+                                    page: '/taskteachingscreen',
                                     line1: 'پومودرو',
                                     line2: 'روش مدیریت زمان',
                                     width: (screenWidth / 2) - 15,
@@ -185,6 +199,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
 
                       // color: Colors.red,
                       child: imageStack(
+                          page: '/taskteachingscreen',
                           line1: "چرخه زندگی",
                           line2: "هر هدف چقدر مهم هست؟",
                           line3: "در یک نگاه تعادلش رو بررسی کن",
@@ -203,6 +218,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
                         left: 0,
                         right: 0,
                         child: Container(
+                          // color: Colors.yellow,
                           padding: EdgeInsets.symmetric(horizontal: 30),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -290,8 +306,8 @@ class NewsLink extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: GestureDetector(
         onTap: () async {
-          if (!await launchUrl(Uri.parse(newsLink)))
-            throw 'Could not launch _url';
+          if (!await launchUrl(Uri.parse(newsLink),
+              mode: LaunchMode.platformDefault)) throw 'Could not launch _url';
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -305,7 +321,7 @@ class NewsLink extends StatelessWidget {
               alignment: Alignment.centerRight,
               // color: Colors.white24,
               height: 80,
-              width: screenWidth - 200,
+              width: screenWidth - 170,
               child: Text(
                 newsTitle,
                 textDirection: TextDirection.rtl,
@@ -429,7 +445,7 @@ class headerFooterImage extends StatelessWidget {
             child: Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/pomodoroteachingscreen');
+                  // Navigator.pushNamed(context, '/pomodoroteachingscreen');
                 },
                 child: Container(
                   // width: 400,
@@ -465,6 +481,7 @@ class imageStack extends StatelessWidget {
     required this.bImgUrl,
     required this.line1,
     required this.line2,
+    required this.page,
     this.line3 = "",
   }) : super(key: key);
   final double width;
@@ -475,6 +492,7 @@ class imageStack extends StatelessWidget {
   final String bImgUrl;
   final String line1;
   final String line2;
+  final String page;
   final String line3;
 
   final double lim = 25.0;
@@ -529,7 +547,7 @@ class imageStack extends StatelessWidget {
           bottom: 00,
           child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/pomodoroteachingscreen');
+              Navigator.pushNamed(context, page);
             },
             child: Container(
               width: width,

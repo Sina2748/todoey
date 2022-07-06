@@ -78,6 +78,8 @@ flutter:
     - google_fonts/
     - assets/images/
     - assets/images/hero/
+    - assets/images/teach8task/
+    - assets/images/teachpomodoro/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

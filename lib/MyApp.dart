@@ -14,6 +14,7 @@ import 'screens/life_balance.dart';
 import 'screens/pomodoro_screen.dart';
 
 import 'screens/teachingscreens/pomodoro_teaching_screen.dart';
+import 'screens/teachingscreens/task_teaching_screen.dart';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'notification_service.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/pomodoroscreen': (_) => const PomodoroScreen(),
         // learn
         '/pomodoroteachingscreen': (_) => const PomodoroTeachingScreen(),
+        '/taskteachingscreen': (_) => const TaskTeachingScreen(),
       },
       theme: ThemeData(
         colorScheme: const ColorScheme(
