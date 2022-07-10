@@ -199,7 +199,7 @@ class _TabBarLearnState extends State<TabBarLearn> {
 
                       // color: Colors.red,
                       child: imageStack(
-                          page: '/taskteachingscreen',
+                          page: '/circleteachingscreen',
                           line1: "چرخه زندگی",
                           line2: "هر هدف چقدر مهم هست؟",
                           line3: "در یک نگاه تعادلش رو بررسی کن",
