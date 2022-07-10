@@ -30,12 +30,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        // '/': (_) => const TasksScreen(),
+        '/': (_) => const TasksScreen(),
         '/': (_) => const AccountPage(),
 
-        // '/': (_) => const SplashPage(),
-        // '/login': (_) => const LoginPage(),
-        // '/account': (_) => const AccountPage(),
+        '/': (_) => const SplashPage(),
+        '/login': (_) => const LoginPage(),
+        '/account': (_) => const AccountPage(),
         '/taskscreen': (_) => const TasksScreen(),
         '/lifebalancescreen': (_) => const lifeBalanceScreen(),
         '/pomodoroscreen': (_) => const PomodoroScreen(),
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
           background: Color(0xffE1E2E1),
           onBackground: Color(0xff1d1d3b),
           surface: Color(0xfff9fffe),
-          onSurface: Color(0xffd20d61),
+          onSurface: Colors.white,
         ),
 
         useMaterial3: true,

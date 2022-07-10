@@ -22,7 +22,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 30,
-              containerHeight: 100,
+              containerHeight: 90,
               contentViewerTitle: 'چرخ تعادل زندگی',
             ), //Basic String Title
 
@@ -31,7 +31,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'زندگی هر کدوم از ما ابعاد مختلفی داره و رضایت ما از هر کدوم از اون ابعاد رضایت از زندگیمون رو می سازه و هر چی از وضعیت مطلوبمون فاصله بگیریم نارضایتی بیشتری رو تجربه می‌کنیم. حتما عبارت تعادل بین کار و زندگی تا حالا به گوشت خورده. چرخ زندگی نموداریه که بهمون کمک می‌کنه بین تمام ابعاد زندگی تعادل برقرار کنیم.',
-              containerHeight: 150,
+              containerHeight: 160,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -50,7 +50,7 @@ class CircleTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/01.jpg',
+                  'assets/images/techcircle/01.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -70,7 +70,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 120,
               contentViewerTitle: 'نمودار چرخه زندگی چطور رسم می‌شه؟',
             ), //Basic String Title
 
@@ -79,7 +79,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'تعدادی از موضوعات و ابعاد مهم زندگی که برای خودت مهمه، مثل ورزش، مطالعه، تحصیلات و غیره رو لیست کن و توی هر کدام به خودت از ۱۰ امتیاز بده. این امتیاز می‌تونه از وقتی که برای اون بعد می‌گذاری و یا توجهی که بهش می‌کنی ساخته بشه. ',
-              containerHeight: 150,
+              containerHeight: 140,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -98,7 +98,7 @@ class CircleTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/02.jpg',
+                  'assets/images/techcircle/02.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -118,7 +118,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 120,
               contentViewerTitle: 'رسم امتیازها روی نمودار به چه شکله؟',
             ), //Basic String Title
 
@@ -146,7 +146,7 @@ class CircleTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/03.jpg',
+                  'assets/images/techcircle/03.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -194,7 +194,7 @@ class CircleTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/04.jpg',
+                  'assets/images/techcircle/04.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -214,7 +214,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 90,
               contentViewerTitle: 'یک نکته',
             ), //Basic String Title
 
@@ -223,7 +223,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'البته لزوما یک دست بودن ابعاد زندگی اهمیت ويژه‌ای نداره، فقط اگه بعدی از زندگی باشه که ناخواسته توجه کمتری به اون داشتی اون رو بهت نمایش می ده و یاد آوری می کنه. نکته اونجاست که ممکنه برای هر کسی، با توجه به اولویت‌ها و اهدافش، جنبه‌های مختلفی در زندگی مهم باشه و برای اونها نمودار بکشه.',
-              containerHeight: 150,
+              containerHeight: 160,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -242,7 +242,7 @@ class CircleTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/05.jpg',
+                  'assets/images/techcircle/02-2.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -291,54 +291,6 @@ class CircleTeachingScreen extends StatelessWidget {
                 },
                 child: Image.asset(
                   'assets/images/teach8task/06.jpg',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            useScrollView:
-                true, //If you want to you can also wrap around Alignment
-            reverse: false, //If widget Order is reverse - body before image
-            // footer: const Text(
-            //   'Footer',
-            //   style: TextStyle(color: Colors.white),
-            // ), //You can add button here for instance
-          ),
-          PageViewModel(
-            decoration: const PageDecoration(
-              fullScreen: true,
-            ),
-            titleWidget: const ContentViewer(
-              contentAlignment: Alignment.bottomRight,
-              fontSize: 25,
-              containerHeight: 100,
-              contentViewerTitle: 'کاغذ و قلم یا دیجیتال؟',
-            ), //Basic String Title
-
-            // body: 'Body of 1st Page', //Basic String Body
-            bodyWidget: const ContentViewer(
-              contentAlignment: Alignment.topCenter,
-              contentViewerTitle:
-                  ' انتخاب با شماست. مزیت کاغذ و قلم در اینه که بدون باز کردن گوشی می‌تونید به لیست کارهاتون دست‌رسی داشته باشید. به این ترتیب تمرکزتون رو از دست نمی‌دین. مزیت گوشی هم اینه که همیشه همراه‌تون هست و می تونید توی دستگاه های دیگه هم بهش دسترسی داشته باشید.  ',
-              containerHeight: 160,
-              fontSize: 18,
-            ),
-            //If you want to use your own Widget
-            //Page decoration Contain all page customizations
-            image: Container(
-              foregroundDecoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
-                ], begin: Alignment.bottomRight),
-              ),
-              height: double.infinity,
-              color: Colors.red,
-              child: GestureDetector(
-                onDoubleTap: () {
-                  Navigator.pop(context);
-                },
-                child: Image.asset(
-                  'assets/images/teach8task/07.jpg',
                   fit: BoxFit.cover,
                 ),
               ),

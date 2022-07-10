@@ -25,6 +25,7 @@ class TabBarTools extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(height: 50),
                   ButtonWithPicture(
                     pictureAddress:
                         'https://www.humangest.it/images/To-do-list.jpg',
@@ -37,16 +38,6 @@ class TabBarTools extends StatelessWidget {
                   ),
                   ButtonWithPicture(
                     pictureAddress:
-                        'https://crepin.ir/wp-content/uploads/2020/11/DSC_6548-2-1.jpg',
-                    colorFilterMode: ColorFilter.mode(
-                        Colors.purple[400]!, BlendMode.colorBurn),
-                    navigatTo: '/taskscreen',
-                    textTitle: 'Bullet Journal',
-                    iconTitle: Icons.menu_book,
-                    buttonHight: 100.0,
-                  ),
-                  ButtonWithPicture(
-                    pictureAddress:
                         'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTX-6FlB_URfm0xzk7yz2wdpllefHqJs02cwqOiNuNCi2rLW4TU',
                     colorFilterMode: ColorFilter.mode(
                         Colors.indigo[400]!, BlendMode.colorBurn),
@@ -55,6 +46,7 @@ class TabBarTools extends StatelessWidget {
                     iconTitle: Icons.circle_notifications,
                     buttonHight: 150.0,
                   ),
+                  SizedBox(height: 50),
                 ],
               ),
             ),
@@ -70,16 +62,6 @@ class TabBarTools extends StatelessWidget {
                     textTitle: 'Pomodoro',
                     iconTitle: Icons.access_alarms_sharp,
                     buttonHight: 250.0,
-                  ),
-                  ButtonWithPicture(
-                    pictureAddress:
-                        'https://pbs.twimg.com/profile_images/881291788744445952/LIMXum0r_400x400.jpg',
-                    colorFilterMode:
-                        ColorFilter.mode(Colors.red[900]!, BlendMode.overlay),
-                    navigatTo: '/taskscreen',
-                    textTitle: 'Ikigay',
-                    iconTitle: Icons.data_usage,
-                    buttonHight: 345.0,
                   ),
                 ],
               ),

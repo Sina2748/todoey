@@ -80,6 +80,7 @@ flutter:
     - assets/images/hero/
     - assets/images/teach8task/
     - assets/images/teachpomodoro/
+    - assets/images/techcircle/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
