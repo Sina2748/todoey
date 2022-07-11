@@ -312,14 +312,14 @@ class TaskTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 30,
+              containerHeight: 100,
               contentViewerTitle: 'ابزار ما',
             ), //If you want to use your own Widget
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
                 contentAlignment: Alignment.topCenter,
                 contentViewerTitle:
-                    'اپ‌های زیادی هستن که برای کمک به مدیریت زمان به روش پومودورو طراحی شدن. پیشنهاد شده برای کارهایی که به نیروی خلاقیت و تمرکز بیشتری نیاز داره، مثل کد نویسی، نویسندگی و آهنگسازی و غیره، بهتره زمان کار و استراحت افزایش پیدا کنه. ما هم این ابزار رو طراحی کردیم و این قابلیت رو براش در نظر گرفتیم تا راحت این روش رو امتحان کنید.',
+                    'اپ‌های زیادی هستن که برای کمک به مدیریت زمان به روش پومودورو طراحی شدن. پیشنهاد شده برای کارهایی که به نیروی خلاقیت و تمرکز بیشتری نیاز داره، مثل کد نویسی، نویسندگی و آهنگسازی و غیره، بهتره زمان کار و استراحت افزایش پیدا کنه. ما هم این ابزار رو طراحی کردیم و این قابلیت رو براش در نظر گرفتیم.',
                 containerHeight: 200,
                 fontSize: 18), //If you want to use your own Widget
             //Page decoration Contain all page customizations
@@ -337,7 +337,7 @@ class TaskTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/01.jpg',
+                  'assets/images/teachpomodoro/pomodoro.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -376,11 +376,17 @@ class TaskTeachingScreen extends StatelessWidget {
           Icons.forward,
           color: Colors.teal,
         ),
-        done: Text(
-          "شروع ابزار",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
+        done: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/pomodoroscreen');
+          },
+          child: Text(
+            "شروع ابزار",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            ),
           ),
         ),
 

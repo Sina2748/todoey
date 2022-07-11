@@ -46,7 +46,7 @@ class TabBarTools extends StatelessWidget {
                     iconTitle: Icons.circle_notifications,
                     buttonHight: 150.0,
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 200),
                 ],
               ),
             ),

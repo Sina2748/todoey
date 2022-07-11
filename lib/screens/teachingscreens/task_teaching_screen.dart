@@ -386,7 +386,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/01.webp',
+                  'assets/images/teach8task/todo.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -425,11 +425,17 @@ class PomodoroTeachingScreen extends StatelessWidget {
           Icons.forward,
           color: Colors.teal,
         ),
-        done: Text(
-          "شروع ابزار",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
+        done: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/taskscreen');
+          },
+          child: Text(
+            "شروع ابزار",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            ),
           ),
         ),
 

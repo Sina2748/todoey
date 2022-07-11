@@ -79,26 +79,28 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                 child: Image.asset('assets/images/logoB.png'),
                               ),
                               Container(
-                                alignment: Alignment.topRight,
-                                height: 40,
+                                alignment: Alignment.centerRight,
+                                height: 26,
                                 child: DefaultTextStyle(
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.lemonada(
                                       textStyle: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 15,
                                     color:
                                         Theme.of(context).colorScheme.onPrimary,
                                     fontWeight: FontWeight.w600,
                                   )),
                                   child: AnimatedTextKit(
-                                    totalRepeatCount: 5,
+                                    totalRepeatCount: 2,
                                     repeatForever: true,
-                                    pause: const Duration(milliseconds: 1000),
+                                    pause: const Duration(milliseconds: 2000),
                                     animatedTexts: [
-                                      FadeAnimatedText('تا ۴۰٪ تخفیف',
+                                      FadeAnimatedText(
+                                          'کرپین، طراح محصولات بکر',
                                           duration:
                                               Duration(milliseconds: 5000)),
-                                      FadeAnimatedText('با ارسال رایگان',
+                                      FadeAnimatedText(
+                                          'فروش ويژه هم اکنون در سایت کرپین',
                                           duration:
                                               Duration(milliseconds: 5000)),
                                     ],
@@ -113,14 +115,20 @@ class _TabBarLearnState extends State<TabBarLearn> {
                                 alignment: Alignment.topRight,
                                 // color: Colors.green,
                                 child: ElevatedButton(
+                                  // onPressed: () async {
+                                  //   final urlC = Uri.parse('https://crepin.ir');
+                                  //   if (await canLaunchUrl(urlC)) {
+                                  //     await launchUrl(
+                                  //       urlC,
+                                  //       mode: LaunchMode.externalApplication,
+                                  //     );
+                                  //   }
+                                  // },
                                   onPressed: () async {
-                                    final urlC = Uri.parse('https://crepin.ir');
-                                    if (await canLaunchUrl(urlC)) {
-                                      await launchUrl(
-                                        urlC,
-                                        mode: LaunchMode.inAppWebView,
-                                      );
-                                    }
+                                    if (!await launchUrl(
+                                        Uri.parse('https://crepin.ir'),
+                                        mode: LaunchMode.externalApplication))
+                                      throw 'Could not launch _url';
                                   },
                                   child: Text('ورود به فروشگاه'),
                                 ),
@@ -613,148 +621,3 @@ class imageStack extends StatelessWidget {
     );
   }
 }
-
-// class TabBarLearn extends StatelessWidget {
-//   const TabBarLearn({
-//     Key? key,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       decoration: kBackgroundImage,
-//       child: SingleChildScrollView(
-//         padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-//         child: Column(
-//           // crossAxisAlignment: CrossAxisAlignment.stretch,
-//           children: const [
-//             LearnButton(
-//               iconShape: Icons.list_sharp,
-//               navigation: '/pomodoroteachingscreen',
-//               backgroundPicture: 'assets/images/af.jpg',
-//               title: 'لیست کارها',
-//               locationPadding: EdgeInsets.only(
-//                 top: 130,
-//                 bottom: 20,
-//                 left: 5,
-//                 right: 20,
-//               ),
-//             ),
-//             LearnButton(
-//               iconShape: Icons.run_circle_outlined,
-//               navigation: '/pomodoroteachingscreen',
-//               backgroundPicture: 'assets/images/ac.jpg',
-//               title: 'چرخه زندگی',
-//               locationPadding: EdgeInsets.only(
-//                 top: 130,
-//                 bottom: 20,
-//                 left: 5,
-//                 right: 20,
-//               ),
-//             ),
-//             LearnButton(
-//               iconShape: Icons.timer,
-//               navigation: '/pomodoroteachingscreen',
-//               backgroundPicture: 'assets/images/ad.jpg',
-//               title: 'پومودورو',
-//               locationPadding: EdgeInsets.only(
-//                 top: 130,
-//                 bottom: 20,
-//                 left: 5,
-//                 right: 20,
-//               ),
-//             ),
-//             LearnButton(
-//               iconShape: Icons.swap_vertical_circle_sharp,
-//               navigation: '/pomodoroteachingscreen',
-//               backgroundPicture: 'assets/images/ag.jpg',
-//               title: 'پومودرو',
-//               locationPadding: EdgeInsets.only(
-//                 top: 130,
-//                 bottom: 20,
-//                 left: 5,
-//                 right: 20,
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-//
-// class LearnButton extends StatelessWidget {
-//   final String navigation;
-//   final String backgroundPicture;
-//   final String title;
-//   final dynamic locationPadding;
-//   final IconData iconShape;
-//
-//   const LearnButton(
-//       {Key? key,
-//       required this.iconShape,
-//       required this.navigation,
-//       required this.backgroundPicture,
-//       required this.title,
-//       required this.locationPadding})
-//       : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: EdgeInsets.symmetric(vertical: 3),
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(20),
-//         // color: Colors.teal,
-//         image: DecorationImage(
-//           image: AssetImage(
-//             backgroundPicture,
-//           ),
-//           fit: BoxFit.cover,
-//           alignment: Alignment(0.3, 0),
-//         ),
-//       ),
-//       child: ElevatedButton(
-//         onPressed: () {
-//           Navigator.pushNamed(context, navigation);
-//         },
-//         style: ButtonStyle(
-//           elevation: MaterialStateProperty.all(0),
-//           backgroundColor: MaterialStateProperty.all(
-//             Color(0x006FE2D0),
-//           ),
-//           shape: MaterialStateProperty.all(
-//             RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(20),
-//             ),
-//           ),
-//         ),
-//         child: Container(
-//             child: Column(
-//               children: [
-//                 Icon(
-//                   iconShape,
-//                   color: Colors.white,
-//                   size: 30,
-//                 ),
-//                 Text(
-//                   title,
-//                   textAlign: TextAlign.center,
-//                   style: GoogleFonts.lemonada(
-//                     color: Colors.white,
-//                     textStyle: TextStyle(
-//                       fontSize: 15,
-//                       fontWeight: FontWeight.w500,
-//                       letterSpacing: 3,
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             alignment: Alignment.bottomRight,
-//             width: double.infinity,
-//             padding: locationPadding),
-//       ),
-//     );
-//   }
-// }

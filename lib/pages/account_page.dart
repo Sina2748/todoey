@@ -110,35 +110,52 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
       TabBarLearn(),
       TabBarTools(),
       Container(
+        height: 1400,
         decoration: kBackgroundImage,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 150),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
         // color: Theme.of(context).colorScheme.surface,
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: _usernameController,
-                decoration: const InputDecoration(labelText: 'User Name'),
-              ),
-              const SizedBox(height: 18),
-              TextFormField(
-                controller: _websiteController,
-                decoration: const InputDecoration(labelText: 'Website'),
-              ),
-              const SizedBox(height: 18),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                      onPressed: _updateProfile,
-                      child: Text(_loading ? 'Saving...' : 'Update')),
-                  ElevatedButton(
-                      onPressed: _signOut, child: const Text('Sign Out')),
-                ],
-              ),
-              const SizedBox(height: 5),
-            ],
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextFormField(
+                  controller: _usernameController,
+                  decoration: const InputDecoration(
+                    labelText: 'User Name',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+                TextFormField(
+                  controller: _websiteController,
+                  decoration: const InputDecoration(
+                    labelText: 'Website',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                        onPressed: _updateProfile,
+                        child: Text(_loading ? 'Saving...' : 'Update')),
+                    ElevatedButton(
+                        onPressed: _signOut, child: const Text('Sign Out')),
+                  ],
+                ),
+                const SizedBox(height: 5),
+              ],
+            ),
           ),
         ),
       ),
@@ -146,99 +163,7 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        // appBar: AppBar(
-        //   toolbarHeight: 130,
-        //   title: Row(
-        //     mainAxisAlignment: MainAxisAlignment.end,
-        //     children: [
-        //       Text(
-        //         'کرپین',
-        //         style: GoogleFonts.lemonada(
-        //           textStyle: TextStyle(
-        //             color: Theme.of(context).colorScheme.surface,
-        //             fontSize: 20,
-        //             fontWeight: FontWeight.w300,
-        //           ),
-        //         ),
-        //       ),
-        //       SizedBox(
-        //         width: 5,
-        //       ),
-        //       Image.asset(
-        //         'assets/images/logo.png',
-        //         height: 50,
-        //       ),
-        //     ],
-        //   ),
-        //   flexibleSpace: Container(
-        //     // height: 400,
-        //     decoration: BoxDecoration(
-        //       gradient: LinearGradient(
-        //         begin: Alignment.topRight,
-        //         end: Alignment.bottomLeft,
-        //         colors: [Colors.greenAccent, Colors.teal],
-        //       ),
-        //     ),
-        //     // padding: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 10),
-        //   ),
-        //   bottom: const TabBar(
-        //     tabs: <Widget>[
-        //       Tab(
-        //         icon: Icon(Icons.school),
-        //       ),
-        //       Tab(
-        //         icon: Icon(Icons.construction),
-        //       ),
-        //       Tab(
-        //         icon: Icon(Icons.brightness_5_sharp),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-
-        // backgroundColor: Colors.green,
-        // body: Center(child: Text('data')),
-
         body: _widgetOptions.elementAt(_selectedIndex),
-        // TabBarView(
-        //   children: [
-        //     TabBarLearn(),
-        //     TabBarTools(),
-        //     Container(
-        //       decoration: kBackgroundImage,
-        //       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        //       // color: Theme.of(context).colorScheme.surface,
-        //       child: Center(
-        //         child: Column(
-        //           crossAxisAlignment: CrossAxisAlignment.center,
-        //           children: [
-        //             TextFormField(
-        //               controller: _usernameController,
-        //               decoration: const InputDecoration(labelText: 'User Name'),
-        //             ),
-        //             const SizedBox(height: 18),
-        //             TextFormField(
-        //               controller: _websiteController,
-        //               decoration: const InputDecoration(labelText: 'Website'),
-        //             ),
-        //             const SizedBox(height: 18),
-        //             Row(
-        //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //               children: [
-        //                 ElevatedButton(
-        //                     onPressed: _updateProfile,
-        //                     child: Text(_loading ? 'Saving...' : 'Update')),
-        //                 ElevatedButton(
-        //                     onPressed: _signOut, child: const Text('Sign Out')),
-        //               ],
-        //             ),
-        //             const SizedBox(height: 5),
-        //           ],
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

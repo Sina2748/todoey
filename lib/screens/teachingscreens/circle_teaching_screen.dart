@@ -255,54 +255,6 @@ class CircleTeachingScreen extends StatelessWidget {
             //   style: TextStyle(color: Colors.white),
             // ), //You can add button here for instance
           ),
-          PageViewModel(
-            decoration: const PageDecoration(
-              fullScreen: true,
-            ),
-            titleWidget: const ContentViewer(
-              contentAlignment: Alignment.bottomRight,
-              fontSize: 25,
-              containerHeight: 100,
-              contentViewerTitle: 'ابزار ما',
-            ), //Basic String Title
-
-            // body: 'Body of 1st Page', //Basic String Body
-            bodyWidget: const ContentViewer(
-              contentAlignment: Alignment.topCenter,
-              contentViewerTitle:
-                  'ما برای اینکه کشیدن چرخ زندگی رو برای شما راحت کنیم، این ابزرا رو درست کردیم تا بتوانید راحت امتحانش کنید. می‌تونین ابعاد مختلف زندگی رو با توجه به اولویت‌های خودتون مشخص کنی و امتیاز بدین. اینجوری می‌تونین تشخیص بدی  چی نیاز به توجه بیشتری داره و براش برنامه‌ریزی کنین.   ',
-              containerHeight: 150,
-              fontSize: 18,
-            ),
-            //If you want to use your own Widget
-            //Page decoration Contain all page customizations
-            image: Container(
-              foregroundDecoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.1),
-                ], begin: Alignment.bottomRight),
-              ),
-              height: double.infinity,
-              color: Colors.red,
-              child: GestureDetector(
-                onDoubleTap: () {
-                  Navigator.pop(context);
-                },
-                child: Image.asset(
-                  'assets/images/teach8task/06.jpg',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            useScrollView:
-                true, //If you want to you can also wrap around Alignment
-            reverse: false, //If widget Order is reverse - body before image
-            // footer: const Text(
-            //   'Footer',
-            //   style: TextStyle(color: Colors.white),
-            // ), //You can add button here for instance
-          ),
 
           PageViewModel(
             decoration: const PageDecoration(
@@ -310,17 +262,17 @@ class CircleTeachingScreen extends StatelessWidget {
             ),
             // title: 'Title of 1st Page', //Basic String Title
             titleWidget: const ContentViewer(
-              contentAlignment: Alignment.bottomCenter,
-              fontSize: 30,
-              containerHeight: 50,
+              contentAlignment: Alignment.bottomRight,
+              fontSize: 25,
+              containerHeight: 100,
               contentViewerTitle: 'ابزار ما',
             ), //If you want to use your own Widget
             // body: 'Body of 1st Page', //Basic String Body
             bodyWidget: const ContentViewer(
                 contentAlignment: Alignment.topCenter,
                 contentViewerTitle:
-                    'ما هم یه نسخه از این ابزار ساختیم تا بتونید همینجا این روش رو امتحان کنید و اگر خوشتون اومده به استفاده از اون ادامه بدید. کافیه با زدن دکمه + کارهاتون رو به لیست اضافه کنید. بعد با نگه داشتن انگشت روی اونها جا به جاشون کنید.',
-                containerHeight: 150,
+                    'ما برای اینکه کشیدن چرخ زندگی رو برای شما راحت کنیم، این ابزرا رو درست کردیم تا بتوانید راحت امتحانش کنید. می‌تونین ابعاد مختلف زندگی رو با توجه به اولویت‌های خودتون مشخص کنی و امتیاز بدین.    ',
+                containerHeight: 180,
                 fontSize: 20), //If you want to use your own Widget
             //Page decoration Contain all page customizations
             image: Container(
@@ -337,7 +289,7 @@ class CircleTeachingScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Image.asset(
-                  'assets/images/teach8task/01.jpg',
+                  'assets/images/techcircle/circle.webp',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -376,11 +328,17 @@ class CircleTeachingScreen extends StatelessWidget {
           Icons.forward,
           color: Colors.teal,
         ),
-        done: Text(
-          "شروع ابزار",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
+        done: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/lifebalancescreen');
+          },
+          child: Text(
+            "شروع ابزار",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            ),
           ),
         ),
 
