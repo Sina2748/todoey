@@ -22,7 +22,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 30,
-              containerHeight: 100,
+              containerHeight: 80,
               contentViewerTitle: ' لیست کارهای ۸ تایی',
             ), //Basic String Title
 
@@ -31,7 +31,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'این روش خیلی ساده است، هر روز ۸ تا کار اصلی برای خودت تعریف می‌کنی و می‌نویسی. تا آخر روز باید همه رو انجام بدی و خط بزنی. فقط حواست باشه اگه نتونی کاری که نوشتی رو تا آخر روز انجام بدی، دیگه نمی‌تونی اون روز رو یه روز بدون نقص حساب کنی!',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -70,7 +70,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 80,
               contentViewerTitle: ' ممکنه هر روز ۸ تا کار نداشته باشی',
             ), //Basic String Title
 
@@ -79,7 +79,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'بعد از چند وقت می‌بینی که انجام ۸ تا کار زیادتر از اون چیزیه که فکر می‌کردی و مشکله تو یه روز انجام‌شون داد. ولی نکته طلایی اینجاست که اجازه داری  کارها رو جوری تعریف کنی که کوچک باشه. مثلا به جای تصمیم به تموم کردن یک کتاب، بهتره بنویسی شروع کتاب، یا مطالعه ی یک فصل از کتاب. ',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -118,7 +118,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 80,
               contentViewerTitle:
                   'حالا چرا این روش بهتر از لیست کارهای معمولی هست؟',
             ), //Basic String Title
@@ -128,7 +128,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'خوبی این روش اینه که مجبورت می‌کنه بری سراغ کارهایی که همیشه  می‌ذاری برای بعد. عقب انداختن چندباره‌ی کارها به فردا و شنبه و اول ماه باعث می‌شه تعداد کارهای تلنبار شده هی بیشتر و بیشتر بشه و آدم بترسه که بره سراغشون. ',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -167,7 +167,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 80,
               contentViewerTitle: 'روزهای کاملت رو بشمار',
             ), //Basic String Title
 
@@ -176,7 +176,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'هر روزی که تونستی هر ۸ تا کار رو انجام بدی به‌عنوان یک روز کامل بشمار. بعد دنبال کن ببین چند روز هست که روز ناقص نداشتی و زنجیره روزهای کامل رو ادامه دادی. حواست باشه اگه یه روز ناقص داشته باشی باید زنجیره رو از اول شروع کنی .  ',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -215,7 +215,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 120,
+              containerHeight: 80,
               contentViewerTitle: 'چرا شمردن روزهای کامل مهمه',
             ), //Basic String Title
 
@@ -224,7 +224,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'وقی روزهای کامل رو بشماری و مثلا به روز ۱۰۰ ام بررسی دیگه دلت نمی‌یاد روز ناقص پیدا کنی. چون باید از اول شروع کنی و رکوردت رو از دست می‌دی. اینجوری راحت تر می‌شینی سر کارها. انگار که داری با خودت تو زنجیره نگه داشتن  رقابت می کنی. ',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -263,7 +263,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 140,
+              containerHeight: 80,
               contentViewerTitle: 'این روش از کجا اومده؟',
             ), //Basic String Title
 
@@ -272,7 +272,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'ما این روش رو اولین بار از کانال یوتوب پیتر مک‌کنین یاد گرفتیم. ولی گویا آقای اندی فریزلا توی چالش ۷۵ روز سخت هم به این روش اشاره کرده. یه کتاب هم در سال ۲۰۲۱ با اسم eight critical tasks منتشر شده.   ',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -311,7 +311,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 80,
               contentViewerTitle: 'کاغذ و قلم یا دیجیتال؟',
             ), //Basic String Title
 
@@ -320,7 +320,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   ' انتخاب با شماست. مزیت کاغذ و قلم در اینه که بدون باز کردن گوشی می‌تونید به لیست کارهاتون دست‌رسی داشته باشید. به این ترتیب تمرکزتون رو از دست نمی‌دین. مزیت گوشی هم اینه که همیشه همراه‌تون هست و می تونید توی دستگاه های دیگه هم بهش دسترسی داشته باشید.  ',
-              containerHeight: 160,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -361,7 +361,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 110,
+              containerHeight: 80,
               contentViewerTitle: 'ابزار ما',
             ), //If you want to use your own Widget
             // body: 'Body of 1st Page', //Basic String Body
@@ -369,7 +369,7 @@ class PomodoroTeachingScreen extends StatelessWidget {
                 contentAlignment: Alignment.topCenter,
                 contentViewerTitle:
                     'ما هم یه نسخه از این ابزار ساختیم تا بتونید همینجا این روش رو امتحان کنید و اگر خوشتون اومده به استفاده از اون ادامه بدید. کافیه با زدن دکمه + کارهاتون رو به لیست اضافه کنید. بعد با نگه داشتن انگشت روی اونها جا به جاشون کنید.',
-                containerHeight: 150,
+                containerHeight: 200,
                 fontSize: 20), //If you want to use your own Widget
             //Page decoration Contain all page customizations
             image: Container(

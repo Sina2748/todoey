@@ -22,7 +22,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 30,
-              containerHeight: 90,
+              containerHeight: 80,
               contentViewerTitle: 'چرخ تعادل زندگی',
             ), //Basic String Title
 
@@ -31,7 +31,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'زندگی هر کدوم از ما ابعاد مختلفی داره و رضایت ما از هر کدوم از اون ابعاد رضایت از زندگیمون رو می سازه و هر چی از وضعیت مطلوبمون فاصله بگیریم نارضایتی بیشتری رو تجربه می‌کنیم. حتما عبارت تعادل بین کار و زندگی تا حالا به گوشت خورده. چرخ زندگی نموداریه که بهمون کمک می‌کنه بین تمام ابعاد زندگی تعادل برقرار کنیم.',
-              containerHeight: 160,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -70,7 +70,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 120,
+              containerHeight: 80,
               contentViewerTitle: 'نمودار چرخه زندگی چطور رسم می‌شه؟',
             ), //Basic String Title
 
@@ -79,7 +79,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'تعدادی از موضوعات و ابعاد مهم زندگی که برای خودت مهمه، مثل ورزش، مطالعه، تحصیلات و غیره رو لیست کن و توی هر کدام به خودت از ۱۰ امتیاز بده. این امتیاز می‌تونه از وقتی که برای اون بعد می‌گذاری و یا توجهی که بهش می‌کنی ساخته بشه. ',
-              containerHeight: 140,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -118,7 +118,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 120,
+              containerHeight: 80,
               contentViewerTitle: 'رسم امتیازها روی نمودار به چه شکله؟',
             ), //Basic String Title
 
@@ -127,7 +127,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'بعد از ثبت امتیازها اون‌ها رو روی یک نمودار دایره‌ای نمایش بده. مرکز دایره صفر و شعاع دایره امتیاز ده رو بگیر. به طوری که بزرگی هر اسلایس از دایره نشانگر امتیاز هر یک از بعدهایی باشه که انتخاب کردی. ',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -166,7 +166,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 80,
               contentViewerTitle: 'نمودار چرخه زندگی چطوری تحلیل می شه؟',
             ), //Basic String Title
 
@@ -175,7 +175,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'هرچه قدر شکلی که ساخته شده به دایره نزدیک‌تر باشه، تعادل بهتری در زندگی برقراره و اگه شکل کوتاه بلند باشه، جای کار بیشتری برای متعادل سازی داره. با توجه به شکل می‌تونی تصمیم بگیری که کدوم جنبه‌ نیاز به توجه بیشتری داره. مثلا باید کار رو بیشتری جدی بگیری، بیشتر تفریح کنی یا زمان کمتری برای دوست‌ها کنار بذاری.',
-              containerHeight: 150,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -214,7 +214,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 90,
+              containerHeight: 80,
               contentViewerTitle: 'یک نکته',
             ), //Basic String Title
 
@@ -223,7 +223,7 @@ class CircleTeachingScreen extends StatelessWidget {
               contentAlignment: Alignment.topCenter,
               contentViewerTitle:
                   'البته لزوما یک دست بودن ابعاد زندگی اهمیت ويژه‌ای نداره، فقط اگه بعدی از زندگی باشه که ناخواسته توجه کمتری به اون داشتی اون رو بهت نمایش می ده و یاد آوری می کنه. نکته اونجاست که ممکنه برای هر کسی، با توجه به اولویت‌ها و اهدافش، جنبه‌های مختلفی در زندگی مهم باشه و برای اونها نمودار بکشه.',
-              containerHeight: 160,
+              containerHeight: 200,
               fontSize: 18,
             ),
             //If you want to use your own Widget
@@ -264,7 +264,7 @@ class CircleTeachingScreen extends StatelessWidget {
             titleWidget: const ContentViewer(
               contentAlignment: Alignment.bottomRight,
               fontSize: 25,
-              containerHeight: 100,
+              containerHeight: 80,
               contentViewerTitle: 'ابزار ما',
             ), //If you want to use your own Widget
             // body: 'Body of 1st Page', //Basic String Body
@@ -272,7 +272,7 @@ class CircleTeachingScreen extends StatelessWidget {
                 contentAlignment: Alignment.topCenter,
                 contentViewerTitle:
                     'ما برای اینکه کشیدن چرخ زندگی رو برای شما راحت کنیم، این ابزرا رو درست کردیم تا بتوانید راحت امتحانش کنید. می‌تونین ابعاد مختلف زندگی رو با توجه به اولویت‌های خودتون مشخص کنی و امتیاز بدین.    ',
-                containerHeight: 180,
+                containerHeight: 200,
                 fontSize: 20), //If you want to use your own Widget
             //Page decoration Contain all page customizations
             image: Container(
