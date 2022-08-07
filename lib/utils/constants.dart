@@ -75,7 +75,7 @@ class GradiantAppBar extends StatelessWidget with PreferredSizeWidget {
             radius: 20,
             backgroundColor: Theme.of(context).colorScheme.surface,
             child: Icon(
-              Icons.list,
+              Icons.account_box_rounded,
               color: Theme.of(context).colorScheme.primary,
               size: 25,
             ),

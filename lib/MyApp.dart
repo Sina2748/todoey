@@ -32,10 +32,10 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         // '/': (_) => const TasksScreen(),
 
-        '/': (_) => const AccountPage(),
+        // '/': (_) => const AccountPage(),
 
-        // '/': (_) => const SplashPage(),
-        // '/login': (_) => const LoginPage(),
+        '/': (_) => const SplashPage(),
+        '/login': (_) => const LoginPage(),
         '/account': (_) => const AccountPage(),
         '/taskscreen': (_) => const TasksScreen(),
         '/lifebalancescreen': (_) => const lifeBalanceScreen(),

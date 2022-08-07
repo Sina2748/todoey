@@ -133,7 +133,7 @@ class BottomSheetUp extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 3, right: 15),
                             child: Text(
-                              "زمان استراحت",
+                              "زمان تمرکز",
                               style: GoogleFonts.harmattan(
                                 textStyle: TextStyle(
                                   fontSize: 20,

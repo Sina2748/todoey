@@ -168,15 +168,15 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: 'خانه',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.touch_app_outlined),
-              label: 'Apps',
+              label: 'ابزارها',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_box_rounded),
-              label: 'account',
+              label: 'حساب کاربر',
             ),
           ],
           currentIndex: _selectedIndex,

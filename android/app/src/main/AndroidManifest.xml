@@ -16,7 +16,7 @@
     </queries>
 
    <application
-        android:label="todoey"
+        android:label="Crepin"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
